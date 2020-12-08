@@ -35,18 +35,21 @@ namespace SWENG421FinalProject
             while (this.routesToAssign.Count > 0 && vehicles.Count != 0) {
                 Console.WriteLine("Have {0} routes to assign\nChecking {1} vehicles to see if they are ready for a new route", this.routesToAssign.Count, this.vehicles.Count);
                 for (int i = 0; i < vehicles.Count; i++) {
-                    if (vehicles[i].todo == null){
+                    if (vehicles[i].todo == null && this.routesToAssign.Count > 0)
+                    {
                         Console.WriteLine("Adding route to {0}", vehicles[i].identifier);
                         //Assign route
                         vehicles[i].setRoute(routesToAssign[0]);
                         routesToAssign[0].assigned = true;
-                        for (int x = 0; x < routesToAssign[0].toSend.Count; x++) {
-                            routesToAssign[0].toSend[x].setState(new WaitingInWarehouse());    
+                        for (int x = 0; x < routesToAssign[0].toSend.Count; x++)
+                        {
+                            routesToAssign[0].toSend[x].setState(new WaitingInWarehouse());
                         }
                         //Remove route from list
                         this.routesToAssign.RemoveAt(0);
                     }
-                    else {
+                    else if (this.routesToAssign.Count > 0)
+                    {
                         Console.WriteLine("Vehicle {0} already has a route", vehicles[i].identifier);
                     }
                 }

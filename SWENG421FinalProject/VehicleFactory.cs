@@ -11,7 +11,7 @@ namespace SWENG421FinalProject
         public Vehicle createVehicle(string type) {
             Vehicle ans = null;
             type = type.ToLower();
-            if (type == "roadvehicle")
+            if (type == "roadvehicle" || type == "truck" || type == "van" || type == "car")
             {
                 Console.WriteLine("Creating new Road Vehicle");
                 ans = new RoadVehicle();
@@ -45,6 +45,12 @@ namespace SWENG421FinalProject
                 //}
                 Console.WriteLine("Vehicle Type Not Recognized");
             }
+
+            ans.identifier = "";
+            ans.loadCount = 0;
+            ans.mpg = 0;
+            ans.todo = null;
+
             return ans;
         }
     }
