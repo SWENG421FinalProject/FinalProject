@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\steve\\OneDrive\\Documents\\GitHub\\SWENG421FinalProject\\SWENG421FinalProject\\SWENG421FinalProject\\SWENG421FinalProject.csproj": {}
+    "C:\\Users\\steve\\OneDrive\\Documents\\GitHub\\SWENG421FinalProject\\FinalProject\\SWENG421FinalProject\\SWENG421FinalProject.csproj": {}
   },
   "projects": {
-    "C:\\Users\\steve\\OneDrive\\Documents\\GitHub\\SWENG421FinalProject\\SWENG421FinalProject\\SWENG421FinalProject\\SWENG421FinalProject.csproj": {
+    "C:\\Users\\steve\\OneDrive\\Documents\\GitHub\\SWENG421FinalProject\\FinalProject\\SWENG421FinalProject\\SWENG421FinalProject.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\steve\\OneDrive\\Documents\\GitHub\\SWENG421FinalProject\\SWENG421FinalProject\\SWENG421FinalProject\\SWENG421FinalProject.csproj",
+        "projectUniqueName": "C:\\Users\\steve\\OneDrive\\Documents\\GitHub\\SWENG421FinalProject\\FinalProject\\SWENG421FinalProject\\SWENG421FinalProject.csproj",
         "projectName": "SWENG421FinalProject",
-        "projectPath": "C:\\Users\\steve\\OneDrive\\Documents\\GitHub\\SWENG421FinalProject\\SWENG421FinalProject\\SWENG421FinalProject\\SWENG421FinalProject.csproj",
+        "projectPath": "C:\\Users\\steve\\OneDrive\\Documents\\GitHub\\SWENG421FinalProject\\FinalProject\\SWENG421FinalProject\\SWENG421FinalProject.csproj",
         "packagesPath": "C:\\Users\\steve\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\steve\\OneDrive\\Documents\\GitHub\\SWENG421FinalProject\\SWENG421FinalProject\\SWENG421FinalProject\\obj\\",
+        "outputPath": "C:\\Users\\steve\\OneDrive\\Documents\\GitHub\\SWENG421FinalProject\\FinalProject\\SWENG421FinalProject\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Microsoft\\Xamarin\\NuGet\\"

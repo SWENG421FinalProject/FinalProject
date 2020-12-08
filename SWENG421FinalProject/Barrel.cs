@@ -6,5 +6,9 @@ namespace SWENG421FinalProject
 {
     public class Barrel : PalletableIF
     {
+        public string name;
+        public Barrel(string n) {
+            this.name = n;
+        }
     }
 }
