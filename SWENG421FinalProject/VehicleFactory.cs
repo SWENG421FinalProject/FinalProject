@@ -9,7 +9,7 @@ namespace SWENG421FinalProject
     public class VehicleFactory
     {
         public Vehicle createVehicle(string type) {
-            Vehicle ans;
+            Vehicle ans = null;
             type = type.ToLower();
             if (type == "roadvehicle")
             {
@@ -45,8 +45,7 @@ namespace SWENG421FinalProject
                 //}
                 Console.WriteLine("Vehicle Type Not Recognized");
             }
-
-            return null;
+            return ans;
         }
     }
 }
