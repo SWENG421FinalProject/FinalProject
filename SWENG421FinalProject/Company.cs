@@ -1,4 +1,5 @@
-﻿using SWENG421FinalProject.Vehicles;
+﻿using SWENG421FinalProject.States;
+using SWENG421FinalProject.Vehicles;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -38,6 +39,10 @@ namespace SWENG421FinalProject
                         Console.WriteLine("Adding route to {0}", vehicles[i].identifier);
                         //Assign route
                         vehicles[i].setRoute(routesToAssign[0]);
+                        routesToAssign[0].assigned = true;
+                        for (int x = 0; x < routesToAssign[0].toSend.Count; x++) {
+                            routesToAssign[0].toSend[x].setState(new WaitingInWarehouse());    
+                        }
                         //Remove route from list
                         this.routesToAssign.RemoveAt(0);
                     }
