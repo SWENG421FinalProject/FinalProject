@@ -14,28 +14,31 @@ namespace SWENG421FinalProject.Vehicles
         public Route todo;
 
         public void VehicleThread() {
-            while (true) {
+            int waits = 0;
+            while (waits < 5) {
                 Console.WriteLine("{0} Checking if it has a route", this.identifier);
                 if (this.todo != null)
                 {
+                    waits = 0;
                     Console.WriteLine("{0} is starting its route", this.identifier);
-                    Console.WriteLine("Route Length = {0}", todo.toSend.Count);
+                    //Console.WriteLine("Route Length = {0}", todo.toSend.Count);
                     Random r = new Random();
                     int waitTime = r.Next(1000, 5000);
                     for (int i = 0; i < todo.toSend.Count; i++)
                     {
-                        Console.WriteLine("Delivering package {0} to {1}", todo.toSend[i].trackingNumber, todo.toSend[i].destinationAddress);
+                        Console.WriteLine("{0}: Delivering package {1} to {2}", this.identifier, todo.toSend[i].trackingNumber, todo.toSend[i].destinationAddress);
                         Thread.Sleep(waitTime);
                         waitTime = r.Next(1000, 5000);
-                        Console.WriteLine("Package {0} Delivered, setting its state to delivered", todo.toSend[i].trackingNumber);
+                        Console.WriteLine("{0}: Package {1} Delivered, setting its state to delivered", this.identifier, todo.toSend[i].trackingNumber);
                         //todo.toSend[i].setState(new Delivered());
                     }
-                    Console.WriteLine("Finished delivering packages, returning to warehouse");
+                    Console.WriteLine("{0} Finished delivering packages, returning to warehouse", this.identifier);
                     this.todo = null;
                     waitTime = r.Next(1000, 5000);
                     Thread.Sleep(waitTime);
                 }
                 else {
+                    waits++;
                     Thread.Sleep(5000);
                 }
             }
