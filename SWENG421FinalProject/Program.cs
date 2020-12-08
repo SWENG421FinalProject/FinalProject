@@ -12,8 +12,8 @@ namespace SWENG421FinalProject
         static void Main(string[] args)
         {
             List<ShippingObjectIF> packagesToAssign;
-            List<Order> ordersToAssign = new List<Order>;
-            List<Route> routesToAssign = new List<Route>;
+            List<Order> ordersToAssign = new List<Order>();
+            List<Route> routesToAssign = new List<Route>();
             //Create Packages
             Crate c1, c2, c3, c4, c5, c6, c7, c8, c9, c10;
             c1 = new Crate("Crate 1");
@@ -48,10 +48,19 @@ namespace SWENG421FinalProject
 
             packagesToAssign = new List<ShippingObjectIF> { c1, c2, c3, c4, c5, c6, c7, c8, c9, c10,
                                                             br1, br2, br3, p1, p2, p3, p4, p5};
-
-            initOrders(packagesToAssign, ordersToAssign);
             //Create Orders
+            initOrders(packagesToAssign, ordersToAssign);
+
             //Create Routes
+            initRoutes(ordersToAssign, routesToAssign);
+
+            for (int i = 0; i < routesToAssign.Count; i++) {
+                Console.WriteLine("Route {0}", i);
+                for (int j = 0; j < routesToAssign[i].toSend.Count; j++) {
+                    Console.WriteLine("Package {0}: {1}", j, routesToAssign[i].toSend[j].trackingNumber);
+                }
+            }
+
             //Create Vehicles
             //Create Company
 
@@ -123,6 +132,37 @@ namespace SWENG421FinalProject
             ans += title[select];
 
             return ans;
+        }
+
+        private static void initRoutes(List<Order> ordersToAssign, List<Route> routesToAssign)
+        {
+            Route currentRoute;
+            for (int i = 0; i < ordersToAssign.Count; i += 5) {
+                //Create Route with next 5 packages;
+                currentRoute = new Route();
+                currentRoute.toSend.Add(ordersToAssign[i]);
+                
+                //Check that the next 4 are not out of range and assign them
+                if (i + 1 < ordersToAssign.Count) {
+                    currentRoute.toSend.Add(ordersToAssign[i + 1]);
+                }
+                if (i + 2 < ordersToAssign.Count)
+                {
+                    currentRoute.toSend.Add(ordersToAssign[i + 2]);
+                }
+                if (i + 3 < ordersToAssign.Count)
+                {
+                    currentRoute.toSend.Add(ordersToAssign[i + 3]);
+                }
+                if (i + 4 < ordersToAssign.Count)
+                {
+                    currentRoute.toSend.Add(ordersToAssign[i + 4]);
+                }
+                
+                //Add route
+                routesToAssign.Add(currentRoute);
+            }
+
         }
     }
 }
