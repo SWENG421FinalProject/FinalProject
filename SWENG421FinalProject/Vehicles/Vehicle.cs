@@ -11,7 +11,7 @@ namespace SWENG421FinalProject.Vehicles
         public string identifier;
         public int loadCount;
         public double mpg;
-        private Route todo;
+        public Route todo;
 
         public void VehicleThread() {
             while (true) {
