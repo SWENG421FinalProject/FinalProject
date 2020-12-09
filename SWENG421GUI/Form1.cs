@@ -1,4 +1,5 @@
-﻿using SWENG421GUI.Vehicles;
+﻿using SWENG421GUI.States;
+using SWENG421GUI.Vehicles;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,6 +15,20 @@ namespace SWENG421GUI
 {
     public partial class Form1 : Form
     {
+        //Create states
+        //This is one solution to not creating a new state on every state change
+        //Instead objects point to one of the states
+        public NeedRoute needRouteState = new NeedRoute(); //0
+        public RouteNotAssigned routeNotAssignedState = new RouteNotAssigned(); //1
+        public WaitingInWarehouse waitingInWarehouseState = new WaitingInWarehouse(); //2
+        public InTransit inTransitState = new InTransit(); //3
+        public Delivered deliveredState = new Delivered(); //4
+        public OrderCompleted orderCompletedState = new OrderCompleted(); //5
+        public List<State> stateList = new List<State>();
+
+        List<Route> routesList = new List<Route>();
+        List<Order> ordersList = new List<Order>();
+
         public Random r = new Random();
         List<ShippingObjectIF> packagesToAssign;
         List<Order> ordersToAssign = new List<Order>();
@@ -22,6 +37,7 @@ namespace SWENG421GUI
         Crate c1, c2, c3, c4, c5, c6, c7, c8, c9, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20;
 
         Barrel br1, br2, br3, br4, br5, br6, br7, br8, br9, br10, br11, br12, br13, br14, br15;
+
         Box bx1, bx2, bx3, bx4, bx5;
         Pallet p1, p2, p3, p4, p5;
         VehicleFactory vf = new VehicleFactory();
@@ -49,6 +65,15 @@ namespace SWENG421GUI
             companyBinding = new BindingSource();
             routeBinding = new BindingSource();
             orderBinding = new BindingSource();
+
+            //State list init
+            //Used to pass to list of states to methods
+            stateList.Add(needRouteState);
+            stateList.Add(routeNotAssignedState);
+            stateList.Add(waitingInWarehouseState);
+            stateList.Add(inTransitState);
+            stateList.Add(deliveredState);
+            stateList.Add(orderCompletedState);
 
             //Create Packages
             c1 = new Crate("Crate 1");
@@ -172,18 +197,18 @@ namespace SWENG421GUI
             
             //Might not be needed but these lists are in case the originals get modified
             //They show all entries even if some get deleted
-            List<Route> routesList = routesToAssign;
-            List<Order> ordersList = ordersToAssign;
+            routesList = routesToAssign;
+            ordersList = ordersToAssign;
 
             //Creating Threads
             //Right now the thread's methods take a rich text box as a parameter so they can write to it
             //Might have to change the thread methods
-            Thread companyThread = new Thread(() => myCompany.CompanyThread(OutputTextBox));
-            Thread vehicleThread1 = new Thread(() => Truck1.VehicleThread(OutputTextBox));
-            Thread vehicleThread2 = new Thread(() => Truck2.VehicleThread(OutputTextBox));
-            Thread vehicleThread3 = new Thread(() => Train1.VehicleThread(OutputTextBox));
-            Thread vehicleThread4 = new Thread(() => Train2.VehicleThread(OutputTextBox));
-            Thread vehicleThread5 = new Thread(() => Train3.VehicleThread(OutputTextBox));
+            Thread companyThread = new Thread(() => myCompany.CompanyThread(OutputTextBox, stateList));
+            Thread vehicleThread1 = new Thread(() => Truck1.VehicleThread(OutputTextBox, stateList));
+            Thread vehicleThread2 = new Thread(() => Truck2.VehicleThread(OutputTextBox, stateList));
+            Thread vehicleThread3 = new Thread(() => Train1.VehicleThread(OutputTextBox, stateList));
+            Thread vehicleThread4 = new Thread(() => Train2.VehicleThread(OutputTextBox, stateList));
+            Thread vehicleThread5 = new Thread(() => Train3.VehicleThread(OutputTextBox, stateList));
 
             //Setting the bindings to lists of objects
             vehicleBinding.DataSource = vehicleList;
@@ -229,12 +254,13 @@ namespace SWENG421GUI
             CurrentStateOutput.Text = ordersList[selectedOrder].getState().getStateName();
 
             //Start Threads
-            //companyThread.Start();
+            companyThread.Start();
             //vehicleThread1.Start();
             //vehicleThread2.Start();
             //vehicleThread3.Start();
             //vehicleThread4.Start();
             //vehicleThread5.Start();
+
         }
 
         //Create a list of strings and format the package data for a selected route
@@ -342,10 +368,30 @@ namespace SWENG421GUI
                     currentRoute.toSend.Add(ordersToAssign[i + 4]);
                 }
 
+                for (int j = 0; j < currentRoute.toSend.Count; j++) {
+                    currentRoute.toSend[j].setState(routeNotAssignedState);
+                }
+
                 //Add route
                 routesToAssign.Add(currentRoute);
             }
 
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            //Routes Tab
+            RouteOrderList.DataSource = updateRoutePackageList(routesToAssign, selectedRoute);
+
+            //Orders Tab
+            State currentState;
+            for (int i = 0; i < ordersToAssign.Count; i++) {
+                currentState = ordersToAssign[i].getState();
+                if (ordersList[i].getState() != currentState) {
+                    ordersList[i].setState(currentState);
+                }
+            }
+            CurrentStateOutput.Text = ordersList[selectedOrder].getState().getStateName();
         }
     }
 }

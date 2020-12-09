@@ -15,7 +15,7 @@ namespace SWENG421GUI.Vehicles
         public Route todo { get; set; }
 
         //Uses a RichTextBox to write output to
-        public void VehicleThread(RichTextBox rtb) {
+        public void VehicleThread(RichTextBox rtb, List<State> stateList) {
  
             //If there are no routes after 5 checks, then just quit
             //Works for a small number of threads, might not work for lots of threads, would need reference to

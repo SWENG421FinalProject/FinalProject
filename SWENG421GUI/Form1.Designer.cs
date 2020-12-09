@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.OriginOutput = new System.Windows.Forms.TextBox();
             this.SenderOutput = new System.Windows.Forms.TextBox();
             this.ParcelOutput = new System.Windows.Forms.TextBox();
@@ -69,6 +70,7 @@
             this.OriginLabel = new System.Windows.Forms.Label();
             this.SelectOrderLabel = new System.Windows.Forms.Label();
             this.OrderComboBox = new System.Windows.Forms.ComboBox();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -86,7 +88,7 @@
             this.OriginOutput.Enabled = false;
             this.OriginOutput.Location = new System.Drawing.Point(186, 55);
             this.OriginOutput.Name = "OriginOutput";
-            this.OriginOutput.Size = new System.Drawing.Size(325, 30);
+            this.OriginOutput.Size = new System.Drawing.Size(457, 30);
             this.OriginOutput.TabIndex = 13;
             // 
             // SenderOutput
@@ -94,7 +96,7 @@
             this.SenderOutput.Enabled = false;
             this.SenderOutput.Location = new System.Drawing.Point(186, 139);
             this.SenderOutput.Name = "SenderOutput";
-            this.SenderOutput.Size = new System.Drawing.Size(325, 30);
+            this.SenderOutput.Size = new System.Drawing.Size(457, 30);
             this.SenderOutput.TabIndex = 17;
             // 
             // ParcelOutput
@@ -102,7 +104,7 @@
             this.ParcelOutput.Enabled = false;
             this.ParcelOutput.Location = new System.Drawing.Point(186, 225);
             this.ParcelOutput.Name = "ParcelOutput";
-            this.ParcelOutput.Size = new System.Drawing.Size(325, 30);
+            this.ParcelOutput.Size = new System.Drawing.Size(457, 30);
             this.ParcelOutput.TabIndex = 21;
             // 
             // splitContainer1
@@ -121,8 +123,8 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.TabSelector);
-            this.splitContainer1.Size = new System.Drawing.Size(1082, 553);
-            this.splitContainer1.SplitterDistance = 551;
+            this.splitContainer1.Size = new System.Drawing.Size(1357, 703);
+            this.splitContainer1.SplitterDistance = 677;
             this.splitContainer1.TabIndex = 0;
             // 
             // OutputLabel
@@ -142,7 +144,7 @@
             this.OutputPanel.Controls.Add(this.OutputTextBox);
             this.OutputPanel.Location = new System.Drawing.Point(0, 50);
             this.OutputPanel.Name = "OutputPanel";
-            this.OutputPanel.Size = new System.Drawing.Size(551, 501);
+            this.OutputPanel.Size = new System.Drawing.Size(675, 651);
             this.OutputPanel.TabIndex = 0;
             // 
             // OutputTextBox
@@ -150,7 +152,7 @@
             this.OutputTextBox.Enabled = false;
             this.OutputTextBox.Location = new System.Drawing.Point(-1, 0);
             this.OutputTextBox.Name = "OutputTextBox";
-            this.OutputTextBox.Size = new System.Drawing.Size(549, 498);
+            this.OutputTextBox.Size = new System.Drawing.Size(673, 648);
             this.OutputTextBox.TabIndex = 0;
             this.OutputTextBox.Text = "";
             // 
@@ -164,7 +166,7 @@
             this.TabSelector.Location = new System.Drawing.Point(-1, 3);
             this.TabSelector.Name = "TabSelector";
             this.TabSelector.SelectedIndex = 0;
-            this.TabSelector.Size = new System.Drawing.Size(527, 549);
+            this.TabSelector.Size = new System.Drawing.Size(675, 699);
             this.TabSelector.TabIndex = 0;
             // 
             // CompanyTab
@@ -176,7 +178,7 @@
             this.CompanyTab.Location = new System.Drawing.Point(4, 34);
             this.CompanyTab.Name = "CompanyTab";
             this.CompanyTab.Padding = new System.Windows.Forms.Padding(3);
-            this.CompanyTab.Size = new System.Drawing.Size(519, 511);
+            this.CompanyTab.Size = new System.Drawing.Size(667, 661);
             this.CompanyTab.TabIndex = 0;
             this.CompanyTab.Text = "Company";
             this.CompanyTab.UseVisualStyleBackColor = true;
@@ -188,7 +190,7 @@
             this.CompanyVehicles.ItemHeight = 25;
             this.CompanyVehicles.Location = new System.Drawing.Point(195, 52);
             this.CompanyVehicles.Name = "CompanyVehicles";
-            this.CompanyVehicles.Size = new System.Drawing.Size(316, 454);
+            this.CompanyVehicles.Size = new System.Drawing.Size(440, 579);
             this.CompanyVehicles.TabIndex = 6;
             // 
             // CompanyVehiclesOutput
@@ -206,7 +208,7 @@
             this.CompanyNameOutput.Enabled = false;
             this.CompanyNameOutput.Location = new System.Drawing.Point(194, 10);
             this.CompanyNameOutput.Name = "CompanyNameOutput";
-            this.CompanyNameOutput.Size = new System.Drawing.Size(317, 30);
+            this.CompanyNameOutput.Size = new System.Drawing.Size(441, 30);
             this.CompanyNameOutput.TabIndex = 4;
             // 
             // label3
@@ -231,7 +233,7 @@
             this.VehicleTab.Location = new System.Drawing.Point(4, 34);
             this.VehicleTab.Name = "VehicleTab";
             this.VehicleTab.Padding = new System.Windows.Forms.Padding(3);
-            this.VehicleTab.Size = new System.Drawing.Size(519, 511);
+            this.VehicleTab.Size = new System.Drawing.Size(667, 661);
             this.VehicleTab.TabIndex = 1;
             this.VehicleTab.Text = "Vehicles";
             this.VehicleTab.UseVisualStyleBackColor = true;
@@ -242,7 +244,7 @@
             this.TodoList.ItemHeight = 25;
             this.TodoList.Location = new System.Drawing.Point(173, 141);
             this.TodoList.Name = "TodoList";
-            this.TodoList.Size = new System.Drawing.Size(323, 354);
+            this.TodoList.Size = new System.Drawing.Size(474, 504);
             this.TodoList.TabIndex = 9;
             // 
             // label2
@@ -259,7 +261,7 @@
             this.MpgOutput.Enabled = false;
             this.MpgOutput.Location = new System.Drawing.Point(173, 99);
             this.MpgOutput.Name = "MpgOutput";
-            this.MpgOutput.Size = new System.Drawing.Size(323, 30);
+            this.MpgOutput.Size = new System.Drawing.Size(474, 30);
             this.MpgOutput.TabIndex = 7;
             // 
             // label1
@@ -276,7 +278,7 @@
             this.LoadCountOutput.Enabled = false;
             this.LoadCountOutput.Location = new System.Drawing.Point(173, 57);
             this.LoadCountOutput.Name = "LoadCountOutput";
-            this.LoadCountOutput.Size = new System.Drawing.Size(323, 30);
+            this.LoadCountOutput.Size = new System.Drawing.Size(474, 30);
             this.LoadCountOutput.TabIndex = 5;
             // 
             // LoadCountLabel
@@ -304,7 +306,7 @@
             this.VehicleComboBox.FormattingEnabled = true;
             this.VehicleComboBox.Location = new System.Drawing.Point(173, 10);
             this.VehicleComboBox.Name = "VehicleComboBox";
-            this.VehicleComboBox.Size = new System.Drawing.Size(323, 33);
+            this.VehicleComboBox.Size = new System.Drawing.Size(474, 33);
             this.VehicleComboBox.TabIndex = 0;
             // 
             // RouteTab
@@ -318,7 +320,7 @@
             this.RouteTab.Location = new System.Drawing.Point(4, 34);
             this.RouteTab.Name = "RouteTab";
             this.RouteTab.Padding = new System.Windows.Forms.Padding(3);
-            this.RouteTab.Size = new System.Drawing.Size(519, 511);
+            this.RouteTab.Size = new System.Drawing.Size(667, 661);
             this.RouteTab.TabIndex = 2;
             this.RouteTab.Text = "Routes";
             this.RouteTab.UseVisualStyleBackColor = true;
@@ -330,7 +332,7 @@
             this.RouteOrderList.ItemHeight = 25;
             this.RouteOrderList.Location = new System.Drawing.Point(162, 108);
             this.RouteOrderList.Name = "RouteOrderList";
-            this.RouteOrderList.Size = new System.Drawing.Size(349, 379);
+            this.RouteOrderList.Size = new System.Drawing.Size(486, 529);
             this.RouteOrderList.TabIndex = 13;
             // 
             // label5
@@ -347,7 +349,7 @@
             this.AssignedOutput.Enabled = false;
             this.AssignedOutput.Location = new System.Drawing.Point(162, 63);
             this.AssignedOutput.Name = "AssignedOutput";
-            this.AssignedOutput.Size = new System.Drawing.Size(349, 30);
+            this.AssignedOutput.Size = new System.Drawing.Size(486, 30);
             this.AssignedOutput.TabIndex = 11;
             // 
             // AssignedLabel
@@ -374,7 +376,7 @@
             this.RouteComboBox.FormattingEnabled = true;
             this.RouteComboBox.Location = new System.Drawing.Point(162, 10);
             this.RouteComboBox.Name = "RouteComboBox";
-            this.RouteComboBox.Size = new System.Drawing.Size(349, 33);
+            this.RouteComboBox.Size = new System.Drawing.Size(486, 33);
             this.RouteComboBox.TabIndex = 8;
             // 
             // OrderTab
@@ -396,7 +398,7 @@
             this.OrderTab.Location = new System.Drawing.Point(4, 34);
             this.OrderTab.Name = "OrderTab";
             this.OrderTab.Padding = new System.Windows.Forms.Padding(3);
-            this.OrderTab.Size = new System.Drawing.Size(519, 511);
+            this.OrderTab.Size = new System.Drawing.Size(667, 661);
             this.OrderTab.TabIndex = 3;
             this.OrderTab.Text = "Orders";
             this.OrderTab.UseVisualStyleBackColor = true;
@@ -406,7 +408,7 @@
             this.CurrentStateOutput.Enabled = false;
             this.CurrentStateOutput.Location = new System.Drawing.Point(186, 267);
             this.CurrentStateOutput.Name = "CurrentStateOutput";
-            this.CurrentStateOutput.Size = new System.Drawing.Size(325, 30);
+            this.CurrentStateOutput.Size = new System.Drawing.Size(457, 30);
             this.CurrentStateOutput.TabIndex = 23;
             // 
             // StateLabel
@@ -432,7 +434,7 @@
             this.ReceiverOutput.Enabled = false;
             this.ReceiverOutput.Location = new System.Drawing.Point(186, 181);
             this.ReceiverOutput.Name = "ReceiverOutput";
-            this.ReceiverOutput.Size = new System.Drawing.Size(325, 30);
+            this.ReceiverOutput.Size = new System.Drawing.Size(457, 30);
             this.ReceiverOutput.TabIndex = 19;
             // 
             // ReceiverLabel
@@ -458,7 +460,7 @@
             this.DestinationOutput.Enabled = false;
             this.DestinationOutput.Location = new System.Drawing.Point(186, 97);
             this.DestinationOutput.Name = "DestinationOutput";
-            this.DestinationOutput.Size = new System.Drawing.Size(325, 30);
+            this.DestinationOutput.Size = new System.Drawing.Size(457, 30);
             this.DestinationOutput.TabIndex = 15;
             // 
             // DestinationLabel
@@ -495,14 +497,20 @@
             this.OrderComboBox.FormattingEnabled = true;
             this.OrderComboBox.Location = new System.Drawing.Point(186, 10);
             this.OrderComboBox.Name = "OrderComboBox";
-            this.OrderComboBox.Size = new System.Drawing.Size(325, 33);
+            this.OrderComboBox.Size = new System.Drawing.Size(457, 33);
             this.OrderComboBox.TabIndex = 8;
+            // 
+            // timer1
+            // 
+            this.timer1.Enabled = true;
+            this.timer1.Interval = 1000;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1082, 553);
+            this.ClientSize = new System.Drawing.Size(1357, 703);
             this.Controls.Add(this.splitContainer1);
             this.Name = "Form1";
             this.Text = "Form1";
@@ -569,6 +577,7 @@
         private System.Windows.Forms.TextBox OriginOutput;
         private System.Windows.Forms.TextBox SenderOutput;
         private System.Windows.Forms.TextBox ParcelOutput;
+        private System.Windows.Forms.Timer timer1;
     }
 }
 
