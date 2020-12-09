@@ -33,6 +33,9 @@ namespace SWENG421GUI
         BindingSource vehicleBinding;
         BindingSource routeBinding;
         BindingSource orderBinding;
+        int selectedVehicle = 0;
+        int selectedRoute = 0;
+        int selectedOrder = 0;
 
         public Form1()
         {
@@ -109,14 +112,14 @@ namespace SWENG421GUI
             initRoutes(ordersToAssign, routesToAssign);
 
             //Test that packages, orders, and routes were created successfully
-            for (int i = 0; i < routesToAssign.Count; i++)
-            {
-                Console.WriteLine("Route {0}", i);
-                for (int j = 0; j < routesToAssign[i].toSend.Count; j++)
-                {
-                    Console.WriteLine("Package {0}: {1}", j, routesToAssign[i].toSend[j].trackingNumber);
-                }
-            }
+            //for (int i = 0; i < routesToAssign.Count; i++)
+            //{
+            //    Console.WriteLine("Route {0}", i);
+            //    for (int j = 0; j < routesToAssign[i].toSend.Count; j++)
+            //    {
+            //        Console.WriteLine("Package {0}: {1}", j, routesToAssign[i].toSend[j].trackingNumber);
+            //    }
+            //}
 
             //Create Vehicles
 
@@ -166,9 +169,15 @@ namespace SWENG421GUI
             Company myCompany = new Company("Shipping Co");
             myCompany.vehicles = vehicleList;
             myCompany.routesToAssign = routesToAssign;
+            
+            //Might not be needed but these lists are in case the originals get modified
+            //They show all entries even if some get deleted
             List<Route> routesList = routesToAssign;
             List<Order> ordersList = ordersToAssign;
 
+            //Creating Threads
+            //Right now the thread's methods take a rich text box as a parameter so they can write to it
+            //Might have to change the thread methods
             Thread companyThread = new Thread(() => myCompany.CompanyThread(OutputTextBox));
             Thread vehicleThread1 = new Thread(() => Truck1.VehicleThread(OutputTextBox));
             Thread vehicleThread2 = new Thread(() => Truck2.VehicleThread(OutputTextBox));
@@ -176,13 +185,17 @@ namespace SWENG421GUI
             Thread vehicleThread4 = new Thread(() => Train2.VehicleThread(OutputTextBox));
             Thread vehicleThread5 = new Thread(() => Train3.VehicleThread(OutputTextBox));
 
+            //Setting the bindings to lists of objects
             vehicleBinding.DataSource = vehicleList;
             companyBinding.DataSource = vehicleList;
             routeBinding.DataSource = routesList;
             orderBinding.DataSource = ordersList;
-            int selectedVehicle = 0;
-            int selectedRoute = 0;
-            int selectedOrder = 0;
+            //ComboBox Selection
+            selectedVehicle = 0;
+            selectedRoute = 0;
+            selectedOrder = 0;
+            //Routes Packages List formats the packages in the selected route
+            //Have name of parcel, tracking number, current state all as 1 string
             List<string> routePackagesList = new List<string>();
             routePackagesList = updateRoutePackageList(routesList, selectedRoute);
 
@@ -215,15 +228,16 @@ namespace SWENG421GUI
             ParcelOutput.Text = ordersList[selectedOrder].parcel.name;
             CurrentStateOutput.Text = ordersList[selectedOrder].getState().getStateName();
 
+            //Start Threads
             //companyThread.Start();
             //vehicleThread1.Start();
             //vehicleThread2.Start();
             //vehicleThread3.Start();
             //vehicleThread4.Start();
             //vehicleThread5.Start();
-
         }
 
+        //Create a list of strings and format the package data for a selected route
         private List<string> updateRoutePackageList(List<Route> routeList, int selectedRoute)
         {
             List<string> ans = new List<string>();
@@ -236,6 +250,8 @@ namespace SWENG421GUI
             return ans;
         }
 
+        //Create Orders with randomly generated data
+        //Note: Tracking numbers could be the same but it is unlikely
         private void initOrders(List<ShippingObjectIF> packagesToAssign, List<Order> ordersToAssign)
         {
             Order currentOrder;
@@ -258,6 +274,7 @@ namespace SWENG421GUI
             }
         }
 
+        //Generate random first name and last name based on a list and random number
         private string genName()
         {
             string ans = "";
@@ -274,6 +291,8 @@ namespace SWENG421GUI
             return ans;
         }
 
+        //Generate address based on a random number, random street name, and random street type like
+        //street, road, lane, etc.
         private string genAddress()
         {
             string ans = "";
@@ -294,6 +313,7 @@ namespace SWENG421GUI
             return ans;
         }
 
+        //Create routes by grouping up to 5 packages together
         private void initRoutes(List<Order> ordersToAssign, List<Route> routesToAssign)
         {
             Route currentRoute;

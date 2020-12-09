@@ -33,12 +33,19 @@ namespace SWENG421GUI
         //Uses a RichTextBox to write output to
         public void CompanyThread(RichTextBox rtb)
         {
+            //Write output to textbox instead of the console
             rtb.Text += "Company " + this.companyName + " starting operations\n";
             //Console.WriteLine("Company {0} starting operations", this.companyName);
+            
+            //Keep running until all routes are assigned
             while (this.routesToAssign.Count > 0 && vehicles.Count != 0) {
                 rtb.Text += "Have " + this.routesToAssign.Count + " routes to assign\nChecking " + this.vehicles.Count + " vehicles to see if they are ready for a new route\n";
                 //Console.WriteLine("Have {0} routes to assign\nChecking {1} vehicles to see if they are ready for a new route", this.routesToAssign.Count, this.vehicles.Count);
+                
+                //Check all vehicles to see if any are ready for a new route
                 for (int i = 0; i < vehicles.Count; i++) {
+
+                    //If a vehicle doesn't have a route, assign it one
                     if (vehicles[i].todo == null && this.routesToAssign.Count > 0)
                     {
                         rtb.Text += "Adding route to " + vehicles[i].identifier + "\n";
@@ -53,20 +60,27 @@ namespace SWENG421GUI
                         //Remove route from list
                         this.routesToAssign.RemoveAt(0);
                     }
+                    //Else print out a message if there are still routes to assign
                     else if (this.routesToAssign.Count > 0)
                     {
                         rtb.Text += "Vehicle " + vehicles[i].identifier + " already has a route\n";
                         //Console.WriteLine("Vehicle {0} already has a route", vehicles[i].identifier);
                     }
                 }
+
+                //Print message at end of loop
                 rtb.Text += "Company " + this.companyName + " Finished Checking Vehicles\n";
                 //Console.WriteLine("Company {0} Finished Checking Vehicles", this.companyName);
+                
+                //Wait if there are still routes to assign
                 if (this.routesToAssign.Count > 0) {
                     rtb.Text += "Company " + this.companyName + " has " + this.routesToAssign.Count + " Routes(s) to assign\n"; 
                     //Console.WriteLine("Company {0} has {1} Route(s) to assign", this.companyName, this.routesToAssign.Count);
                     Thread.Sleep(5000);
                 }
             }
+
+            //Loop finished
             rtb.Text += "All routes assigned. Company " + this.companyName + " ending operations\n";
             //Console.WriteLine("All routes assigned. Company {0} ending operations", this.companyName);
         }

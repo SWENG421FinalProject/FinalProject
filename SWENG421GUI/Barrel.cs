@@ -10,6 +10,8 @@ namespace SWENG421GUI
         public Barrel(string n) {
             this.Name = n;
         }
+
+        //Used by GUI
         public string name
         {
             get { return Name; }

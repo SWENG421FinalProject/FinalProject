@@ -13,6 +13,7 @@ namespace SWENG421GUI
             this.myObject = package;
         }
 
+        //Used by GUI
         public string name { get { return Name; }
             set { this.Name = value; }
         }

@@ -10,6 +10,8 @@ namespace SWENG421GUI
         public Crate(string n) {
             this.Name = n;
         }
+
+        //Used by GUI
         public string name
         {
             get { return Name; }
