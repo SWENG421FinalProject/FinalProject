@@ -46,14 +46,40 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AbstractLoadableClass.cs" />
+    <Compile Include="Barrel.cs" />
+    <Compile Include="Box.cs" />
+    <Compile Include="Company.cs" />
+    <Compile Include="Crate.cs" />
+    <Compile Include="FactoryIF.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Loadable\Drone.cs" />
+    <Compile Include="Order.cs" />
+    <Compile Include="Pallet.cs" />
+    <Compile Include="PalletableIF.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ReadWriteLock.cs" />
+    <Compile Include="Route.cs" />
+    <Compile Include="ShippingObjectIF.cs" />
+    <Compile Include="States\Delivered.cs" />
+    <Compile Include="States\InTransit.cs" />
+    <Compile Include="States\NeedRoute.cs" />
+    <Compile Include="States\OrderCompleted.cs" />
+    <Compile Include="States\RouteNotAssigned.cs" />
+    <Compile Include="States\State.cs" />
+    <Compile Include="States\WaitingInWarehouse.cs" />
+    <Compile Include="VehicleFactory.cs" />
+    <Compile Include="Vehicles\Plane.cs" />
+    <Compile Include="Vehicles\RoadVehicle.cs" />
+    <Compile Include="Vehicles\Ship.cs" />
+    <Compile Include="Vehicles\Train.cs" />
+    <Compile Include="Vehicles\Vehicle.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -66,6 +92,8 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="Properties\DataSources\Company.datasource" />
+    <None Include="Properties\DataSources\Program.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
