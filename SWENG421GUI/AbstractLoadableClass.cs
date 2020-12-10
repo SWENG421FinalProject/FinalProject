@@ -4,7 +4,7 @@ using System.Text;
 
 namespace SWENG421GUI
 {
-    class AbstractLoadableClass
+    abstract class AbstractLoadableClass
     {
         private Company enviroment;
 
@@ -17,5 +17,9 @@ namespace SWENG421GUI
         {
             return enviroment;
         }
+
+        public abstract string getName();
+
+        public abstract void printInfo();
     }
 }

@@ -7,5 +7,11 @@ namespace SWENG421GUI.Vehicles
     public class Plane : Vehicle
     {
         public int range;
+
+        public override void printInfo()
+        {
+            base.printInfo();
+            Console.Write("Range: {0}\n", range);
+        }
     }
 }

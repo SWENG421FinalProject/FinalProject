@@ -60,6 +60,7 @@
     </Compile>
     <Compile Include="Loadable\Drone.cs" />
     <Compile Include="Order.cs" />
+    <Compile Include="OrderIF.cs" />
     <Compile Include="Pallet.cs" />
     <Compile Include="PalletableIF.cs" />
     <Compile Include="Program.cs" />

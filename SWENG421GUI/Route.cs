@@ -4,7 +4,7 @@ using System.Text;
 
 namespace SWENG421GUI
 {
-    public class Route
+    public class Route : OrderIF
     {
         public string name { get; set; }
         public bool assigned { get; set; }

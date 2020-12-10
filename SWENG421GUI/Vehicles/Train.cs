@@ -13,5 +13,10 @@ namespace SWENG421GUI.Vehicles
             base.mpg = 0.0;
             gauge = "";
         }
+        public override void printInfo()
+        {
+            base.printInfo();
+            Console.Write("Gauge: {0}\n", gauge);
+        }
     }
 }
