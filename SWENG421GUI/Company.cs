@@ -31,17 +31,16 @@ namespace SWENG421GUI
         }
         public void load(string classname)
         {
-            /* for casting to vehicle/factory (?) use
-            Type t = typeof(Drone);
-            Vehicle v = Activator.CreateInstance(t) as Vehicle;
-            Type t = Type.GetType("SWENG421GUI.Loadable.Drone");
-            */
             Type t = Type.GetType(classname);
-            AbstractLoadableVehicle loadableClass;
-            loadableClass = (AbstractLoadableVehicle)Activator.CreateInstance(t);
-            loadableClass.setEnviroment(this);
-            Console.WriteLine("Loading in: " + loadableClass.getName());
-            loadableClass.printInfo();
+            AbstractLoadableVehicle loadableVehicle;
+            loadableVehicle = (AbstractLoadableVehicle)Activator.CreateInstance(t);
+            loadableVehicle.setEnviroment(this);
+            Console.WriteLine("Loading in: " + loadableVehicle.getName());
+            loadableVehicle.identifier = loadableVehicle.getName() + " 1";
+            loadableVehicle.loadCount = 5;
+            loadableVehicle.mpg = 10;
+            loadableVehicle.setAttribute(18);
+            loadableVehicle.printInfo();
         }
 
         //Uses a RichTextBox to write output to

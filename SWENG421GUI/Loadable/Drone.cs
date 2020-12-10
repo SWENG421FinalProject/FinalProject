@@ -6,7 +6,7 @@ namespace SWENG421GUI.Loadable
 {
     class Drone : AbstractLoadableVehicle
     {
-        int range;
+        double range;
 
         public override string getName()
         {
@@ -15,7 +15,13 @@ namespace SWENG421GUI.Loadable
 
         public override void printInfo()
         {
+            base.printInfo();
             Console.WriteLine("Range (miles): {0}\n", range);
+        }
+
+        public override void setAttribute(double value)
+        {
+            range = value;
         }
     }
 }

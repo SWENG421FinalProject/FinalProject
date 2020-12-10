@@ -21,6 +21,11 @@ namespace SWENG421GUI
 
         public abstract string getName();
 
-        public abstract override void printInfo();
+        public override void printInfo()
+        {
+            base.printInfo();
+        }
+
+        public abstract void setAttribute(double value);
     }
 }
