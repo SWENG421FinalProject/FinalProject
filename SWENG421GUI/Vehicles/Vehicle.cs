@@ -1,6 +1,7 @@
 ﻿using SWENG421GUI.States;
 using System;
 using System.Collections.Generic;
+using System.Reflection;
 using System.Text;
 using System.Threading;
 using System.Windows.Forms;
@@ -13,6 +14,17 @@ namespace SWENG421GUI.Vehicles
         public int loadCount { get; set; }
         public double mpg { get; set; }
         public Route todo { get; set; }
+
+        public string getInfo()
+        {
+            FieldInfo[] fields = this.GetType().GetFields();
+            StringBuilder sb = new StringBuilder();
+            foreach(FieldInfo f in fields)
+            {
+                sb.Append((char.ToUpper(f.Name[0]) + f.Name.Substring(1).ToLower()) + ": " + f.GetValue(this));
+            }
+            return sb.ToString();
+        }
 
         //Uses a RichTextBox to write output to
         public void VehicleThread(RichTextBox rtb, List<State> stateList) {

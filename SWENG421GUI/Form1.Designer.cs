@@ -71,6 +71,8 @@
             this.SelectOrderLabel = new System.Windows.Forms.Label();
             this.OrderComboBox = new System.Windows.Forms.ComboBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.attributesbox = new System.Windows.Forms.TextBox();
+            this.otherLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -236,6 +238,8 @@
             // 
             // VehicleTab
             // 
+            this.VehicleTab.Controls.Add(this.otherLabel);
+            this.VehicleTab.Controls.Add(this.attributesbox);
             this.VehicleTab.Controls.Add(this.TodoList);
             this.VehicleTab.Controls.Add(this.label2);
             this.VehicleTab.Controls.Add(this.MpgOutput);
@@ -257,16 +261,16 @@
             // 
             this.TodoList.FormattingEnabled = true;
             this.TodoList.ItemHeight = 20;
-            this.TodoList.Location = new System.Drawing.Point(130, 115);
+            this.TodoList.Location = new System.Drawing.Point(130, 163);
             this.TodoList.Margin = new System.Windows.Forms.Padding(2);
             this.TodoList.Name = "TodoList";
-            this.TodoList.Size = new System.Drawing.Size(356, 404);
+            this.TodoList.Size = new System.Drawing.Size(356, 344);
             this.TodoList.TabIndex = 9;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(4, 115);
+            this.label2.Location = new System.Drawing.Point(4, 163);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(49, 20);
@@ -553,6 +557,22 @@
             this.timer1.Interval = 1000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // attributesbox
+            // 
+            this.attributesbox.Location = new System.Drawing.Point(130, 119);
+            this.attributesbox.Name = "attributesbox";
+            this.attributesbox.Size = new System.Drawing.Size(356, 26);
+            this.attributesbox.TabIndex = 10;
+            // 
+            // otherLabel
+            // 
+            this.otherLabel.AutoSize = true;
+            this.otherLabel.Location = new System.Drawing.Point(0, 122);
+            this.otherLabel.Name = "otherLabel";
+            this.otherLabel.Size = new System.Drawing.Size(126, 20);
+            this.otherLabel.TabIndex = 11;
+            this.otherLabel.Text = "Other Attributes:";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -626,6 +646,8 @@
         private System.Windows.Forms.TextBox SenderOutput;
         private System.Windows.Forms.TextBox ParcelOutput;
         private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Label otherLabel;
+        private System.Windows.Forms.TextBox attributesbox;
     }
 }
 

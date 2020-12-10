@@ -434,6 +434,7 @@ namespace SWENG421GUI
             LoadCountOutput.Text = vehicleList[VehicleComboBox.SelectedIndex].loadCount.ToString();
             MpgOutput.Text = vehicleList[VehicleComboBox.SelectedIndex].mpg.ToString();
             // change route/todo listbox
+            attributesbox.Text = vehicleList[VehicleComboBox.SelectedIndex].getInfo();
         }
         private void OrderComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
