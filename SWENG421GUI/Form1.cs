@@ -429,5 +429,25 @@ namespace SWENG421GUI
             if (CurrentStateOutput.Text.Equals("Delivered")) { CurrentStateOutput.ForeColor = Color.LimeGreen; }
             if (CurrentStateOutput.Text.Equals("OrderCompleted")) { CurrentStateOutput.ForeColor = Color.DarkOliveGreen; }
         }
+        private void VehicleComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            LoadCountOutput.Text = vehicleList[VehicleComboBox.SelectedIndex].loadCount.ToString();
+            MpgOutput.Text = vehicleList[VehicleComboBox.SelectedIndex].mpg.ToString();
+            // change route/todo listbox
+        }
+        private void OrderComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            OriginOutput.Text = ordersList[OrderComboBox.SelectedIndex].originAddress;
+            DestinationOutput.Text = ordersList[OrderComboBox.SelectedIndex].destinationAddress;
+            SenderOutput.Text = ordersList[OrderComboBox.SelectedIndex].senderName;
+            ReceiverOutput.Text = ordersList[OrderComboBox.SelectedIndex].receiverName;
+            ParcelOutput.Text = ordersList[OrderComboBox.SelectedIndex].parcel.name;
+            // CurrentStateOutput.Text = ordersList[OrderComboBox.SelectedIndex].getState(this).getStateName(); 
+        }
+        private void RouteComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            AssignedOutput.Text = routesList[RouteComboBox.SelectedIndex].assigned.ToString();
+            // change orders listbox
+        }
     }
 }
