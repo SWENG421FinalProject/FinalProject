@@ -5,7 +5,7 @@ using System.Text;
 
 namespace SWENG421GUI
 {
-    public class Order
+    public class Order : OrderIF
     {
         public string trackingNumber { get; set; }
         public string originAddress { get; set; }

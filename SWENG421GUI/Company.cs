@@ -29,6 +29,20 @@ namespace SWENG421GUI
         public void setVehicles(List<Vehicle> vs) {
             this.vehicles = vs;
         }
+        public void load(string classname)
+        {
+            /* for casting to vehicle/factory (?) use
+            Type t = typeof(Drone);
+            Vehicle v = Activator.CreateInstance(t) as Vehicle;
+            Type t = Type.GetType("SWENG421GUI.Loadable.Drone");
+            */
+            Type t = Type.GetType(classname);
+            AbstractLoadableClass loadableClass;
+            loadableClass = (AbstractLoadableClass)Activator.CreateInstance(t);
+            loadableClass.setEnviroment(this);
+            Console.WriteLine("Loading in: " + loadableClass.getName());
+            loadableClass.printInfo();
+        }
 
         //Uses a RichTextBox to write output to
         public void CompanyThread(RichTextBox rtb, List<State> stateList)

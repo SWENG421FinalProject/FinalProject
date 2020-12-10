@@ -75,5 +75,9 @@ namespace SWENG421GUI.Vehicles
                 this.todo = td;
             }
         }
+        public virtual void printInfo()
+        {
+            Console.WriteLine("Identifier: {0}\nLoad Count: {1}\nMPG: {2}", identifier, loadCount, mpg);
+        }
     }
 }

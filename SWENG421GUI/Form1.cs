@@ -55,7 +55,6 @@ namespace SWENG421GUI
 
         public Form1()
         {
-
             InitializeComponent();
         }
 
@@ -194,7 +193,10 @@ namespace SWENG421GUI
             Company myCompany = new Company("Shipping Co");
             myCompany.vehicles = vehicleList;
             myCompany.routesToAssign = routesToAssign;
-            
+
+            // Loading loadable classes
+            myCompany.load("SWENG421GUI.Loadable.Drone");
+
             //Might not be needed but these lists are in case the originals get modified
             //They show all entries even if some get deleted
             routesList = routesToAssign;
