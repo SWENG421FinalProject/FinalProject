@@ -197,6 +197,7 @@ namespace SWENG421GUI
 
             // Loading loadable classes
             myCompany.addVehicle("SWENG421GUI.Loadable.Drone");
+            myCompany.loadShippingObject("SWENG421GUI.Loadable.Skid");
 
             //Might not be needed but these lists are in case the originals get modified
             //They show all entries even if some get deleted
