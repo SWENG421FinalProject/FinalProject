@@ -43,6 +43,8 @@
             this.CompanyNameOutput = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.VehicleTab = new System.Windows.Forms.TabPage();
+            this.otherLabel = new System.Windows.Forms.Label();
+            this.attributesbox = new System.Windows.Forms.TextBox();
             this.TodoList = new System.Windows.Forms.ListBox();
             this.label2 = new System.Windows.Forms.Label();
             this.MpgOutput = new System.Windows.Forms.TextBox();
@@ -71,8 +73,6 @@
             this.SelectOrderLabel = new System.Windows.Forms.Label();
             this.OrderComboBox = new System.Windows.Forms.ComboBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.attributesbox = new System.Windows.Forms.TextBox();
-            this.otherLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -256,6 +256,23 @@
             this.VehicleTab.TabIndex = 1;
             this.VehicleTab.Text = "Vehicles";
             this.VehicleTab.UseVisualStyleBackColor = true;
+            // 
+            // otherLabel
+            // 
+            this.otherLabel.AutoSize = true;
+            this.otherLabel.Location = new System.Drawing.Point(0, 122);
+            this.otherLabel.Name = "otherLabel";
+            this.otherLabel.Size = new System.Drawing.Size(126, 20);
+            this.otherLabel.TabIndex = 11;
+            this.otherLabel.Text = "Other Attributes:";
+            // 
+            // attributesbox
+            // 
+            this.attributesbox.Enabled = false;
+            this.attributesbox.Location = new System.Drawing.Point(130, 119);
+            this.attributesbox.Name = "attributesbox";
+            this.attributesbox.Size = new System.Drawing.Size(356, 26);
+            this.attributesbox.TabIndex = 10;
             // 
             // TodoList
             // 
@@ -556,22 +573,6 @@
             this.timer1.Enabled = true;
             this.timer1.Interval = 1000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
-            // 
-            // attributesbox
-            // 
-            this.attributesbox.Location = new System.Drawing.Point(130, 119);
-            this.attributesbox.Name = "attributesbox";
-            this.attributesbox.Size = new System.Drawing.Size(356, 26);
-            this.attributesbox.TabIndex = 10;
-            // 
-            // otherLabel
-            // 
-            this.otherLabel.AutoSize = true;
-            this.otherLabel.Location = new System.Drawing.Point(0, 122);
-            this.otherLabel.Name = "otherLabel";
-            this.otherLabel.Size = new System.Drawing.Size(126, 20);
-            this.otherLabel.TabIndex = 11;
-            this.otherLabel.Text = "Other Attributes:";
             // 
             // Form1
             // 

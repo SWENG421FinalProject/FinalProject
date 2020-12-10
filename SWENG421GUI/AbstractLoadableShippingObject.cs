@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace SWENG421GUI
 {
-    abstract class AbstractLoadableClass
+    abstract class AbstractLoadableShippingObject : ShippingObjectIF
     {
         private Company enviroment;
 
@@ -18,8 +20,6 @@ namespace SWENG421GUI
             return enviroment;
         }
 
-        public abstract string getName();
-
-        public abstract void printInfo();
+        public abstract string name { get; set; }
     }
 }

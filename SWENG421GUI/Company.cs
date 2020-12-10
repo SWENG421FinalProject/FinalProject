@@ -37,8 +37,8 @@ namespace SWENG421GUI
             Type t = Type.GetType("SWENG421GUI.Loadable.Drone");
             */
             Type t = Type.GetType(classname);
-            AbstractLoadableClass loadableClass;
-            loadableClass = (AbstractLoadableClass)Activator.CreateInstance(t);
+            AbstractLoadableVehicle loadableClass;
+            loadableClass = (AbstractLoadableVehicle)Activator.CreateInstance(t);
             loadableClass.setEnviroment(this);
             Console.WriteLine("Loading in: " + loadableClass.getName());
             loadableClass.printInfo();

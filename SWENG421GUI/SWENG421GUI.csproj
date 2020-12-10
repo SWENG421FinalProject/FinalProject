@@ -46,7 +46,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AbstractLoadableClass.cs" />
+    <Compile Include="AbstractLoadableShippingObject.cs" />
+    <Compile Include="AbstractLoadableVehicle.cs" />
     <Compile Include="Barrel.cs" />
     <Compile Include="Box.cs" />
     <Compile Include="Company.cs" />

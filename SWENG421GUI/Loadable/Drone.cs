@@ -4,9 +4,8 @@ using System.Text;
 
 namespace SWENG421GUI.Loadable
 {
-    class Drone : AbstractLoadableClass
+    class Drone : AbstractLoadableVehicle
     {
-        int flightTime;
         int range;
 
         public override string getName()
@@ -16,7 +15,7 @@ namespace SWENG421GUI.Loadable
 
         public override void printInfo()
         {
-            Console.WriteLine("Flight time (minutes): {0}\nRange (miles): {1}\n", flightTime, range);
+            Console.WriteLine("Range (miles): {0}\n", range);
         }
     }
 }
