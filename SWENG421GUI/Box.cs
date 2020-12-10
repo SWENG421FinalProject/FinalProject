@@ -17,5 +17,10 @@ namespace SWENG421GUI
             get { return Name; }
             set { this.Name = value; }
         }
+
+        public void OnCreate()
+        {
+            Console.WriteLine("Company added Shipping Object of type: " + this.GetType().Name);
+        }
     }
 }

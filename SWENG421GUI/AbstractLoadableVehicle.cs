@@ -28,5 +28,6 @@ namespace SWENG421GUI
 
         public abstract void setAttribute(double value);
 
+        public abstract override void OnCreate();
     }
 }

@@ -21,5 +21,10 @@ namespace SWENG421GUI.Loadable
             get { return Name; }
             set { this.Name = value; }
         }
+
+        public override void OnCreate()
+        {
+            Console.WriteLine("Company: " + getEnviroment().companyName + " loaded and added Shipping Object of type: " + this.GetType().Name);
+        }
     }
 }

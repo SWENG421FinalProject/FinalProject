@@ -58,6 +58,15 @@ namespace SWENG421GUI
             vehicles[vehicles.Count - 1].OnCreate();
         }
 
+        public void loadShippingObject(string type)
+        {
+            Type t = Type.GetType(type);
+            AbstractLoadableShippingObject loadableShippingObject;
+            loadableShippingObject = (AbstractLoadableShippingObject)Activator.CreateInstance(t, t.ToString());
+            loadableShippingObject.setEnviroment(this);
+            loadableShippingObject.OnCreate();
+        }
+
         //Uses a RichTextBox to write output to
         public void CompanyThread(Form1 f1, List<State> stateList)
         {
