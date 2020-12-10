@@ -46,7 +46,6 @@ namespace SWENG421GUI
                 loadableVehicle.identifier = loadableVehicle.getName() + " 1";
                 loadableVehicle.loadCount = 5;
                 loadableVehicle.mpg = 10;
-                loadableVehicle.todo = null;
                 loadableVehicle.setAttribute(18);
                 //loadableVehicle.printInfo();
                 v = loadableVehicle;

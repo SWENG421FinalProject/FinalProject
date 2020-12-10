@@ -213,7 +213,7 @@ namespace SWENG421GUI
             //Vehicle and its thread added to dictionary, and can be called to start later on
             //Count shouldn't be -1 in final version
             Dictionary<Vehicle, Thread> vehicleThreadDict = new Dictionary<Vehicle, Thread>();
-            for (int i = 0; i < vehicleList.Count-1; i++) {
+            for (int i = 0; i < vehicleList.Count; i++) {
                 Console.WriteLine("Adding Thread For: " + vehicleList[i].identifier);
                 vehicleThreadDict.Add(vehicleList[i], new Thread(() => vehicleList[i].VehicleThread(this, stateList)));
             }
@@ -273,7 +273,7 @@ namespace SWENG421GUI
             companyThread.Start();
 
             //Start unknown number of vehicle threads called by unknown vehicle objects
-            for (int i = 0; i < vehicleList.Count-1; i++) {
+            for (int i = 0; i < vehicleList.Count; i++) {
                 Console.WriteLine("Starting Thread of: " + vehicleList[i].identifier);
                 vehicleThreadDict[vehicleList[i]].Start();
             }
