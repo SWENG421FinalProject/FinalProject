@@ -73,6 +73,9 @@
             this.SelectOrderLabel = new System.Windows.Forms.Label();
             this.OrderComboBox = new System.Windows.Forms.ComboBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.ManageTab = new System.Windows.Forms.TabPage();
+            this.AddObjectLabel = new System.Windows.Forms.Label();
+            this.AddObjectBox = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -83,6 +86,7 @@
             this.VehicleTab.SuspendLayout();
             this.RouteTab.SuspendLayout();
             this.OrderTab.SuspendLayout();
+            this.ManageTab.SuspendLayout();
             this.SuspendLayout();
             // 
             // OriginOutput
@@ -172,6 +176,7 @@
             this.TabSelector.Controls.Add(this.VehicleTab);
             this.TabSelector.Controls.Add(this.RouteTab);
             this.TabSelector.Controls.Add(this.OrderTab);
+            this.TabSelector.Controls.Add(this.ManageTab);
             this.TabSelector.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TabSelector.Location = new System.Drawing.Point(-1, 2);
             this.TabSelector.Margin = new System.Windows.Forms.Padding(2);
@@ -574,6 +579,35 @@
             this.timer1.Interval = 1000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // ManageTab
+            // 
+            this.ManageTab.Controls.Add(this.AddObjectBox);
+            this.ManageTab.Controls.Add(this.AddObjectLabel);
+            this.ManageTab.Location = new System.Drawing.Point(4, 29);
+            this.ManageTab.Name = "ManageTab";
+            this.ManageTab.Padding = new System.Windows.Forms.Padding(3);
+            this.ManageTab.Size = new System.Drawing.Size(498, 535);
+            this.ManageTab.TabIndex = 4;
+            this.ManageTab.Text = "Manage";
+            this.ManageTab.UseVisualStyleBackColor = true;
+            // 
+            // AddObjectLabel
+            // 
+            this.AddObjectLabel.AutoSize = true;
+            this.AddObjectLabel.Location = new System.Drawing.Point(111, 20);
+            this.AddObjectLabel.Name = "AddObjectLabel";
+            this.AddObjectLabel.Size = new System.Drawing.Size(92, 20);
+            this.AddObjectLabel.TabIndex = 0;
+            this.AddObjectLabel.Text = "Add Object:";
+            // 
+            // AddObjectBox
+            // 
+            this.AddObjectBox.FormattingEnabled = true;
+            this.AddObjectBox.Location = new System.Drawing.Point(210, 18);
+            this.AddObjectBox.Name = "AddObjectBox";
+            this.AddObjectBox.Size = new System.Drawing.Size(183, 28);
+            this.AddObjectBox.TabIndex = 1;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -599,6 +633,8 @@
             this.RouteTab.PerformLayout();
             this.OrderTab.ResumeLayout(false);
             this.OrderTab.PerformLayout();
+            this.ManageTab.ResumeLayout(false);
+            this.ManageTab.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -649,6 +685,9 @@
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Label otherLabel;
         private System.Windows.Forms.TextBox attributesbox;
+        private System.Windows.Forms.TabPage ManageTab;
+        private System.Windows.Forms.ComboBox AddObjectBox;
+        private System.Windows.Forms.Label AddObjectLabel;
     }
 }
 

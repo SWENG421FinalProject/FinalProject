@@ -25,6 +25,7 @@ namespace SWENG421GUI
         public Delivered deliveredState = new Delivered(); //4
         public OrderCompleted orderCompletedState = new OrderCompleted(); //5
         public List<State> stateList = new List<State>();
+        public List<Type> types = new List<Type>();
 
         List<Route> routesList = new List<Route>();
         List<Order> ordersList = new List<Order>();
@@ -257,6 +258,17 @@ namespace SWENG421GUI
             ReceiverOutput.Text = ordersList[selectedOrder].receiverName;
             ParcelOutput.Text = ordersList[selectedOrder].parcel.name;
             CurrentStateOutput.Text = ordersList[selectedOrder].getState(this).getStateName();
+
+            //Manage Tab
+            types.Add(typeof(Vehicle));
+            types.Add(typeof(Order));
+            types.Add(typeof(Route));
+            List<string> objects = new List<string>();
+            foreach(Type t in types)
+            {
+                objects.Add(t.Name);
+            }
+            AddObjectBox.DataSource = objects;
 
             //Start Threads
             companyThread.Start();
