@@ -137,14 +137,14 @@ namespace SWENG421GUI
             initRoutes(ordersToAssign, routesToAssign);
 
             //Test that packages, orders, and routes were created successfully
-            //for (int i = 0; i < routesToAssign.Count; i++)
-            //{
-            //    Console.WriteLine("Route {0}", i);
-            //    for (int j = 0; j < routesToAssign[i].toSend.Count; j++)
-            //    {
-            //        Console.WriteLine("Package {0}: {1}", j, routesToAssign[i].toSend[j].trackingNumber);
-            //    }
-            //}
+            for (int i = 0; i < routesToAssign.Count; i++)
+            {
+                Console.WriteLine("Route {0}", i);
+                for (int j = 0; j < routesToAssign[i].toSend.Count; j++)
+                {
+                    Console.WriteLine("Package {0}: {1}", j, routesToAssign[i].toSend[j].parcel.name);
+                }
+            }
 
             //Create Vehicles
 
@@ -197,6 +197,7 @@ namespace SWENG421GUI
 
             // Loading loadable classes
             myCompany.addVehicle("SWENG421GUI.Loadable.Drone");
+            //vehicleList = myCompany.vehicles; // update vehicle list
 
             //Might not be needed but these lists are in case the originals get modified
             //They show all entries even if some get deleted
@@ -206,12 +207,23 @@ namespace SWENG421GUI
             //Creating Threads
             //Right now the thread's methods take a rich text box as a parameter so they can write to it
             //Might have to change the thread methods
-            Thread companyThread = new Thread(() => myCompany.CompanyThread(OutputTextBox, stateList));
-            Thread vehicleThread1 = new Thread(() => Truck1.VehicleThread(OutputTextBox, stateList));
-            Thread vehicleThread2 = new Thread(() => Truck2.VehicleThread(OutputTextBox, stateList));
-            Thread vehicleThread3 = new Thread(() => Train1.VehicleThread(OutputTextBox, stateList));
-            Thread vehicleThread4 = new Thread(() => Train2.VehicleThread(OutputTextBox, stateList));
-            Thread vehicleThread5 = new Thread(() => Train3.VehicleThread(OutputTextBox, stateList));
+            Thread companyThread = new Thread(() => myCompany.CompanyThread(this, stateList));
+
+            //Create vehicle threads dynamically, supports dynamic linkage
+            //Vehicle and its thread added to dictionary, and can be called to start later on
+            //Count shouldn't be -1 in final version
+            Dictionary<Vehicle, Thread> vehicleThreadDict = new Dictionary<Vehicle, Thread>();
+            for (int i = 0; i < vehicleList.Count-1; i++) {
+                Console.WriteLine(vehicleList[i].identifier);
+                vehicleThreadDict.Add(vehicleList[i], new Thread(() => vehicleList[i].VehicleThread(this, stateList)));
+            }
+            
+            //Old thread creation:
+            //Thread vehicleThread1 = new Thread(() => Truck1.VehicleThread(this, stateList));
+            //Thread vehicleThread2 = new Thread(() => Truck2.VehicleThread(this, stateList));
+            //Thread vehicleThread3 = new Thread(() => Train1.VehicleThread(this, stateList));
+            //Thread vehicleThread4 = new Thread(() => Train2.VehicleThread(this, stateList));
+            //Thread vehicleThread5 = new Thread(() => Train3.VehicleThread(this, stateList));
 
             //Setting the bindings to lists of objects
             vehicleBinding.DataSource = vehicleList;
@@ -259,11 +271,17 @@ namespace SWENG421GUI
 
             //Start Threads
             companyThread.Start();
-            vehicleThread1.Start();
-            vehicleThread2.Start();
-            vehicleThread3.Start();
-            vehicleThread4.Start();
-            vehicleThread5.Start();
+
+            //Start unknown number of vehicle threads called by unknown vehicle objects
+            for (int i = 0; i < vehicleList.Count-1; i++) {
+                vehicleThreadDict[vehicleList[i]].Start();
+            }
+            
+            //vehicleThread1.Start();
+            //vehicleThread2.Start();
+            //vehicleThread3.Start();
+            //vehicleThread4.Start();
+            //vehicleThread5.Start();
 
         }
 
@@ -299,7 +317,7 @@ namespace SWENG421GUI
                 startName = genName();
                 endName = genName();
 
-                currentOrder = new Order(trackingNum, startAddress, finishAddress, startName, endName, packagesToAssign[i]);
+                currentOrder = new Order(trackingNum, startAddress, finishAddress, startName, endName, packagesToAssign[i], this);
                 ordersToAssign.Add(currentOrder);
             }
         }
@@ -443,12 +461,28 @@ namespace SWENG421GUI
             SenderOutput.Text = ordersList[OrderComboBox.SelectedIndex].senderName;
             ReceiverOutput.Text = ordersList[OrderComboBox.SelectedIndex].receiverName;
             ParcelOutput.Text = ordersList[OrderComboBox.SelectedIndex].parcel.name;
-            // CurrentStateOutput.Text = ordersList[OrderComboBox.SelectedIndex].getState(this).getStateName(); 
+            //CurrentStateOutput.Text = ordersList[OrderComboBox.SelectedIndex].getState(this).getStateName();
+            CurrentStateOutput_TextChanged(sender, e);
         }
         private void RouteComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             AssignedOutput.Text = routesList[RouteComboBox.SelectedIndex].assigned.ToString();
             // change orders listbox
+        }
+
+        public void updateOutputPanel(string toAdd) {
+            if (InvokeRequired)
+            {
+                this.Invoke(new Action<string>(updateOutputPanel), new object[] { toAdd });
+                return;
+            }
+
+            //this.OutputTextBox.Text += toAdd;
+            this.OutputTextBox.AppendText(toAdd);
+
+            //Output panel scroll
+            OutputTextBox.SelectionStart = OutputTextBox.Text.Length;
+            OutputTextBox.ScrollToCaret();
         }
     }
 }

@@ -16,7 +16,9 @@ namespace SWENG421GUI
         private State currentState { get; set; }
         private ReadWriteLock myLock { get; set; }
 
-        public Order() {
+        public Form1 f1;
+
+        public Order(Form1 f) {
             this.trackingNumber = "";
             this.originAddress = "";
             this.destinationAddress = "";
@@ -24,9 +26,10 @@ namespace SWENG421GUI
             this.receiverName = "";
             this.parcel = null;
             this.currentState = new NeedRoute();
-            this.myLock = new ReadWriteLock("New Order Lock");
+            this.f1 = f;
+            this.myLock = new ReadWriteLock("New Order Lock", f1);
         }
-        public Order(string trackNum, string originAddr, string destAddr, string sendName, string receiveName, ShippingObjectIF p, State curState, ReadWriteLock rwl) {
+        public Order(string trackNum, string originAddr, string destAddr, string sendName, string receiveName, ShippingObjectIF p, State curState, ReadWriteLock rwl, Form1 f) {
             this.trackingNumber = trackNum;
             this.originAddress = originAddr;
             this.destinationAddress = destAddr;
@@ -35,8 +38,9 @@ namespace SWENG421GUI
             this.parcel = p;
             this.currentState = curState;
             this.myLock = rwl;
+            this.f1 = f;
         }
-        public Order(string trackNum, string originAddr, string destAddr, string sendName, string receiveName, ShippingObjectIF p)
+        public Order(string trackNum, string originAddr, string destAddr, string sendName, string receiveName, ShippingObjectIF p, Form1 f)
         {
             this.trackingNumber = trackNum;
             this.originAddress = originAddr;
@@ -45,7 +49,8 @@ namespace SWENG421GUI
             this.receiverName = receiveName;
             this.parcel = p;
             this.currentState = new NeedRoute();
-            this.myLock = new ReadWriteLock("Object " + trackNum + " Lock");
+            this.f1 = f;
+            this.myLock = new ReadWriteLock("Object " + trackNum + " Lock", f1);                 
         }
         public ReadWriteLock getLock() {
             return this.myLock;
