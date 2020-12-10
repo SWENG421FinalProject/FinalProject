@@ -14,7 +14,7 @@ namespace SWENG421GUI
             enviroment = company;
         }
 
-        protected Company getEnviroment()
+        public Company getEnviroment()
         {
             return enviroment;
         }
@@ -27,5 +27,6 @@ namespace SWENG421GUI
         }
 
         public abstract void setAttribute(double value);
+
     }
 }

@@ -91,5 +91,10 @@ namespace SWENG421GUI.Vehicles
         {
             Console.WriteLine("Identifier: {0}\nLoad Count: {1}\nMPG: {2}", identifier, loadCount, mpg);
         }
+
+        public virtual void OnCreate()
+        {
+            Console.WriteLine("Company just added Vehicle of type: " + this.GetType().Name);
+        }
     }
 }

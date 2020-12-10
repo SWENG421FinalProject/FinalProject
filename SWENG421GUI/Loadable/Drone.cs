@@ -6,7 +6,7 @@ namespace SWENG421GUI.Loadable
 {
     class Drone : AbstractLoadableVehicle
     {
-        double range;
+        public double range;
 
         public override string getName()
         {
@@ -22,6 +22,11 @@ namespace SWENG421GUI.Loadable
         public override void setAttribute(double value)
         {
             range = value;
+        }
+
+        public override void OnCreate()
+        {
+            Console.WriteLine("Company: " + getEnviroment().companyName + " loaded and added Vehicle of type: " + this.getName());
         }
     }
 }

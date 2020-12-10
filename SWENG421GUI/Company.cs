@@ -29,18 +29,33 @@ namespace SWENG421GUI
         public void setVehicles(List<Vehicle> vs) {
             this.vehicles = vs;
         }
-        public void load(string classname)
+
+        // company tells factory to make and return a vehicle
+        public void addVehicle(string type)
         {
-            Type t = Type.GetType(classname);
-            AbstractLoadableVehicle loadableVehicle;
-            loadableVehicle = (AbstractLoadableVehicle)Activator.CreateInstance(t);
-            loadableVehicle.setEnviroment(this);
-            Console.WriteLine("Loading in: " + loadableVehicle.getName());
-            loadableVehicle.identifier = loadableVehicle.getName() + " 1";
-            loadableVehicle.loadCount = 5;
-            loadableVehicle.mpg = 10;
-            loadableVehicle.setAttribute(18);
-            loadableVehicle.printInfo();
+            VehicleFactory factory = new VehicleFactory();
+            Vehicle v;
+            Type t = Type.GetType(type);
+            if (t.IsSubclassOf(typeof(AbstractLoadableVehicle)))
+            {
+                AbstractLoadableVehicle loadableVehicle;
+                loadableVehicle = (AbstractLoadableVehicle)Activator.CreateInstance(t);
+                loadableVehicle.setEnviroment(this);
+                //Console.WriteLine("Loading in: " + loadableVehicle.getName());
+                // for testing purposes - eventually user will fill out these values
+                loadableVehicle.identifier = loadableVehicle.getName() + " 1";
+                loadableVehicle.loadCount = 5;
+                loadableVehicle.mpg = 10;
+                loadableVehicle.setAttribute(18);
+                //loadableVehicle.printInfo();
+                v = loadableVehicle;
+                vehicles.Add(v);
+            }
+            else { 
+                v = factory.createVehicle(type);
+                vehicles.Add(v);
+            }
+            vehicles[vehicles.Count - 1].OnCreate();
         }
 
         //Uses a RichTextBox to write output to
