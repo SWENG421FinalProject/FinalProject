@@ -26,6 +26,7 @@ namespace SWENG421GUI
         public OrderCompleted orderCompletedState = new OrderCompleted(); //5
         public List<State> stateList = new List<State>();
         public List<Type> types = new List<Type>();
+        public List<Type> vehicleTypes = new List<Type>();
 
         List<Route> routesList = new List<Route>();
         List<Order> ordersList = new List<Order>();
@@ -39,6 +40,26 @@ namespace SWENG421GUI
         Crate c1, c2, c3, c4, c5, c6, c7, c8, c9, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20;
 
         Barrel br1, br2, br3, br4, br5, br6, br7, br8, br9, br10, br11, br12, br13, br14, br15;
+
+        private void LoadableBox_CheckedChanged(object sender, EventArgs e)
+        {
+            AvailableVehicleTypesBox.Items.Clear();
+            
+        }
+
+        private void BuiltInBox_CheckedChanged(object sender, EventArgs e)
+        {
+            AvailableVehicleTypesBox.Items.Clear();
+            vehicleTypes.Add(typeof(RoadVehicle));
+            vehicleTypes.Add(typeof(Train));
+            vehicleTypes.Add(typeof(Ship));
+            vehicleTypes.Add(typeof(Plane));
+            foreach(Type t in vehicleTypes)
+            {
+                AvailableVehicleTypesBox.Items.Add(t.Name);
+                AvailableVehicleTypesBox.SelectedIndex = 0;
+            }
+        }
 
         Box bx1, bx2, bx3, bx4, bx5;
         Pallet p1, p2, p3, p4, p5;
