@@ -255,7 +255,7 @@ namespace SWENG421GUI
             SenderOutput.Text = ordersList[selectedOrder].senderName;
             ReceiverOutput.Text = ordersList[selectedOrder].receiverName;
             ParcelOutput.Text = ordersList[selectedOrder].parcel.name;
-            CurrentStateOutput.Text = ordersList[selectedOrder].getState().getStateName();
+            CurrentStateOutput.Text = ordersList[selectedOrder].getState(this).getStateName();
 
             //Start Threads
             companyThread.Start();
@@ -275,7 +275,7 @@ namespace SWENG421GUI
             for (int i = 0; i < routeList[selectedRoute].toSend.Count; i++)
             {
                 currentOrder = routeList[selectedRoute].toSend[i];
-                ans.Add("Package: " + currentOrder.trackingNumber + " State: " + currentOrder.getState().getStateName());
+                ans.Add("Package: " + currentOrder.trackingNumber + " State: " + currentOrder.getState(this).getStateName());
             }
             return ans;
         }
@@ -373,7 +373,7 @@ namespace SWENG421GUI
                 }
 
                 for (int j = 0; j < currentRoute.toSend.Count; j++) {
-                    currentRoute.toSend[j].setState(routeNotAssignedState);
+                    currentRoute.toSend[j].setState(routeNotAssignedState, this);
                 }
 
                 //Add route
@@ -382,6 +382,7 @@ namespace SWENG421GUI
 
         }
 
+        //Every second update the GUI's values
         private void timer1_Tick(object sender, EventArgs e)
         {
             //Vehicles Tab
@@ -395,14 +396,15 @@ namespace SWENG421GUI
             //Orders Tab
             State currentState;
             for (int i = 0; i < ordersToAssign.Count; i++) {
-                currentState = ordersToAssign[i].getState();
-                if (ordersList[i].getState() != currentState) {
-                    ordersList[i].setState(currentState);
+                currentState = ordersToAssign[i].getState(this);
+                if (ordersList[i].getState(this) != currentState) {
+                    ordersList[i].setState(currentState, this);
                 }
             }
-            CurrentStateOutput.Text = ordersList[selectedOrder].getState().getStateName();
+            CurrentStateOutput.Text = ordersList[selectedOrder].getState(this).getStateName();
         }
 
+        //Used to update list of packages for vehicle tab's todo list
         private List<string> updateParcelList(List<Vehicle> vlist, int select) {
             List<string> ans = new List<string>();
             if (vlist[select].todo != null)

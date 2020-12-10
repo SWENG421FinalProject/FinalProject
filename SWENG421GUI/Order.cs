@@ -53,11 +53,19 @@ namespace SWENG421GUI
         public void setLock(ReadWriteLock rwl) {
             this.myLock = rwl;
         }
-        public State getState() {
-            return this.currentState;
+
+        //State reads and writes lock and unlock the read/write lock so that other threads
+        //have to wait until the current lock owner is done with their read or write operation
+        public State getState(Object user) {
+            this.myLock.setLock(user);
+            State ans = this.currentState;
+            this.myLock.freeLock(user);
+            return ans;
         }
-        public void setState(State s) {
+        public void setState(State s, Object user) {
+            this.myLock.setLock(user);
             this.currentState = s;
+            this.myLock.freeLock(user);
         }
     }
 }
