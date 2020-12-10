@@ -234,18 +234,19 @@ namespace SWENG421GUI
             //Create vehicle threads dynamically, supports dynamic linkage
             //Vehicle and its thread added to dictionary, and can be called to start later on
             //Count shouldn't be -1 in final version
-            Dictionary<Vehicle, Thread> vehicleThreadDict = new Dictionary<Vehicle, Thread>();
-            for (int i = 0; i < vehicleList.Count; i++) {
-                Console.WriteLine("Adding Thread For: " + vehicleList[i].identifier);
-                vehicleThreadDict.Add(vehicleList[i], new Thread(() => vehicleList[i].VehicleThread(this, stateList)));
-            }
+            //Dictionary<Vehicle, Thread> vehicleThreadDict = new Dictionary<Vehicle, Thread>();
+            //for (int i = 0; i < vehicleList.Count; i++) {
+            //    Console.WriteLine("Adding Thread For: " + vehicleList[i].identifier);
+            //    vehicleThreadDict.Add(vehicleList[i], new Thread(() => vehicleList[i].VehicleThread(this, stateList)));
+            //}
             
             //Old thread creation:
-            //Thread vehicleThread1 = new Thread(() => Truck1.VehicleThread(this, stateList));
-            //Thread vehicleThread2 = new Thread(() => Truck2.VehicleThread(this, stateList));
-            //Thread vehicleThread3 = new Thread(() => Train1.VehicleThread(this, stateList));
-            //Thread vehicleThread4 = new Thread(() => Train2.VehicleThread(this, stateList));
-            //Thread vehicleThread5 = new Thread(() => Train3.VehicleThread(this, stateList));
+            Thread vehicleThread1 = new Thread(() => Truck1.VehicleThread(this, stateList));
+            Thread vehicleThread2 = new Thread(() => Truck2.VehicleThread(this, stateList));
+            Thread vehicleThread3 = new Thread(() => Train1.VehicleThread(this, stateList));
+            Thread vehicleThread4 = new Thread(() => Train2.VehicleThread(this, stateList));
+            Thread vehicleThread5 = new Thread(() => Train3.VehicleThread(this, stateList));
+            Thread vehicleThread6 = new Thread(() => vehicleList[vehicleList.Count-1].VehicleThread(this, stateList));
 
             //Setting the bindings to lists of objects
             vehicleBinding.DataSource = vehicleList;
@@ -295,17 +296,17 @@ namespace SWENG421GUI
             companyThread.Start();
 
             //Start unknown number of vehicle threads called by unknown vehicle objects
-            for (int i = 0; i < vehicleList.Count; i++) {
-                Console.WriteLine("Starting Thread of: " + vehicleList[i].identifier);
-                vehicleThreadDict[vehicleList[i]].Start();
-            }
+            //for (int i = 0; i < vehicleList.Count; i++) {
+            //    Console.WriteLine("Starting Thread of: " + vehicleList[i].identifier);
+            //    vehicleThreadDict[vehicleList[i]].Start();
+            //}
             
-            //vehicleThread1.Start();
-            //vehicleThread2.Start();
-            //vehicleThread3.Start();
-            //vehicleThread4.Start();
-            //vehicleThread5.Start();
-
+            vehicleThread1.Start();
+            vehicleThread2.Start();
+            vehicleThread3.Start();
+            vehicleThread4.Start();
+            vehicleThread5.Start();
+            vehicleThread6.Start();
         }
 
         //Create a list of strings and format the package data for a selected route
