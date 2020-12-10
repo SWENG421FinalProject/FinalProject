@@ -27,8 +27,9 @@ namespace SWENG421GUI.Vehicles
         }
 
         //Uses a RichTextBox to write output to
-        public void VehicleThread(RichTextBox rtb, List<State> stateList) {
- 
+        public void VehicleThread(Form1 f1, List<State> stateList) {
+
+            string toAdd = "";
             //If there are no routes after 5 checks, then just quit
             //Works for a small number of threads, might not work for lots of threads, would need reference to
             //List of routes to assign and the company object
@@ -36,13 +37,19 @@ namespace SWENG421GUI.Vehicles
             while (waits < 5) {
 
                 //Check for a new route
-                Console.WriteLine("{0} Checking if it has a route", this.identifier);
+                //Console.WriteLine("{0} Checking if it has a route", this.identifier);
+                toAdd = this.identifier + " Checking if it has a route\n";
+                f1.updateOutputPanel(toAdd);
                 
+
                 //If a route is assigned start it
                 if (this.todo != null)
                 {
                     waits = 0;
-                    Console.WriteLine("{0} is starting its route", this.identifier);
+                    //Console.WriteLine("{0} is starting its route", this.identifier);
+                    toAdd = this.identifier + " is starting its route\n";
+                    f1.updateOutputPanel(toAdd);
+
                     //Set all packages state to in transit
                     for (int i = 0; i < this.todo.toSend.Count; i++) {
                         this.todo.toSend[i].setState(stateList[3], this);
@@ -56,15 +63,24 @@ namespace SWENG421GUI.Vehicles
                     {
                         //Deliver package and wait 1-5 seconds and keep going
 
-                        Console.WriteLine("{0}: Delivering package {1} to {2}", this.identifier, todo.toSend[i].trackingNumber, todo.toSend[i].destinationAddress);
+                        //Console.WriteLine("{0}: Delivering package {1} to {2}", this.identifier, todo.toSend[i].trackingNumber, todo.toSend[i].destinationAddress);
+                        toAdd = this.identifier + ": Delivering package " + todo.toSend[i].trackingNumber + " to " + todo.toSend[i].destinationAddress + "\n";
+                        f1.updateOutputPanel(toAdd);
+
                         Thread.Sleep(waitTime);
                         waitTime = r.Next(1000, 5000);
-                        Console.WriteLine("{0}: Package {1} Delivered, setting its state to delivered", this.identifier, todo.toSend[i].trackingNumber);
+                        //Console.WriteLine("{0}: Package {1} Delivered, setting its state to delivered", this.identifier, todo.toSend[i].trackingNumber);
+                        toAdd = this.identifier + ": Package " + todo.toSend[i].trackingNumber + " Delivered, setting its state to delivered\n";
+                        f1.updateOutputPanel(toAdd);
+
                         todo.toSend[i].setState(stateList[4], this);
                     }
 
                     //Finsih route and restart
-                    Console.WriteLine("{0} Finished delivering packages, returning to warehouse", this.identifier);
+                    //Console.WriteLine("{0} Finished delivering packages, returning to warehouse", this.identifier);
+                    toAdd = this.identifier + " Finished delivering packages, returning to warehouse\n";
+                    f1.updateOutputPanel(toAdd);
+
                     this.todo = null;
                     waitTime = r.Next(1000, 5000);
                     Thread.Sleep(waitTime);

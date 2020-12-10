@@ -68,19 +68,22 @@ namespace SWENG421GUI
         }
 
         //Uses a RichTextBox to write output to
-        public void CompanyThread(RichTextBox rtb, List<State> stateList)
+        public void CompanyThread(Form1 f1, List<State> stateList)
         {
+            string toAdd = "";
             //Use variable rather than removing routes from list
             int routesLeft = routesToAssign.Count;
 
             //Write output to textbox instead of the console
-            //rtb.Text += "Company " + this.companyName + " starting operations\n";
-            Console.WriteLine("Company {0} starting operations", this.companyName);
-            
+            //Console.WriteLine("Company {0} starting operations", this.companyName);
+            toAdd = "Company " + this.companyName + " starting operations\n";
+            f1.updateOutputPanel(toAdd);
+
             //Keep running until all routes are assigned
             while (routesLeft > 0 && vehicles.Count != 0) {
-                //rtb.Text += "Have " + this.routesToAssign.Count + " routes to assign\nChecking " + this.vehicles.Count + " vehicles to see if they are ready for a new route\n";
-                Console.WriteLine("Have {0} routes to assign\nChecking {1} vehicles to see if they are ready for a new route", this.routesToAssign.Count, this.vehicles.Count);
+                //Console.WriteLine("Have {0} routes to assign\nChecking {1} vehicles to see if they are ready for a new route", this.routesToAssign.Count, this.vehicles.Count);
+                toAdd = "Have " + this.routesToAssign.Count + " routes to assign\nChecking " + this.vehicles.Count + " vehicles to see if they are ready for a new route\n";
+                f1.updateOutputPanel(toAdd);
 
                 //Check all vehicles to see if any are ready for a new route
                 for (int i = 0; i < vehicles.Count; i++) {
@@ -90,8 +93,10 @@ namespace SWENG421GUI
                             //If a vehicle doesn't have a route, assign it one
                             if (vehicles[i].todo == null && routesLeft > 0)
                             {
-                                //rtb.Text += "Adding route to " + vehicles[i].identifier + "\n";
-                                Console.WriteLine("Adding route to {0}", vehicles[i].identifier);
+                                //Console.WriteLine("Adding route to {0}", vehicles[i].identifier);
+                                toAdd = "Adding route to " + vehicles[i].identifier + "\n";
+                                f1.updateOutputPanel(toAdd);
+
                                 //Assign route
                                 vehicles[i].setRoute(routesToAssign[j]);
                                 routesToAssign[j].assigned = true;
@@ -106,37 +111,52 @@ namespace SWENG421GUI
                             //Else print out a message if there are still routes to assign
                             else if (routesLeft > 0)
                             {
-                                //rtb.Text += "Vehicle " + vehicles[i].identifier + " already has a route\n";
-                                Console.WriteLine("Vehicle {0} already has a route", vehicles[i].identifier);
+                                //Console.WriteLine("Vehicle {0} already has a route", vehicles[i].identifier);
+                                toAdd = "Vehicle " + vehicles[i].identifier + " already has a route\n";
+                                f1.updateOutputPanel(toAdd);
                             }
                         }
                     } 
                 }
 
                 //Print message at end of loop
-                //rtb.Text += "Company " + this.companyName + " Finished Checking Vehicles\n";
-                Console.WriteLine("Company {0} Finished Checking Vehicles", this.companyName);
-                
+                //Console.WriteLine("Company {0} Finished Checking Vehicles", this.companyName);
+                toAdd = "Company " + this.companyName + " Finished Checking Vehicles\n";
+                f1.updateOutputPanel(toAdd);
+
                 //Wait if there are still routes to assign
                 if (routesLeft > 0) {
-                    //rtb.Text += "Company " + this.companyName + " has " + this.routesToAssign.Count + " Routes(s) to assign\n"; 
-                    Console.WriteLine("Company {0} has {1} Route(s) to assign", this.companyName, this.routesToAssign.Count);
+                    //Console.WriteLine("Company {0} has {1} Route(s) to assign", this.companyName, this.routesToAssign.Count);
+                    toAdd = "Company " + this.companyName + " has " + this.routesToAssign.Count + " Routes(s) to assign\n";
+                    f1.updateOutputPanel(toAdd);
+
                     Thread.Sleep(5000);
                 }
             }
 
             //Loop finished
-            //rtb.Text += "All routes assigned. Company " + this.companyName + " ending operations\n";
-            Console.WriteLine("Company {0} assigned all its routes. Confirming packages were delivered", this.companyName);
+            //Console.WriteLine("Company {0} assigned all its routes. Confirming packages were delivered", this.companyName);
+            toAdd = "All routes assigned. Company " + this.companyName + " ending operations\n";
+            f1.updateOutputPanel(toAdd);
+
             bool done = false;
             while (!(done)){
                 done = true;
-                Console.WriteLine("Company {0} checking in packages", this.companyName);
+                //Console.WriteLine("Company {0} checking in packages", this.companyName);
+                toAdd = "Company " + this.companyName + " checking in packages\n";
+                f1.updateOutputPanel(toAdd);
+
                 for (int i = 0; i < this.routesToAssign.Count; i++) {
                     for (int j = 0; j < this.routesToAssign[i].toSend.Count; j++) {
+                        toAdd = "Company " + this.companyName + " looking at package: " + this.routesToAssign[i].toSend[j].parcel.name + " State = " + this.routesToAssign[i].toSend[j].getState(this).getStateName() + "\n";
+                        f1.updateOutputPanel(toAdd);
+
                         if (this.routesToAssign[i].toSend[j].getState(this) == stateList[4])
                         {
-                            Console.WriteLine("Company {0} Checking in package {1}", this.companyName, this.routesToAssign[i].toSend[j].parcel.name);
+                            //Console.WriteLine("Company {0} Checking in package {1}", this.companyName, this.routesToAssign[i].toSend[j].parcel.name);
+                            toAdd = "Company " + this.companyName + " Checking in package " + this.routesToAssign[i].toSend[j].parcel.name + "\n";
+                            f1.updateOutputPanel(toAdd);
+
                             this.routesToAssign[i].toSend[j].setState(stateList[5], this);
                         }
                         else if (this.routesToAssign[i].toSend[j].getState(this) != stateList[5]) {
@@ -149,7 +169,9 @@ namespace SWENG421GUI
             }
 
 
-            Console.WriteLine("Company {0} ending operations", this.companyName);
+            //Console.WriteLine("Company {0} ending operations", this.companyName);
+            toAdd = "Company " + this.companyName + " ending operations\n";
+            f1.updateOutputPanel(toAdd);
         }
     }
 }
