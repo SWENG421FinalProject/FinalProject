@@ -419,5 +419,15 @@ namespace SWENG421GUI
             }
             return ans;
         }
+
+        private void CurrentStateOutput_TextChanged(object sender, EventArgs e)
+        {
+            if (CurrentStateOutput.Text.Equals("NeedRoute")) { CurrentStateOutput.ForeColor = Color.DarkRed; }
+            if (CurrentStateOutput.Text.Equals("NotAssignedRoute")) { CurrentStateOutput.ForeColor = Color.Tomato; }
+            if (CurrentStateOutput.Text.Equals("WaitingInWarehouse")) { CurrentStateOutput.ForeColor = Color.CornflowerBlue; }
+            if (CurrentStateOutput.Text.Equals("InTransit")) { CurrentStateOutput.ForeColor = Color.DarkCyan; }
+            if (CurrentStateOutput.Text.Equals("Delivered")) { CurrentStateOutput.ForeColor = Color.LimeGreen; }
+            if (CurrentStateOutput.Text.Equals("OrderCompleted")) { CurrentStateOutput.ForeColor = Color.DarkOliveGreen; }
+        }
     }
 }
