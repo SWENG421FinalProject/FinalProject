@@ -413,7 +413,7 @@ namespace SWENG421GUI
                 {
                     for (int i = 0; i < vlist[select].todo.toSend.Count; i++)
                     {
-                        ans.Add(vlist[select].todo.toSend[i].parcel.name);
+                        ans.Add(vlist[select].todo.toSend[i].parcel.name + " " + vlist[select].todo.toSend[i].getState(this).getStateName());
                     }
                 }
             }
