@@ -28,6 +28,7 @@ namespace SWENG421GUI
 
         List<Route> routesList = new List<Route>();
         List<Order> ordersList = new List<Order>();
+        List<string> parcelList = new List<string>();
 
         public Random r = new Random();
         List<ShippingObjectIF> packagesToAssign;
@@ -237,7 +238,8 @@ namespace SWENG421GUI
             VehicleComboBox.DisplayMember = "identifier";
             LoadCountOutput.Text = vehicleList[selectedVehicle].loadCount.ToString();
             MpgOutput.Text = vehicleList[selectedVehicle].mpg.ToString();
-            TodoList.DataSource = vehicleList[selectedVehicle].todo;
+            parcelList = updateParcelList(vehicleList, selectedVehicle);
+            TodoList.DataSource = parcelList;
 
             //Routes Tab
             RouteComboBox.DataSource = routeBinding;
@@ -382,6 +384,10 @@ namespace SWENG421GUI
 
         private void timer1_Tick(object sender, EventArgs e)
         {
+            //Vehicles Tab
+            parcelList = updateParcelList(vehicleList, selectedVehicle);
+            TodoList.DataSource = parcelList;
+
             //Routes Tab
             RouteOrderList.DataSource = updateRoutePackageList(routesToAssign, selectedRoute);
             AssignedOutput.Text = routesToAssign[selectedRoute].assigned.ToString();
@@ -395,6 +401,21 @@ namespace SWENG421GUI
                 }
             }
             CurrentStateOutput.Text = ordersList[selectedOrder].getState().getStateName();
+        }
+
+        private List<string> updateParcelList(List<Vehicle> vlist, int select) {
+            List<string> ans = new List<string>();
+            if (vlist[select].todo != null)
+            {
+                if (vlist[select].todo.toSend != null)
+                {
+                    for (int i = 0; i < vlist[select].todo.toSend.Count; i++)
+                    {
+                        ans.Add(vlist[select].todo.toSend[i].parcel.name);
+                    }
+                }
+            }
+            return ans;
         }
     }
 }
