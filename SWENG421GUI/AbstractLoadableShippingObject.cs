@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SWENG421GUI
 {
-    abstract class AbstractLoadableShippingObject : ShippingObjectIF
+    public abstract class AbstractLoadableShippingObject : ShippingObjectIF
     {
         private Company enviroment;
 
