@@ -31,7 +31,11 @@ namespace SWENG421GUI.Vehicles
                 {
                     waits = 0;
                     Console.WriteLine("{0} is starting its route", this.identifier);
-                    //Console.WriteLine("Route Length = {0}", todo.toSend.Count);
+                    //Set all packages state to in transit
+                    for (int i = 0; i < this.todo.toSend.Count; i++) {
+                        this.todo.toSend[i].setState(stateList[3]);
+                    }
+
                     Random r = new Random();
 
                     //Wait a random amount of time between 1 and 5 seconds to travel to the 1st stop
@@ -44,7 +48,7 @@ namespace SWENG421GUI.Vehicles
                         Thread.Sleep(waitTime);
                         waitTime = r.Next(1000, 5000);
                         Console.WriteLine("{0}: Package {1} Delivered, setting its state to delivered", this.identifier, todo.toSend[i].trackingNumber);
-                        //todo.toSend[i].setState(new Delivered());
+                        todo.toSend[i].setState(stateList[4]);
                     }
 
                     //Finsih route and restart

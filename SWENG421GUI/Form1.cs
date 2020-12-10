@@ -255,11 +255,11 @@ namespace SWENG421GUI
 
             //Start Threads
             companyThread.Start();
-            //vehicleThread1.Start();
-            //vehicleThread2.Start();
-            //vehicleThread3.Start();
-            //vehicleThread4.Start();
-            //vehicleThread5.Start();
+            vehicleThread1.Start();
+            vehicleThread2.Start();
+            vehicleThread3.Start();
+            vehicleThread4.Start();
+            vehicleThread5.Start();
 
         }
 
@@ -382,6 +382,7 @@ namespace SWENG421GUI
         {
             //Routes Tab
             RouteOrderList.DataSource = updateRoutePackageList(routesToAssign, selectedRoute);
+            AssignedOutput.Text = routesToAssign[selectedRoute].assigned.ToString();
 
             //Orders Tab
             State currentState;

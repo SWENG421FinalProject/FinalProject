@@ -90,7 +90,29 @@ namespace SWENG421GUI
 
             //Loop finished
             //rtb.Text += "All routes assigned. Company " + this.companyName + " ending operations\n";
-            Console.WriteLine("All routes assigned. Company {0} ending operations", this.companyName);
+            Console.WriteLine("Company {0} assigned all its routes. Confirming packages were delivered", this.companyName);
+            bool done = false;
+            while (!(done)){
+                done = true;
+                Console.WriteLine("Company {0} checking in packages", this.companyName);
+                for (int i = 0; i < this.routesToAssign.Count; i++) {
+                    for (int j = 0; j < this.routesToAssign[i].toSend.Count; j++) {
+                        if (this.routesToAssign[i].toSend[j].getState() == stateList[4])
+                        {
+                            Console.WriteLine("Company {0} Checking in package {1}", this.companyName, this.routesToAssign[i].toSend[j].parcel.name);
+                            this.routesToAssign[i].toSend[j].setState(stateList[5]);
+                        }
+                        else if (this.routesToAssign[i].toSend[j].getState() != stateList[5]) {
+                            done = false;
+                        }
+                    }
+                }
+
+                Thread.Sleep(5000);
+            }
+
+
+            Console.WriteLine("Company {0} ending operations", this.companyName);
         }
     }
 }
