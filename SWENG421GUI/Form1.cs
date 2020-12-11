@@ -614,10 +614,15 @@ namespace SWENG421GUI
             v.identifier = IdentifierBox.Text; 
             v.loadCount = int.Parse(loadCountBox.Text);
             v.mpg = double.Parse(mpgBox.Text);
-            v.todo = null;
+            v.todo = newRoutesToAssign[SelectRouteBox.SelectedIndex];
+            v.todo.assigned = true;
             v.setAttribute(attributeBox.Text);
             // update gui vehicle list 
             // vehicleList.Add(v);
+            newVehicleList.Add(v);
+            SelectOrderBox.DataSource = null;
+            SelectOrderBox.DataSource = newOrdersToAssign;
+            SelectOrderBox.DisplayMember = "trackingNumber";
         }
 
         // gets the type of vehicle selected at any given point
@@ -780,9 +785,8 @@ namespace SWENG421GUI
         private void addRouteButton_Click(object sender, EventArgs e)
         {
             string name = routeNameBox.Text;
-            bool isAssigned = bool.Parse(assignedBox.Text);
             Route route = new Route(name);
-            route.assigned = isAssigned;
+            route.assigned = false;
             foreach(Order o in SelectOrderBox.SelectedItems)
             {
                 route.toSend.Add(o);

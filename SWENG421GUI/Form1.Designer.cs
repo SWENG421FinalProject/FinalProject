@@ -105,11 +105,11 @@
             this.SelectOrderBox = new System.Windows.Forms.ListBox();
             this.orderSelecLabel = new System.Windows.Forms.Label();
             this.addRouteButton = new System.Windows.Forms.Button();
-            this.assignedBox = new System.Windows.Forms.TextBox();
-            this.routeAssignedLabel = new System.Windows.Forms.Label();
             this.routeNameBox = new System.Windows.Forms.TextBox();
             this.routeNameLabel = new System.Windows.Forms.Label();
             this.AddVehicleTab = new System.Windows.Forms.TabPage();
+            this.SelectRouteBox = new System.Windows.Forms.ListBox();
+            this.routeSelectLabel = new System.Windows.Forms.Label();
             this.IdentifierBox = new System.Windows.Forms.TextBox();
             this.loadCountBox = new System.Windows.Forms.TextBox();
             this.mpgBox = new System.Windows.Forms.TextBox();
@@ -128,8 +128,6 @@
             this.AddObjectBox = new System.Windows.Forms.ComboBox();
             this.AddObjectLabel = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.routeSelectLabel = new System.Windows.Forms.Label();
-            this.SelectRouteBox = new System.Windows.Forms.ListBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -929,8 +927,6 @@
             this.AddRouteTab.Controls.Add(this.SelectOrderBox);
             this.AddRouteTab.Controls.Add(this.orderSelecLabel);
             this.AddRouteTab.Controls.Add(this.addRouteButton);
-            this.AddRouteTab.Controls.Add(this.assignedBox);
-            this.AddRouteTab.Controls.Add(this.routeAssignedLabel);
             this.AddRouteTab.Controls.Add(this.routeNameBox);
             this.AddRouteTab.Controls.Add(this.routeNameLabel);
             this.AddRouteTab.Location = new System.Drawing.Point(4, 29);
@@ -946,16 +942,16 @@
             // 
             this.SelectOrderBox.FormattingEnabled = true;
             this.SelectOrderBox.ItemHeight = 20;
-            this.SelectOrderBox.Location = new System.Drawing.Point(169, 176);
+            this.SelectOrderBox.Location = new System.Drawing.Point(168, 100);
             this.SelectOrderBox.Name = "SelectOrderBox";
             this.SelectOrderBox.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
-            this.SelectOrderBox.Size = new System.Drawing.Size(241, 164);
+            this.SelectOrderBox.Size = new System.Drawing.Size(241, 264);
             this.SelectOrderBox.TabIndex = 6;
             // 
             // orderSelecLabel
             // 
             this.orderSelecLabel.AutoSize = true;
-            this.orderSelecLabel.Location = new System.Drawing.Point(92, 176);
+            this.orderSelecLabel.Location = new System.Drawing.Point(107, 100);
             this.orderSelecLabel.Name = "orderSelecLabel";
             this.orderSelecLabel.Size = new System.Drawing.Size(53, 20);
             this.orderSelecLabel.TabIndex = 5;
@@ -970,22 +966,6 @@
             this.addRouteButton.Text = "Add Route";
             this.addRouteButton.UseVisualStyleBackColor = true;
             this.addRouteButton.Click += new System.EventHandler(this.addRouteButton_Click);
-            // 
-            // assignedBox
-            // 
-            this.assignedBox.Location = new System.Drawing.Point(169, 104);
-            this.assignedBox.Name = "assignedBox";
-            this.assignedBox.Size = new System.Drawing.Size(241, 26);
-            this.assignedBox.TabIndex = 3;
-            // 
-            // routeAssignedLabel
-            // 
-            this.routeAssignedLabel.AutoSize = true;
-            this.routeAssignedLabel.Location = new System.Drawing.Point(83, 105);
-            this.routeAssignedLabel.Name = "routeAssignedLabel";
-            this.routeAssignedLabel.Size = new System.Drawing.Size(79, 20);
-            this.routeAssignedLabel.TabIndex = 2;
-            this.routeAssignedLabel.Text = "Assigned:";
             // 
             // routeNameBox
             // 
@@ -1030,6 +1010,24 @@
             this.AddVehicleTab.TabIndex = 0;
             this.AddVehicleTab.Text = "New Vehicle";
             this.AddVehicleTab.UseVisualStyleBackColor = true;
+            // 
+            // SelectRouteBox
+            // 
+            this.SelectRouteBox.FormattingEnabled = true;
+            this.SelectRouteBox.ItemHeight = 20;
+            this.SelectRouteBox.Location = new System.Drawing.Point(142, 282);
+            this.SelectRouteBox.Name = "SelectRouteBox";
+            this.SelectRouteBox.Size = new System.Drawing.Size(258, 84);
+            this.SelectRouteBox.TabIndex = 16;
+            // 
+            // routeSelectLabel
+            // 
+            this.routeSelectLabel.AutoSize = true;
+            this.routeSelectLabel.Location = new System.Drawing.Point(79, 282);
+            this.routeSelectLabel.Name = "routeSelectLabel";
+            this.routeSelectLabel.Size = new System.Drawing.Size(57, 20);
+            this.routeSelectLabel.TabIndex = 15;
+            this.routeSelectLabel.Text = "Route:";
             // 
             // IdentifierBox
             // 
@@ -1192,24 +1190,6 @@
             this.timer1.Interval = 1000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // routeSelectLabel
-            // 
-            this.routeSelectLabel.AutoSize = true;
-            this.routeSelectLabel.Location = new System.Drawing.Point(79, 282);
-            this.routeSelectLabel.Name = "routeSelectLabel";
-            this.routeSelectLabel.Size = new System.Drawing.Size(57, 20);
-            this.routeSelectLabel.TabIndex = 15;
-            this.routeSelectLabel.Text = "Route:";
-            // 
-            // SelectRouteBox
-            // 
-            this.SelectRouteBox.FormattingEnabled = true;
-            this.SelectRouteBox.ItemHeight = 20;
-            this.SelectRouteBox.Location = new System.Drawing.Point(142, 282);
-            this.SelectRouteBox.Name = "SelectRouteBox";
-            this.SelectRouteBox.Size = new System.Drawing.Size(258, 84);
-            this.SelectRouteBox.TabIndex = 16;
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1343,8 +1323,6 @@
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Button addRouteButton;
-        private System.Windows.Forms.TextBox assignedBox;
-        private System.Windows.Forms.Label routeAssignedLabel;
         private System.Windows.Forms.TextBox routeNameBox;
         private System.Windows.Forms.Label routeNameLabel;
         private System.Windows.Forms.Label selectparcellabel;
