@@ -102,6 +102,8 @@
             this.label13 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.AddRouteTab = new System.Windows.Forms.TabPage();
+            this.SelectOrderBox = new System.Windows.Forms.ListBox();
+            this.orderSelecLabel = new System.Windows.Forms.Label();
             this.addRouteButton = new System.Windows.Forms.Button();
             this.assignedBox = new System.Windows.Forms.TextBox();
             this.routeAssignedLabel = new System.Windows.Forms.Label();
@@ -126,8 +128,8 @@
             this.AddObjectBox = new System.Windows.Forms.ComboBox();
             this.AddObjectLabel = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.orderSelecLabel = new System.Windows.Forms.Label();
-            this.SelectOrderBox = new System.Windows.Forms.ListBox();
+            this.routeSelectLabel = new System.Windows.Forms.Label();
+            this.SelectRouteBox = new System.Windows.Forms.ListBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -940,6 +942,25 @@
             this.AddRouteTab.Text = "New Route";
             this.AddRouteTab.UseVisualStyleBackColor = true;
             // 
+            // SelectOrderBox
+            // 
+            this.SelectOrderBox.FormattingEnabled = true;
+            this.SelectOrderBox.ItemHeight = 20;
+            this.SelectOrderBox.Location = new System.Drawing.Point(169, 176);
+            this.SelectOrderBox.Name = "SelectOrderBox";
+            this.SelectOrderBox.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
+            this.SelectOrderBox.Size = new System.Drawing.Size(241, 164);
+            this.SelectOrderBox.TabIndex = 6;
+            // 
+            // orderSelecLabel
+            // 
+            this.orderSelecLabel.AutoSize = true;
+            this.orderSelecLabel.Location = new System.Drawing.Point(92, 176);
+            this.orderSelecLabel.Name = "orderSelecLabel";
+            this.orderSelecLabel.Size = new System.Drawing.Size(53, 20);
+            this.orderSelecLabel.TabIndex = 5;
+            this.orderSelecLabel.Text = "Order:";
+            // 
             // addRouteButton
             // 
             this.addRouteButton.Location = new System.Drawing.Point(184, 388);
@@ -984,6 +1005,8 @@
             // 
             // AddVehicleTab
             // 
+            this.AddVehicleTab.Controls.Add(this.SelectRouteBox);
+            this.AddVehicleTab.Controls.Add(this.routeSelectLabel);
             this.AddVehicleTab.Controls.Add(this.IdentifierBox);
             this.AddVehicleTab.Controls.Add(this.loadCountBox);
             this.AddVehicleTab.Controls.Add(this.mpgBox);
@@ -1010,35 +1033,35 @@
             // 
             // IdentifierBox
             // 
-            this.IdentifierBox.Location = new System.Drawing.Point(196, 110);
+            this.IdentifierBox.Location = new System.Drawing.Point(196, 91);
             this.IdentifierBox.Name = "IdentifierBox";
             this.IdentifierBox.Size = new System.Drawing.Size(160, 26);
             this.IdentifierBox.TabIndex = 14;
             // 
             // loadCountBox
             // 
-            this.loadCountBox.Location = new System.Drawing.Point(196, 172);
+            this.loadCountBox.Location = new System.Drawing.Point(196, 141);
             this.loadCountBox.Name = "loadCountBox";
             this.loadCountBox.Size = new System.Drawing.Size(160, 26);
             this.loadCountBox.TabIndex = 13;
             // 
             // mpgBox
             // 
-            this.mpgBox.Location = new System.Drawing.Point(196, 235);
+            this.mpgBox.Location = new System.Drawing.Point(196, 186);
             this.mpgBox.Name = "mpgBox";
             this.mpgBox.Size = new System.Drawing.Size(160, 26);
             this.mpgBox.TabIndex = 12;
             // 
             // attributeBox
             // 
-            this.attributeBox.Location = new System.Drawing.Point(196, 300);
+            this.attributeBox.Location = new System.Drawing.Point(195, 231);
             this.attributeBox.Name = "attributeBox";
             this.attributeBox.Size = new System.Drawing.Size(160, 26);
             this.attributeBox.TabIndex = 11;
             // 
             // confirmAddVehicleButton
             // 
-            this.confirmAddVehicleButton.Location = new System.Drawing.Point(165, 354);
+            this.confirmAddVehicleButton.Location = new System.Drawing.Point(165, 376);
             this.confirmAddVehicleButton.Name = "confirmAddVehicleButton";
             this.confirmAddVehicleButton.Size = new System.Drawing.Size(154, 45);
             this.confirmAddVehicleButton.TabIndex = 10;
@@ -1057,7 +1080,7 @@
             // AttributeLabel
             // 
             this.AttributeLabel.AutoSize = true;
-            this.AttributeLabel.Location = new System.Drawing.Point(116, 300);
+            this.AttributeLabel.Location = new System.Drawing.Point(115, 237);
             this.AttributeLabel.Name = "AttributeLabel";
             this.AttributeLabel.Size = new System.Drawing.Size(74, 20);
             this.AttributeLabel.TabIndex = 8;
@@ -1066,7 +1089,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(127, 235);
+            this.label9.Location = new System.Drawing.Point(127, 189);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(49, 20);
             this.label9.TabIndex = 7;
@@ -1075,7 +1098,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(94, 172);
+            this.label8.Location = new System.Drawing.Point(94, 144);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(96, 20);
             this.label8.TabIndex = 6;
@@ -1084,7 +1107,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(116, 110);
+            this.label7.Location = new System.Drawing.Point(115, 97);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(75, 20);
             this.label7.TabIndex = 5;
@@ -1169,23 +1192,23 @@
             this.timer1.Interval = 1000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // orderSelecLabel
+            // routeSelectLabel
             // 
-            this.orderSelecLabel.AutoSize = true;
-            this.orderSelecLabel.Location = new System.Drawing.Point(92, 176);
-            this.orderSelecLabel.Name = "orderSelecLabel";
-            this.orderSelecLabel.Size = new System.Drawing.Size(53, 20);
-            this.orderSelecLabel.TabIndex = 5;
-            this.orderSelecLabel.Text = "Order:";
+            this.routeSelectLabel.AutoSize = true;
+            this.routeSelectLabel.Location = new System.Drawing.Point(79, 282);
+            this.routeSelectLabel.Name = "routeSelectLabel";
+            this.routeSelectLabel.Size = new System.Drawing.Size(57, 20);
+            this.routeSelectLabel.TabIndex = 15;
+            this.routeSelectLabel.Text = "Route:";
             // 
-            // SelectOrderBox
+            // SelectRouteBox
             // 
-            this.SelectOrderBox.FormattingEnabled = true;
-            this.SelectOrderBox.ItemHeight = 20;
-            this.SelectOrderBox.Location = new System.Drawing.Point(169, 176);
-            this.SelectOrderBox.Name = "SelectOrderBox";
-            this.SelectOrderBox.Size = new System.Drawing.Size(241, 164);
-            this.SelectOrderBox.TabIndex = 6;
+            this.SelectRouteBox.FormattingEnabled = true;
+            this.SelectRouteBox.ItemHeight = 20;
+            this.SelectRouteBox.Location = new System.Drawing.Point(142, 282);
+            this.SelectRouteBox.Name = "SelectRouteBox";
+            this.SelectRouteBox.Size = new System.Drawing.Size(258, 84);
+            this.SelectRouteBox.TabIndex = 16;
             // 
             // Form1
             // 
@@ -1328,6 +1351,8 @@
         private System.Windows.Forms.ListBox SelectParcelBox;
         private System.Windows.Forms.ListBox SelectOrderBox;
         private System.Windows.Forms.Label orderSelecLabel;
+        private System.Windows.Forms.ListBox SelectRouteBox;
+        private System.Windows.Forms.Label routeSelectLabel;
     }
 }
 

@@ -783,6 +783,14 @@ namespace SWENG421GUI
             bool isAssigned = bool.Parse(assignedBox.Text);
             Route route = new Route(name);
             route.assigned = isAssigned;
+            foreach(Order o in SelectOrderBox.SelectedItems)
+            {
+                route.toSend.Add(o);
+            }
+            newRoutesToAssign.Add(route);
+            SelectRouteBox.DataSource = null;
+            SelectRouteBox.DataSource = newRoutesToAssign ;
+            SelectRouteBox.DisplayMember = "name";
         }
 
         // locks all tabs except for selected one
