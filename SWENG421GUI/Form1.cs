@@ -477,6 +477,9 @@ namespace SWENG421GUI
             MpgOutput.Text = vehicleList[VehicleComboBox.SelectedIndex].mpg.ToString();
             // change route/todo listbox
             attributesbox.Text = vehicleList[VehicleComboBox.SelectedIndex].getInfo();
+            selectedVehicle = VehicleComboBox.SelectedIndex;
+            parcelList = updateParcelList(vehicleList, selectedVehicle);
+            TodoList.DataSource = parcelList;
         }
         private void OrderComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -487,11 +490,27 @@ namespace SWENG421GUI
             ParcelOutput.Text = ordersList[OrderComboBox.SelectedIndex].parcel.name;
             //CurrentStateOutput.Text = ordersList[OrderComboBox.SelectedIndex].getState(this).getStateName();
             CurrentStateOutput_TextChanged(sender, e);
+
+            selectedOrder = OrderComboBox.SelectedIndex;
+            State currentState;
+            for (int i = 0; i < ordersToAssign.Count; i++)
+            {
+                currentState = ordersToAssign[i].getState(this);
+                if (ordersList[i].getState(this) != currentState)
+                {
+                    ordersList[i].setState(currentState, this);
+                }
+            }
+            CurrentStateOutput.Text = ordersList[selectedOrder].getState(this).getStateName();
+
         }
         private void RouteComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             AssignedOutput.Text = routesList[RouteComboBox.SelectedIndex].assigned.ToString();
             // change orders listbox
+            selectedRoute = RouteComboBox.SelectedIndex;
+            RouteOrderList.DataSource = updateRoutePackageList(routesToAssign, selectedRoute);
+            AssignedOutput.Text = routesToAssign[selectedRoute].assigned.ToString();
         }
 
         public void updateOutputPanel(string toAdd) {
