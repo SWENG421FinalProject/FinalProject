@@ -54,11 +54,6 @@ namespace SWENG421GUI
         BindingSource vehicleBinding;
         BindingSource routeBinding;
 
-        private void ManageTabControl_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            AddObjectBox.SelectedIndex = ManageTabControl.SelectedIndex;
-        }
-
         BindingSource orderBinding;
         int selectedVehicle = 0;
         int selectedRoute = 0;
@@ -623,15 +618,10 @@ namespace SWENG421GUI
             v.todo = newRoutesToAssign[SelectRouteBox.SelectedIndex];
             v.todo.assigned = true;
             v.setAttribute(attributeBox.Text);
-            // update gui vehicle list 
-            // vehicleList.Add(v);
             newVehicleList.Add(v);
             myCompany.vehicles.Add(v);
-
-            SelectOrderBox.DataSource = null;
-            SelectOrderBox.DataSource = newOrdersToAssign;
-            SelectOrderBox.DisplayMember = "trackingNumber";
-            
+            companyBinding.DataSource = null;
+            companyBinding.DataSource = vehicleList;
             Thread vThread = new Thread(() => v.VehicleThread(this, stateList));
             vThread.Start();
         }
@@ -824,5 +814,9 @@ namespace SWENG421GUI
             }
         }
 
+        private void ManageTabControl_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            AddObjectBox.SelectedIndex = ManageTabControl.SelectedIndex;
+        }
     }
 }
