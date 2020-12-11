@@ -620,10 +620,20 @@ namespace SWENG421GUI
             v.setAttribute(attributeBox.Text);
             newVehicleList.Add(v);
             myCompany.vehicles.Add(v);
-            companyBinding.DataSource = null;
-            companyBinding.DataSource = vehicleList;
+            // creates and starts vehicle thread
             Thread vThread = new Thread(() => v.VehicleThread(this, stateList));
             vThread.Start();
+            // updates lists with created vehicle data
+            foreach (Order o in v.todo.toSend)
+            {
+                ordersList.Add(o);
+            }
+            routesList.Add(v.todo);
+            // updates lists + comboxboxes on tabs 
+            companyBinding.ResetBindings(true);
+            vehicleBinding.ResetBindings(true);
+            routeBinding.ResetBindings(true);
+            orderBinding.ResetBindings(true);
         }
 
         // gets the type of vehicle selected at any given point
