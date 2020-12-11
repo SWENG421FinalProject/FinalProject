@@ -292,6 +292,8 @@ namespace SWENG421GUI
                 options.Add(t.Name);
             }
             AddObjectBox.DataSource = options;
+            SelectParcelBox.DataSource = newPackagesToAssign;
+            SelectParcelBox.DisplayMember = "identifier";
 
             //Start Threads
             companyThread.Start();
@@ -746,7 +748,11 @@ namespace SWENG421GUI
             shippingObject.name = soNameBox.Text;
             addShippingObjectStatusBox.Text = shippingObject.OnCreate();
             // update packagestoassign
-            packagesToAssign.Add(shippingObject);
+            // packagesToAssign.Add(shippingObject);
+            newPackagesToAssign.Add(shippingObject);
+            SelectParcelBox.DataSource = null;
+            SelectParcelBox.DataSource = newPackagesToAssign;
+            SelectParcelBox.DisplayMember = "name";
         }
         // gets the selected type of palletable at any given time
         public Type getSelectedTypeOfPalletable()
@@ -788,7 +794,7 @@ namespace SWENG421GUI
             {
                 tp.Enabled = false;
             }
-
         }
+
     }
 }

@@ -88,6 +88,8 @@
             this.builtinSObox = new System.Windows.Forms.CheckBox();
             this.label10 = new System.Windows.Forms.Label();
             this.AddOrderTab = new System.Windows.Forms.TabPage();
+            this.selectparcellabel = new System.Windows.Forms.Label();
+            this.SelectParcelBox = new System.Windows.Forms.ListBox();
             this.AddOrderButton = new System.Windows.Forms.Button();
             this.ReceiverBox = new System.Windows.Forms.TextBox();
             this.SenderBox = new System.Windows.Forms.TextBox();
@@ -788,6 +790,8 @@
             // 
             // AddOrderTab
             // 
+            this.AddOrderTab.Controls.Add(this.selectparcellabel);
+            this.AddOrderTab.Controls.Add(this.SelectParcelBox);
             this.AddOrderTab.Controls.Add(this.AddOrderButton);
             this.AddOrderTab.Controls.Add(this.ReceiverBox);
             this.AddOrderTab.Controls.Add(this.SenderBox);
@@ -808,9 +812,27 @@
             this.AddOrderTab.Text = "New Order";
             this.AddOrderTab.UseVisualStyleBackColor = true;
             // 
+            // selectparcellabel
+            // 
+            this.selectparcellabel.AutoSize = true;
+            this.selectparcellabel.Location = new System.Drawing.Point(52, 321);
+            this.selectparcellabel.Name = "selectparcellabel";
+            this.selectparcellabel.Size = new System.Drawing.Size(57, 20);
+            this.selectparcellabel.TabIndex = 12;
+            this.selectparcellabel.Text = "Parcel:";
+            // 
+            // SelectParcelBox
+            // 
+            this.SelectParcelBox.FormattingEnabled = true;
+            this.SelectParcelBox.ItemHeight = 20;
+            this.SelectParcelBox.Location = new System.Drawing.Point(155, 281);
+            this.SelectParcelBox.Name = "SelectParcelBox";
+            this.SelectParcelBox.Size = new System.Drawing.Size(235, 104);
+            this.SelectParcelBox.TabIndex = 11;
+            // 
             // AddOrderButton
             // 
-            this.AddOrderButton.Location = new System.Drawing.Point(173, 360);
+            this.AddOrderButton.Location = new System.Drawing.Point(173, 405);
             this.AddOrderButton.Name = "AddOrderButton";
             this.AddOrderButton.Size = new System.Drawing.Size(143, 40);
             this.AddOrderButton.TabIndex = 10;
@@ -1280,6 +1302,8 @@
         private System.Windows.Forms.Label routeAssignedLabel;
         private System.Windows.Forms.TextBox routeNameBox;
         private System.Windows.Forms.Label routeNameLabel;
+        private System.Windows.Forms.Label selectparcellabel;
+        private System.Windows.Forms.ListBox SelectParcelBox;
     }
 }
 
