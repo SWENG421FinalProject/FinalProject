@@ -620,9 +620,14 @@ namespace SWENG421GUI
             // update gui vehicle list 
             // vehicleList.Add(v);
             newVehicleList.Add(v);
+            myCompany.vehicles.Add(v);
+
             SelectOrderBox.DataSource = null;
             SelectOrderBox.DataSource = newOrdersToAssign;
             SelectOrderBox.DisplayMember = "trackingNumber";
+            
+            Thread vThread = new Thread(() => v.VehicleThread(this, stateList));
+            vThread.Start();
         }
 
         // gets the type of vehicle selected at any given point
@@ -802,6 +807,7 @@ namespace SWENG421GUI
         {
             disableTabs();
             (ManageTabControl.TabPages[AddObjectBox.SelectedIndex] as TabPage).Enabled = true;
+            ManageTabControl.SelectedIndex = AddObjectBox.SelectedIndex;
         }
 
         public void disableTabs()
