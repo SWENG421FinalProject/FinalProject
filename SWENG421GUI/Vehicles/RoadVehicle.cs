@@ -12,5 +12,10 @@ namespace SWENG421GUI.Vehicles
             base.printInfo();
             Console.Write("License: {0}\n", license);
         }
+
+        public override void setAttribute(string value)
+        {
+            license = value;
+        }
     }
 }

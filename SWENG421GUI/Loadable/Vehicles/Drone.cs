@@ -16,17 +16,17 @@ namespace SWENG421GUI.Loadable.Vehicles
         public override void printInfo()
         {
             base.printInfo();
-            Console.WriteLine("Range (miles): {0}\n", range);
+            Console.WriteLine("Range: {0}\n", range);
         }
 
-        public override void setAttribute(double value)
+        public override string OnCreate()
         {
-            range = value;
+            return("Company: " + getEnviroment().companyName + " loaded and added Vehicle of type: " + this.getName());
         }
 
-        public override void OnCreate()
+        public override void setAttribute(string value)
         {
-            Console.WriteLine("Company: " + getEnviroment().companyName + " loaded and added Vehicle of type: " + this.getName());
+            range = double.Parse(value);
         }
     }
 }

@@ -26,8 +26,6 @@ namespace SWENG421GUI
             base.printInfo();
         }
 
-        public abstract void setAttribute(double value);
-
-        public abstract override void OnCreate();
+        public abstract override string OnCreate();
     }
 }

@@ -26,6 +26,19 @@ namespace SWENG421GUI.Vehicles
             return sb.ToString();
         }
 
+        public string getFieldInfoOnly()
+        {
+            FieldInfo[] fields = this.GetType().GetFields();
+            StringBuilder sb = new StringBuilder();
+            foreach (FieldInfo f in fields)
+            {
+                sb.Append((char.ToUpper(f.Name[0]) + f.Name.Substring(1).ToLower()) + ": ");
+            }
+            return sb.ToString();
+        }
+
+        public abstract void setAttribute(string value);
+
         //Uses a RichTextBox to write output to
         public void VehicleThread(Form1 f1, List<State> stateList) {
 
@@ -108,9 +121,9 @@ namespace SWENG421GUI.Vehicles
             Console.WriteLine("Identifier: {0}\nLoad Count: {1}\nMPG: {2}", identifier, loadCount, mpg);
         }
 
-        public virtual void OnCreate()
+        public virtual string OnCreate()
         {
-            Console.WriteLine("Company just added Vehicle of type: " + this.GetType().Name);
+            return ("Company just added Vehicle of type: " + this.GetType().Name);
         }
     }
 }

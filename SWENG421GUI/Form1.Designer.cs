@@ -75,6 +75,16 @@
             this.ManageTab = new System.Windows.Forms.TabPage();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.AddVehicleTab = new System.Windows.Forms.TabPage();
+            this.IdentifierBox = new System.Windows.Forms.TextBox();
+            this.loadCountBox = new System.Windows.Forms.TextBox();
+            this.mpgBox = new System.Windows.Forms.TextBox();
+            this.attributeBox = new System.Windows.Forms.TextBox();
+            this.confirmAddVehicleButton = new System.Windows.Forms.Button();
+            this.VehicleAddStatusBox = new System.Windows.Forms.TextBox();
+            this.AttributeLabel = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
             this.AvailableVehicleTypesBox = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
             this.LoadableBox = new System.Windows.Forms.CheckBox();
@@ -104,7 +114,7 @@
             // 
             this.OriginOutput.Enabled = false;
             this.OriginOutput.Location = new System.Drawing.Point(140, 45);
-            this.OriginOutput.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.OriginOutput.Margin = new System.Windows.Forms.Padding(2);
             this.OriginOutput.Name = "OriginOutput";
             this.OriginOutput.Size = new System.Drawing.Size(344, 26);
             this.OriginOutput.TabIndex = 13;
@@ -113,7 +123,7 @@
             // 
             this.SenderOutput.Enabled = false;
             this.SenderOutput.Location = new System.Drawing.Point(140, 113);
-            this.SenderOutput.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.SenderOutput.Margin = new System.Windows.Forms.Padding(2);
             this.SenderOutput.Name = "SenderOutput";
             this.SenderOutput.Size = new System.Drawing.Size(344, 26);
             this.SenderOutput.TabIndex = 17;
@@ -122,7 +132,7 @@
             // 
             this.ParcelOutput.Enabled = false;
             this.ParcelOutput.Location = new System.Drawing.Point(140, 183);
-            this.ParcelOutput.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.ParcelOutput.Margin = new System.Windows.Forms.Padding(2);
             this.ParcelOutput.Name = "ParcelOutput";
             this.ParcelOutput.Size = new System.Drawing.Size(344, 26);
             this.ParcelOutput.TabIndex = 21;
@@ -133,7 +143,7 @@
             this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splitContainer1.IsSplitterFixed = true;
             this.splitContainer1.Location = new System.Drawing.Point(0, 0);
-            this.splitContainer1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.splitContainer1.Margin = new System.Windows.Forms.Padding(2);
             this.splitContainer1.Name = "splitContainer1";
             // 
             // splitContainer1.Panel1
@@ -166,7 +176,7 @@
             this.OutputPanel.BackColor = System.Drawing.SystemColors.Window;
             this.OutputPanel.Controls.Add(this.OutputTextBox);
             this.OutputPanel.Location = new System.Drawing.Point(0, 41);
-            this.OutputPanel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.OutputPanel.Margin = new System.Windows.Forms.Padding(2);
             this.OutputPanel.Name = "OutputPanel";
             this.OutputPanel.Size = new System.Drawing.Size(507, 529);
             this.OutputPanel.TabIndex = 0;
@@ -176,7 +186,7 @@
             this.OutputTextBox.BackColor = System.Drawing.SystemColors.Window;
             this.OutputTextBox.HideSelection = false;
             this.OutputTextBox.Location = new System.Drawing.Point(-1, 0);
-            this.OutputTextBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.OutputTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.OutputTextBox.Name = "OutputTextBox";
             this.OutputTextBox.ReadOnly = true;
             this.OutputTextBox.Size = new System.Drawing.Size(506, 527);
@@ -192,7 +202,7 @@
             this.TabSelector.Controls.Add(this.ManageTab);
             this.TabSelector.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TabSelector.Location = new System.Drawing.Point(-1, 2);
-            this.TabSelector.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.TabSelector.Margin = new System.Windows.Forms.Padding(2);
             this.TabSelector.Name = "TabSelector";
             this.TabSelector.SelectedIndex = 0;
             this.TabSelector.Size = new System.Drawing.Size(506, 568);
@@ -205,9 +215,9 @@
             this.CompanyTab.Controls.Add(this.CompanyNameOutput);
             this.CompanyTab.Controls.Add(this.label3);
             this.CompanyTab.Location = new System.Drawing.Point(4, 29);
-            this.CompanyTab.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.CompanyTab.Margin = new System.Windows.Forms.Padding(2);
             this.CompanyTab.Name = "CompanyTab";
-            this.CompanyTab.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.CompanyTab.Padding = new System.Windows.Forms.Padding(2);
             this.CompanyTab.Size = new System.Drawing.Size(498, 535);
             this.CompanyTab.TabIndex = 0;
             this.CompanyTab.Text = "Company";
@@ -219,7 +229,7 @@
             this.CompanyVehicles.FormattingEnabled = true;
             this.CompanyVehicles.ItemHeight = 20;
             this.CompanyVehicles.Location = new System.Drawing.Point(146, 42);
-            this.CompanyVehicles.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.CompanyVehicles.Margin = new System.Windows.Forms.Padding(2);
             this.CompanyVehicles.Name = "CompanyVehicles";
             this.CompanyVehicles.Size = new System.Drawing.Size(331, 444);
             this.CompanyVehicles.TabIndex = 6;
@@ -239,7 +249,7 @@
             // 
             this.CompanyNameOutput.Enabled = false;
             this.CompanyNameOutput.Location = new System.Drawing.Point(146, 8);
-            this.CompanyNameOutput.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.CompanyNameOutput.Margin = new System.Windows.Forms.Padding(2);
             this.CompanyNameOutput.Name = "CompanyNameOutput";
             this.CompanyNameOutput.Size = new System.Drawing.Size(332, 26);
             this.CompanyNameOutput.TabIndex = 4;
@@ -267,9 +277,9 @@
             this.VehicleTab.Controls.Add(this.SelectVehicleLabel);
             this.VehicleTab.Controls.Add(this.VehicleComboBox);
             this.VehicleTab.Location = new System.Drawing.Point(4, 29);
-            this.VehicleTab.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.VehicleTab.Margin = new System.Windows.Forms.Padding(2);
             this.VehicleTab.Name = "VehicleTab";
-            this.VehicleTab.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.VehicleTab.Padding = new System.Windows.Forms.Padding(2);
             this.VehicleTab.Size = new System.Drawing.Size(498, 535);
             this.VehicleTab.TabIndex = 1;
             this.VehicleTab.Text = "Vehicles";
@@ -297,7 +307,7 @@
             this.TodoList.FormattingEnabled = true;
             this.TodoList.ItemHeight = 20;
             this.TodoList.Location = new System.Drawing.Point(130, 163);
-            this.TodoList.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.TodoList.Margin = new System.Windows.Forms.Padding(2);
             this.TodoList.Name = "TodoList";
             this.TodoList.Size = new System.Drawing.Size(356, 324);
             this.TodoList.TabIndex = 9;
@@ -316,7 +326,7 @@
             // 
             this.MpgOutput.Enabled = false;
             this.MpgOutput.Location = new System.Drawing.Point(130, 80);
-            this.MpgOutput.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.MpgOutput.Margin = new System.Windows.Forms.Padding(2);
             this.MpgOutput.Name = "MpgOutput";
             this.MpgOutput.Size = new System.Drawing.Size(356, 26);
             this.MpgOutput.TabIndex = 7;
@@ -335,7 +345,7 @@
             // 
             this.LoadCountOutput.Enabled = false;
             this.LoadCountOutput.Location = new System.Drawing.Point(130, 46);
-            this.LoadCountOutput.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.LoadCountOutput.Margin = new System.Windows.Forms.Padding(2);
             this.LoadCountOutput.Name = "LoadCountOutput";
             this.LoadCountOutput.Size = new System.Drawing.Size(356, 26);
             this.LoadCountOutput.TabIndex = 5;
@@ -366,7 +376,7 @@
             this.VehicleComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.VehicleComboBox.FormattingEnabled = true;
             this.VehicleComboBox.Location = new System.Drawing.Point(130, 8);
-            this.VehicleComboBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.VehicleComboBox.Margin = new System.Windows.Forms.Padding(2);
             this.VehicleComboBox.Name = "VehicleComboBox";
             this.VehicleComboBox.Size = new System.Drawing.Size(356, 28);
             this.VehicleComboBox.TabIndex = 0;
@@ -381,9 +391,9 @@
             this.RouteTab.Controls.Add(this.SelectRouteLabel);
             this.RouteTab.Controls.Add(this.RouteComboBox);
             this.RouteTab.Location = new System.Drawing.Point(4, 29);
-            this.RouteTab.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.RouteTab.Margin = new System.Windows.Forms.Padding(2);
             this.RouteTab.Name = "RouteTab";
-            this.RouteTab.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.RouteTab.Padding = new System.Windows.Forms.Padding(2);
             this.RouteTab.Size = new System.Drawing.Size(498, 535);
             this.RouteTab.TabIndex = 2;
             this.RouteTab.Text = "Routes";
@@ -395,7 +405,7 @@
             this.RouteOrderList.FormattingEnabled = true;
             this.RouteOrderList.ItemHeight = 20;
             this.RouteOrderList.Location = new System.Drawing.Point(122, 88);
-            this.RouteOrderList.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.RouteOrderList.Margin = new System.Windows.Forms.Padding(2);
             this.RouteOrderList.Name = "RouteOrderList";
             this.RouteOrderList.Size = new System.Drawing.Size(366, 404);
             this.RouteOrderList.TabIndex = 13;
@@ -414,7 +424,7 @@
             // 
             this.AssignedOutput.Enabled = false;
             this.AssignedOutput.Location = new System.Drawing.Point(122, 51);
-            this.AssignedOutput.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.AssignedOutput.Margin = new System.Windows.Forms.Padding(2);
             this.AssignedOutput.Name = "AssignedOutput";
             this.AssignedOutput.Size = new System.Drawing.Size(366, 26);
             this.AssignedOutput.TabIndex = 11;
@@ -444,7 +454,7 @@
             this.RouteComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.RouteComboBox.FormattingEnabled = true;
             this.RouteComboBox.Location = new System.Drawing.Point(122, 8);
-            this.RouteComboBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.RouteComboBox.Margin = new System.Windows.Forms.Padding(2);
             this.RouteComboBox.Name = "RouteComboBox";
             this.RouteComboBox.Size = new System.Drawing.Size(366, 28);
             this.RouteComboBox.TabIndex = 8;
@@ -467,9 +477,9 @@
             this.OrderTab.Controls.Add(this.SelectOrderLabel);
             this.OrderTab.Controls.Add(this.OrderComboBox);
             this.OrderTab.Location = new System.Drawing.Point(4, 29);
-            this.OrderTab.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.OrderTab.Margin = new System.Windows.Forms.Padding(2);
             this.OrderTab.Name = "OrderTab";
-            this.OrderTab.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.OrderTab.Padding = new System.Windows.Forms.Padding(2);
             this.OrderTab.Size = new System.Drawing.Size(498, 535);
             this.OrderTab.TabIndex = 3;
             this.OrderTab.Text = "Orders";
@@ -480,7 +490,7 @@
             this.CurrentStateOutput.BackColor = System.Drawing.SystemColors.Control;
             this.CurrentStateOutput.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.CurrentStateOutput.Location = new System.Drawing.Point(140, 217);
-            this.CurrentStateOutput.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.CurrentStateOutput.Margin = new System.Windows.Forms.Padding(2);
             this.CurrentStateOutput.Name = "CurrentStateOutput";
             this.CurrentStateOutput.Size = new System.Drawing.Size(344, 26);
             this.CurrentStateOutput.TabIndex = 23;
@@ -510,7 +520,7 @@
             // 
             this.ReceiverOutput.Enabled = false;
             this.ReceiverOutput.Location = new System.Drawing.Point(140, 147);
-            this.ReceiverOutput.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.ReceiverOutput.Margin = new System.Windows.Forms.Padding(2);
             this.ReceiverOutput.Name = "ReceiverOutput";
             this.ReceiverOutput.Size = new System.Drawing.Size(344, 26);
             this.ReceiverOutput.TabIndex = 19;
@@ -539,7 +549,7 @@
             // 
             this.DestinationOutput.Enabled = false;
             this.DestinationOutput.Location = new System.Drawing.Point(140, 79);
-            this.DestinationOutput.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.DestinationOutput.Margin = new System.Windows.Forms.Padding(2);
             this.DestinationOutput.Name = "DestinationOutput";
             this.DestinationOutput.Size = new System.Drawing.Size(344, 26);
             this.DestinationOutput.TabIndex = 15;
@@ -580,7 +590,7 @@
             this.OrderComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.OrderComboBox.FormattingEnabled = true;
             this.OrderComboBox.Location = new System.Drawing.Point(140, 8);
-            this.OrderComboBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.OrderComboBox.Margin = new System.Windows.Forms.Padding(2);
             this.OrderComboBox.Name = "OrderComboBox";
             this.OrderComboBox.Size = new System.Drawing.Size(344, 28);
             this.OrderComboBox.TabIndex = 8;
@@ -592,9 +602,9 @@
             this.ManageTab.Controls.Add(this.AddObjectBox);
             this.ManageTab.Controls.Add(this.AddObjectLabel);
             this.ManageTab.Location = new System.Drawing.Point(4, 29);
-            this.ManageTab.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.ManageTab.Margin = new System.Windows.Forms.Padding(2);
             this.ManageTab.Name = "ManageTab";
-            this.ManageTab.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.ManageTab.Padding = new System.Windows.Forms.Padding(2);
             this.ManageTab.Size = new System.Drawing.Size(498, 535);
             this.ManageTab.TabIndex = 4;
             this.ManageTab.Text = "Manage";
@@ -606,7 +616,7 @@
             this.tabControl1.Controls.Add(this.AddOrderTab);
             this.tabControl1.Controls.Add(this.AddRouteTab);
             this.tabControl1.Location = new System.Drawing.Point(-1, 53);
-            this.tabControl1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabControl1.Margin = new System.Windows.Forms.Padding(2);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(503, 486);
@@ -614,33 +624,125 @@
             // 
             // AddVehicleTab
             // 
+            this.AddVehicleTab.Controls.Add(this.IdentifierBox);
+            this.AddVehicleTab.Controls.Add(this.loadCountBox);
+            this.AddVehicleTab.Controls.Add(this.mpgBox);
+            this.AddVehicleTab.Controls.Add(this.attributeBox);
+            this.AddVehicleTab.Controls.Add(this.confirmAddVehicleButton);
+            this.AddVehicleTab.Controls.Add(this.VehicleAddStatusBox);
+            this.AddVehicleTab.Controls.Add(this.AttributeLabel);
+            this.AddVehicleTab.Controls.Add(this.label9);
+            this.AddVehicleTab.Controls.Add(this.label8);
+            this.AddVehicleTab.Controls.Add(this.label7);
             this.AddVehicleTab.Controls.Add(this.AvailableVehicleTypesBox);
             this.AddVehicleTab.Controls.Add(this.label6);
             this.AddVehicleTab.Controls.Add(this.LoadableBox);
             this.AddVehicleTab.Controls.Add(this.BuiltInBox);
             this.AddVehicleTab.Controls.Add(this.label4);
             this.AddVehicleTab.Location = new System.Drawing.Point(4, 29);
-            this.AddVehicleTab.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.AddVehicleTab.Margin = new System.Windows.Forms.Padding(2);
             this.AddVehicleTab.Name = "AddVehicleTab";
-            this.AddVehicleTab.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.AddVehicleTab.Padding = new System.Windows.Forms.Padding(2);
             this.AddVehicleTab.Size = new System.Drawing.Size(495, 453);
             this.AddVehicleTab.TabIndex = 0;
             this.AddVehicleTab.Text = "New Vehicle";
             this.AddVehicleTab.UseVisualStyleBackColor = true;
             // 
+            // IdentifierBox
+            // 
+            this.IdentifierBox.Location = new System.Drawing.Point(196, 110);
+            this.IdentifierBox.Name = "IdentifierBox";
+            this.IdentifierBox.Size = new System.Drawing.Size(160, 26);
+            this.IdentifierBox.TabIndex = 14;
+            // 
+            // loadCountBox
+            // 
+            this.loadCountBox.Location = new System.Drawing.Point(196, 172);
+            this.loadCountBox.Name = "loadCountBox";
+            this.loadCountBox.Size = new System.Drawing.Size(160, 26);
+            this.loadCountBox.TabIndex = 13;
+            // 
+            // mpgBox
+            // 
+            this.mpgBox.Location = new System.Drawing.Point(196, 235);
+            this.mpgBox.Name = "mpgBox";
+            this.mpgBox.Size = new System.Drawing.Size(160, 26);
+            this.mpgBox.TabIndex = 12;
+            // 
+            // attributeBox
+            // 
+            this.attributeBox.Location = new System.Drawing.Point(196, 300);
+            this.attributeBox.Name = "attributeBox";
+            this.attributeBox.Size = new System.Drawing.Size(160, 26);
+            this.attributeBox.TabIndex = 11;
+            // 
+            // confirmAddVehicleButton
+            // 
+            this.confirmAddVehicleButton.Location = new System.Drawing.Point(165, 354);
+            this.confirmAddVehicleButton.Name = "confirmAddVehicleButton";
+            this.confirmAddVehicleButton.Size = new System.Drawing.Size(154, 45);
+            this.confirmAddVehicleButton.TabIndex = 10;
+            this.confirmAddVehicleButton.Text = "Add Vehicle";
+            this.confirmAddVehicleButton.UseVisualStyleBackColor = true;
+            this.confirmAddVehicleButton.Click += new System.EventHandler(this.confirmAddVehicleButton_Click);
+            // 
+            // VehicleAddStatusBox
+            // 
+            this.VehicleAddStatusBox.Location = new System.Drawing.Point(2, 427);
+            this.VehicleAddStatusBox.Name = "VehicleAddStatusBox";
+            this.VehicleAddStatusBox.Size = new System.Drawing.Size(493, 26);
+            this.VehicleAddStatusBox.TabIndex = 9;
+            // 
+            // AttributeLabel
+            // 
+            this.AttributeLabel.AutoSize = true;
+            this.AttributeLabel.Location = new System.Drawing.Point(116, 300);
+            this.AttributeLabel.Name = "AttributeLabel";
+            this.AttributeLabel.Size = new System.Drawing.Size(74, 20);
+            this.AttributeLabel.TabIndex = 8;
+            this.AttributeLabel.Text = "Attribute:";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(127, 235);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(49, 20);
+            this.label9.TabIndex = 7;
+            this.label9.Text = "MPG:";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(94, 172);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(96, 20);
+            this.label8.TabIndex = 6;
+            this.label8.Text = "Load Count:";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(116, 110);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(75, 20);
+            this.label7.TabIndex = 5;
+            this.label7.Text = "Identifier:";
+            // 
             // AvailableVehicleTypesBox
             // 
             this.AvailableVehicleTypesBox.FormattingEnabled = true;
-            this.AvailableVehicleTypesBox.Location = new System.Drawing.Point(323, 18);
-            this.AvailableVehicleTypesBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.AvailableVehicleTypesBox.Location = new System.Drawing.Point(155, 45);
+            this.AvailableVehicleTypesBox.Margin = new System.Windows.Forms.Padding(2);
             this.AvailableVehicleTypesBox.Name = "AvailableVehicleTypesBox";
-            this.AvailableVehicleTypesBox.Size = new System.Drawing.Size(155, 28);
+            this.AvailableVehicleTypesBox.Size = new System.Drawing.Size(211, 28);
             this.AvailableVehicleTypesBox.TabIndex = 4;
+            this.AvailableVehicleTypesBox.SelectedIndexChanged += new System.EventHandler(this.AvailableVehicleTypesBox_SelectedIndexChanged);
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(18, 21);
+            this.label6.Location = new System.Drawing.Point(46, 38);
             this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(96, 20);
@@ -650,8 +752,8 @@
             // LoadableBox
             // 
             this.LoadableBox.AutoSize = true;
-            this.LoadableBox.Location = new System.Drawing.Point(211, 20);
-            this.LoadableBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.LoadableBox.Location = new System.Drawing.Point(262, 17);
+            this.LoadableBox.Margin = new System.Windows.Forms.Padding(2);
             this.LoadableBox.Name = "LoadableBox";
             this.LoadableBox.Size = new System.Drawing.Size(94, 24);
             this.LoadableBox.TabIndex = 2;
@@ -662,8 +764,8 @@
             // BuiltInBox
             // 
             this.BuiltInBox.AutoSize = true;
-            this.BuiltInBox.Location = new System.Drawing.Point(131, 20);
-            this.BuiltInBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.BuiltInBox.Location = new System.Drawing.Point(165, 17);
+            this.BuiltInBox.Margin = new System.Windows.Forms.Padding(2);
             this.BuiltInBox.Name = "BuiltInBox";
             this.BuiltInBox.Size = new System.Drawing.Size(76, 24);
             this.BuiltInBox.TabIndex = 1;
@@ -683,10 +785,10 @@
             // AddOrderTab
             // 
             this.AddOrderTab.Location = new System.Drawing.Point(4, 29);
-            this.AddOrderTab.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.AddOrderTab.Margin = new System.Windows.Forms.Padding(2);
             this.AddOrderTab.Name = "AddOrderTab";
-            this.AddOrderTab.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.AddOrderTab.Size = new System.Drawing.Size(369, 352);
+            this.AddOrderTab.Padding = new System.Windows.Forms.Padding(2);
+            this.AddOrderTab.Size = new System.Drawing.Size(495, 453);
             this.AddOrderTab.TabIndex = 1;
             this.AddOrderTab.Text = "New Order";
             this.AddOrderTab.UseVisualStyleBackColor = true;
@@ -694,10 +796,10 @@
             // AddRouteTab
             // 
             this.AddRouteTab.Location = new System.Drawing.Point(4, 29);
-            this.AddRouteTab.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.AddRouteTab.Margin = new System.Windows.Forms.Padding(2);
             this.AddRouteTab.Name = "AddRouteTab";
-            this.AddRouteTab.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.AddRouteTab.Size = new System.Drawing.Size(369, 352);
+            this.AddRouteTab.Padding = new System.Windows.Forms.Padding(2);
+            this.AddRouteTab.Size = new System.Drawing.Size(495, 453);
             this.AddRouteTab.TabIndex = 2;
             this.AddRouteTab.Text = "New Route";
             this.AddRouteTab.UseVisualStyleBackColor = true;
@@ -706,10 +808,11 @@
             // 
             this.AddObjectBox.FormattingEnabled = true;
             this.AddObjectBox.Location = new System.Drawing.Point(238, 13);
-            this.AddObjectBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.AddObjectBox.Margin = new System.Windows.Forms.Padding(2);
             this.AddObjectBox.Name = "AddObjectBox";
             this.AddObjectBox.Size = new System.Drawing.Size(138, 28);
             this.AddObjectBox.TabIndex = 1;
+            this.AddObjectBox.SelectedIndexChanged += new System.EventHandler(this.AddObjectBox_SelectedIndexChanged);
             // 
             // AddObjectLabel
             // 
@@ -733,7 +836,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1018, 571);
             this.Controls.Add(this.splitContainer1);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load_1);
@@ -819,6 +922,16 @@
         private System.Windows.Forms.CheckBox LoadableBox;
         private System.Windows.Forms.CheckBox BuiltInBox;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox IdentifierBox;
+        private System.Windows.Forms.TextBox loadCountBox;
+        private System.Windows.Forms.TextBox mpgBox;
+        private System.Windows.Forms.TextBox attributeBox;
+        private System.Windows.Forms.Button confirmAddVehicleButton;
+        private System.Windows.Forms.TextBox VehicleAddStatusBox;
+        private System.Windows.Forms.Label AttributeLabel;
     }
 }
 

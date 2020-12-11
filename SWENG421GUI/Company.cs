@@ -31,7 +31,7 @@ namespace SWENG421GUI
         }
 
         // company tells factory to make and return a vehicle
-        public void addVehicle(string type)
+        public Vehicle addVehicle(string type)
         {
             VehicleFactory factory = new VehicleFactory();
             Vehicle v;
@@ -46,7 +46,7 @@ namespace SWENG421GUI
                 loadableVehicle.identifier = loadableVehicle.getName() + " 1";
                 loadableVehicle.loadCount = 5;
                 loadableVehicle.mpg = 10;
-                loadableVehicle.setAttribute(18);
+                loadableVehicle.setAttribute("15");
                 //loadableVehicle.printInfo();
                 v = loadableVehicle;
                 vehicles.Add(v);
@@ -55,7 +55,7 @@ namespace SWENG421GUI
                 v = factory.createVehicle(type);
                 vehicles.Add(v);
             }
-            vehicles[vehicles.Count - 1].OnCreate();
+            return v;
         }
 
         public void loadShippingObject(string type)

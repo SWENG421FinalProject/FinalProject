@@ -45,6 +45,7 @@ namespace SWENG421GUI
         Box bx1, bx2, bx3, bx4, bx5;
         Pallet p1, p2, p3, p4, p5;
         VehicleFactory vf = new VehicleFactory();
+        Company myCompany;
         RoadVehicle Truck1, Truck2;
         Train Train1, Train2, Train3;
 
@@ -194,7 +195,7 @@ namespace SWENG421GUI
             vehicleList.Add(Train3);
 
             //Create Company
-            Company myCompany = new Company("Shipping Co");
+            myCompany = new Company("Shipping Co");
             myCompany.vehicles = vehicleList;
             myCompany.routesToAssign = routesToAssign;
 
@@ -526,10 +527,10 @@ namespace SWENG421GUI
             if (LoadableBox.Checked) 
             {
                 BuiltInBox.Enabled = false;
-                List<Type> loadableTypes = new List<Type>();
                 foreach(Type t in Assembly.GetExecutingAssembly().GetTypes())
                 {
                     if(t.IsClass && t.Namespace.Equals("SWENG421GUI.Loadable.Vehicles")){
+                        loadableTypes.Clear();
                         loadableTypes.Add(t);
                         AvailableVehicleTypesBox.Items.Add(t.Name);
                     }
@@ -565,6 +566,47 @@ namespace SWENG421GUI
             {
                 LoadableBox.Enabled = true;
             }
+        }
+        List<Type> loadableTypes = new List<Type>();
+        private void AvailableVehicleTypesBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Type t = getSelectedTypeOfVehicle();
+            MethodInfo method = t.GetMethod("getFieldInfoOnly");
+            var v = Activator.CreateInstance(t) as Vehicle;
+            var result = method.Invoke(v, null);
+            AttributeLabel.Text = result.ToString();
+        }
+
+        private void AddObjectBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void confirmAddVehicleButton_Click(object sender, EventArgs e)
+        {
+            string id = IdentifierBox.Text;
+            int loadcount = int.Parse(loadCountBox.Text);
+            double mpg = double.Parse(mpgBox.Text);
+            string attribute = attributeBox.Text;
+            Type t = getSelectedTypeOfVehicle();
+            Vehicle v = myCompany.addVehicle(t.FullName);
+            VehicleAddStatusBox.Text = v.OnCreate();
+            //update GUI vehicles list 
+            //vehicleList = myCompany.vehicles;
+        }
+
+        public Type getSelectedTypeOfVehicle()
+        {
+            Type t;
+            if (LoadableBox.Checked)
+            {
+                t = loadableTypes[AvailableVehicleTypesBox.SelectedIndex];
+            }
+            else
+            {
+                t = vehicleTypes[AvailableVehicleTypesBox.SelectedIndex];
+            }
+            return t;
         }
     }
 }

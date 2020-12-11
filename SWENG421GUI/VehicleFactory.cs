@@ -11,6 +11,7 @@ namespace SWENG421GUI
         public Vehicle createVehicle(string type) {
             Vehicle ans = null;
             type = type.ToLower();
+            type = type.Substring(type.LastIndexOf('.') + 1);
             if (type == "roadvehicle" || type == "truck" || type == "van" || type == "car")
             {
                 Console.WriteLine("Creating new Road Vehicle");

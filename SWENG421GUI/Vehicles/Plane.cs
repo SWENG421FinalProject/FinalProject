@@ -13,5 +13,10 @@ namespace SWENG421GUI.Vehicles
             base.printInfo();
             Console.Write("Range: {0}\n", range);
         }
+
+        public override void setAttribute(string value)
+        {
+            range = int.Parse(value);
+        }
     }
 }

@@ -18,5 +18,10 @@ namespace SWENG421GUI.Vehicles
             base.printInfo();
             Console.Write("Gauge: {0}\n", gauge);
         }
+
+        public override void setAttribute(string value)
+        {
+            gauge = value;
+        }
     }
 }
