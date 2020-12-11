@@ -466,6 +466,7 @@ namespace SWENG421GUI
             return ans;
         }
 
+        // changes color of state text
         private void CurrentStateOutput_TextChanged(object sender, EventArgs e)
         {
             if (CurrentStateOutput.Text.Equals("NeedRoute")) { CurrentStateOutput.ForeColor = Color.DarkRed; }
@@ -531,6 +532,13 @@ namespace SWENG421GUI
             OutputTextBox.ScrollToCaret();
         }
 
+        // GUI lists for adding and populating
+        List<Type> loadableTypes = new List<Type>();
+        List<Type> palletableTypes = new List<Type>();
+        List<Type> loadableSObjects = new List<Type>();
+        List<Type> soTypes = new List<Type>();
+
+        // updates combobox with loadable vehicle classes
         private void LoadableBox_CheckedChanged(object sender, EventArgs e)
         {
             AvailableVehicleTypesBox.Items.Clear();
@@ -555,6 +563,7 @@ namespace SWENG421GUI
 
         }
 
+        // updates combobox with built in vehicle classes
         private void BuiltInBox_CheckedChanged(object sender, EventArgs e)
         {
             AvailableVehicleTypesBox.Items.Clear();
@@ -578,7 +587,8 @@ namespace SWENG421GUI
                 LoadableBox.Enabled = true;
             }
         }
-        List<Type> loadableTypes = new List<Type>();
+    
+        // gets the attribute unique to each Vehicle class and updates label accordingly
         private void AvailableVehicleTypesBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             Type t = getSelectedTypeOfVehicle();
@@ -588,11 +598,7 @@ namespace SWENG421GUI
             AttributeLabel.Text = result.ToString();
         }
 
-        private void AddObjectBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
+        // has company object add a vehicle and return the vehicle to update its attributes with user input
         private void confirmAddVehicleButton_Click(object sender, EventArgs e)
         {
             Type t = getSelectedTypeOfVehicle();
@@ -607,6 +613,7 @@ namespace SWENG421GUI
             // vehicleList.Add(v);
         }
 
+        // gets the type of vehicle selected at any given point
         public Type getSelectedTypeOfVehicle()
         {
             Type t;
@@ -621,6 +628,7 @@ namespace SWENG421GUI
             return t;
         }
 
+        // gets the type of shipping object selected at any given point
         public Type getSelectedTypeOfShippingObject()
         {
             Type t;
@@ -634,8 +642,8 @@ namespace SWENG421GUI
             }
             return t;
         }
-        List<Type> palletableTypes = new List<Type>();
  
+        // updates and populates GUI based on user input
         private void SObox_SelectedIndexChanged(object sender, EventArgs e)
         {
             if(getSelectedTypeOfShippingObject().Name.Equals("Pallet"))
@@ -658,7 +666,8 @@ namespace SWENG421GUI
             }
 
         }
-        List<Type> loadableSObjects = new List<Type>();
+
+        // gets and populates combobox with all loadable shipping objects
         private void loadableSObox_CheckedChanged(object sender, EventArgs e)
         {
             SObox.Items.Clear();
@@ -684,7 +693,8 @@ namespace SWENG421GUI
 
 
         }
-        List<Type> soTypes = new List<Type>();
+
+        // updates and populates combobox with built-in shipping object classes
         private void builtinSObox_CheckedChanged(object sender, EventArgs e)
         {
             SObox.Items.Clear();
@@ -706,6 +716,9 @@ namespace SWENG421GUI
                 loadableSObox.Enabled = true;
             }
         }
+        // if object is of loadable type, company deals with loading and instantiating it (enviroment)
+        // if object is pallet, it creates a palletableif object before creating pallet
+        // else, object is instantiated based on type and updated name to match user input
         private void addShippingObjectbutton_Click(object sender, EventArgs e)
         {
             Type t = getSelectedTypeOfShippingObject();
@@ -729,6 +742,7 @@ namespace SWENG421GUI
             // update packagestoassign
             packagesToAssign.Add(shippingObject);
         }
+        // gets the selected type of palletable at any given time
         public Type getSelectedTypeOfPalletable()
         {
             return palletableTypes[selectPalletablebox.SelectedIndex];

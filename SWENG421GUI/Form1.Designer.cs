@@ -856,6 +856,7 @@
             // 
             // VehicleAddStatusBox
             // 
+            this.VehicleAddStatusBox.Enabled = false;
             this.VehicleAddStatusBox.Location = new System.Drawing.Point(2, 427);
             this.VehicleAddStatusBox.Name = "VehicleAddStatusBox";
             this.VehicleAddStatusBox.Size = new System.Drawing.Size(493, 26);
@@ -958,7 +959,6 @@
             this.AddObjectBox.Name = "AddObjectBox";
             this.AddObjectBox.Size = new System.Drawing.Size(177, 28);
             this.AddObjectBox.TabIndex = 1;
-            this.AddObjectBox.SelectedIndexChanged += new System.EventHandler(this.AddObjectBox_SelectedIndexChanged);
             // 
             // AddObjectLabel
             // 
