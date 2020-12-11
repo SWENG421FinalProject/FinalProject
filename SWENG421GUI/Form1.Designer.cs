@@ -88,6 +88,17 @@
             this.builtinSObox = new System.Windows.Forms.CheckBox();
             this.label10 = new System.Windows.Forms.Label();
             this.AddOrderTab = new System.Windows.Forms.TabPage();
+            this.AddOrderButton = new System.Windows.Forms.Button();
+            this.ReceiverBox = new System.Windows.Forms.TextBox();
+            this.SenderBox = new System.Windows.Forms.TextBox();
+            this.DestinationBox = new System.Windows.Forms.TextBox();
+            this.OriginBox = new System.Windows.Forms.TextBox();
+            this.trackingNumBox = new System.Windows.Forms.TextBox();
+            this.recieverLabel = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
             this.AddRouteTab = new System.Windows.Forms.TabPage();
             this.AddVehicleTab = new System.Windows.Forms.TabPage();
             this.IdentifierBox = new System.Windows.Forms.TextBox();
@@ -121,6 +132,7 @@
             this.ManageTab.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.AddParcelTab.SuspendLayout();
+            this.AddOrderTab.SuspendLayout();
             this.AddVehicleTab.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -770,6 +782,17 @@
             // 
             // AddOrderTab
             // 
+            this.AddOrderTab.Controls.Add(this.AddOrderButton);
+            this.AddOrderTab.Controls.Add(this.ReceiverBox);
+            this.AddOrderTab.Controls.Add(this.SenderBox);
+            this.AddOrderTab.Controls.Add(this.DestinationBox);
+            this.AddOrderTab.Controls.Add(this.OriginBox);
+            this.AddOrderTab.Controls.Add(this.trackingNumBox);
+            this.AddOrderTab.Controls.Add(this.recieverLabel);
+            this.AddOrderTab.Controls.Add(this.label15);
+            this.AddOrderTab.Controls.Add(this.label14);
+            this.AddOrderTab.Controls.Add(this.label13);
+            this.AddOrderTab.Controls.Add(this.label12);
             this.AddOrderTab.Location = new System.Drawing.Point(4, 29);
             this.AddOrderTab.Margin = new System.Windows.Forms.Padding(2);
             this.AddOrderTab.Name = "AddOrderTab";
@@ -778,6 +801,96 @@
             this.AddOrderTab.TabIndex = 1;
             this.AddOrderTab.Text = "New Order";
             this.AddOrderTab.UseVisualStyleBackColor = true;
+            // 
+            // AddOrderButton
+            // 
+            this.AddOrderButton.Location = new System.Drawing.Point(173, 360);
+            this.AddOrderButton.Name = "AddOrderButton";
+            this.AddOrderButton.Size = new System.Drawing.Size(143, 40);
+            this.AddOrderButton.TabIndex = 10;
+            this.AddOrderButton.Text = "Add Order";
+            this.AddOrderButton.UseVisualStyleBackColor = true;
+            this.AddOrderButton.Click += new System.EventHandler(this.AddOrderButton_Click);
+            // 
+            // ReceiverBox
+            // 
+            this.ReceiverBox.Location = new System.Drawing.Point(114, 237);
+            this.ReceiverBox.Name = "ReceiverBox";
+            this.ReceiverBox.Size = new System.Drawing.Size(327, 26);
+            this.ReceiverBox.TabIndex = 9;
+            // 
+            // SenderBox
+            // 
+            this.SenderBox.Location = new System.Drawing.Point(105, 179);
+            this.SenderBox.Name = "SenderBox";
+            this.SenderBox.Size = new System.Drawing.Size(336, 26);
+            this.SenderBox.TabIndex = 8;
+            // 
+            // DestinationBox
+            // 
+            this.DestinationBox.Location = new System.Drawing.Point(131, 124);
+            this.DestinationBox.Name = "DestinationBox";
+            this.DestinationBox.Size = new System.Drawing.Size(310, 26);
+            this.DestinationBox.TabIndex = 7;
+            // 
+            // OriginBox
+            // 
+            this.OriginBox.Location = new System.Drawing.Point(94, 72);
+            this.OriginBox.Name = "OriginBox";
+            this.OriginBox.Size = new System.Drawing.Size(347, 26);
+            this.OriginBox.TabIndex = 6;
+            // 
+            // trackingNumBox
+            // 
+            this.trackingNumBox.Location = new System.Drawing.Point(173, 23);
+            this.trackingNumBox.Name = "trackingNumBox";
+            this.trackingNumBox.Size = new System.Drawing.Size(268, 26);
+            this.trackingNumBox.TabIndex = 5;
+            // 
+            // recieverLabel
+            // 
+            this.recieverLabel.AutoSize = true;
+            this.recieverLabel.Location = new System.Drawing.Point(33, 237);
+            this.recieverLabel.Name = "recieverLabel";
+            this.recieverLabel.Size = new System.Drawing.Size(75, 20);
+            this.recieverLabel.TabIndex = 4;
+            this.recieverLabel.Text = "Receiver:";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(33, 180);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(65, 20);
+            this.label15.TabIndex = 3;
+            this.label15.Text = "Sender:";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(33, 125);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(94, 20);
+            this.label14.TabIndex = 2;
+            this.label14.Text = "Destination:";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(33, 73);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(54, 20);
+            this.label13.TabIndex = 1;
+            this.label13.Text = "Origin:";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(33, 23);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(133, 20);
+            this.label12.TabIndex = 0;
+            this.label12.Text = "Tracking Number:";
             // 
             // AddRouteTab
             // 
@@ -1006,6 +1119,8 @@
             this.tabControl1.ResumeLayout(false);
             this.AddParcelTab.ResumeLayout(false);
             this.AddParcelTab.PerformLayout();
+            this.AddOrderTab.ResumeLayout(false);
+            this.AddOrderTab.PerformLayout();
             this.AddVehicleTab.ResumeLayout(false);
             this.AddVehicleTab.PerformLayout();
             this.ResumeLayout(false);
@@ -1093,6 +1208,17 @@
         private System.Windows.Forms.TextBox palletableNameBox;
         private System.Windows.Forms.Button addShippingObjectbutton;
         private System.Windows.Forms.ComboBox selectPalletablebox;
+        private System.Windows.Forms.Button AddOrderButton;
+        private System.Windows.Forms.TextBox ReceiverBox;
+        private System.Windows.Forms.TextBox SenderBox;
+        private System.Windows.Forms.TextBox DestinationBox;
+        private System.Windows.Forms.TextBox OriginBox;
+        private System.Windows.Forms.TextBox trackingNumBox;
+        private System.Windows.Forms.Label recieverLabel;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label label12;
     }
 }
 

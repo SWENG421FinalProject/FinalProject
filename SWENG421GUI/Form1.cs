@@ -26,8 +26,6 @@ namespace SWENG421GUI
         public Delivered deliveredState = new Delivered(); //4
         public OrderCompleted orderCompletedState = new OrderCompleted(); //5
         public List<State> stateList = new List<State>();
-        public List<Type> types = new List<Type>();
-        public List<Type> vehicleTypes = new List<Type>();
 
         List<Route> routesList = new List<Route>();
         List<Order> ordersList = new List<Order>();
@@ -45,7 +43,6 @@ namespace SWENG421GUI
         Box bx1, bx2, bx3, bx4, bx5;
 
         Pallet p1, p2, p3, p4, p5;
-
 
         VehicleFactory vf = new VehicleFactory();
         Company myCompany;
@@ -533,10 +530,18 @@ namespace SWENG421GUI
         }
 
         // GUI lists for adding and populating
+        List<Type> types = new List<Type>();
+        List<Type> vehicleTypes = new List<Type>();
         List<Type> loadableTypes = new List<Type>();
         List<Type> palletableTypes = new List<Type>();
         List<Type> loadableSObjects = new List<Type>();
         List<Type> soTypes = new List<Type>();
+
+        // new way of letting user choose assignments? each list as combobox on tab page for next biggest element in hierarchy
+        List<ShippingObjectIF> newPackagesToAssign = new List<ShippingObjectIF>();
+        List<Order> newOrdersToAssign = new List<Order>();
+        List<Route> newRoutesToAssign = new List<Route>();
+        List<Vehicle> newVehicleList = new List<Vehicle>();
 
         // updates combobox with loadable vehicle classes
         private void LoadableBox_CheckedChanged(object sender, EventArgs e)
@@ -746,6 +751,17 @@ namespace SWENG421GUI
         public Type getSelectedTypeOfPalletable()
         {
             return palletableTypes[selectPalletablebox.SelectedIndex];
+        }
+
+        // creates an order with user inputted info
+        private void AddOrderButton_Click(object sender, EventArgs e)
+        {
+            string trackingnum = trackingNumBox.Text;
+            string origin = OriginBox.Text;
+            string destination = DestinationBox.Text;
+            string ordersender = SenderBox.Text;
+            string receiver = ReceiverBox.Text;
+            //Order order = new Order(trackingnum, origin, destination, ordersender, receiver, ?, this);
         }
     }
 }
