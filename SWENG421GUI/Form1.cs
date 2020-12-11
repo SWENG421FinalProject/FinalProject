@@ -721,6 +721,7 @@ namespace SWENG421GUI
                 loadableSObox.Enabled = true;
             }
         }
+
         // if object is of loadable type, company deals with loading and instantiating it (enviroment)
         // if object is pallet, it creates a palletableif object before creating pallet
         // else, object is instantiated based on type and updated name to match user input
@@ -762,6 +763,32 @@ namespace SWENG421GUI
             string ordersender = SenderBox.Text;
             string receiver = ReceiverBox.Text;
             //Order order = new Order(trackingnum, origin, destination, ordersender, receiver, ?, this);
+        }
+
+        // creates route with user-defined input
+        // need list of orders
+        private void addRouteButton_Click(object sender, EventArgs e)
+        {
+            string name = routeNameBox.Text;
+            bool isAssigned = bool.Parse(assignedBox.Text);
+            Route route = new Route(name);
+            route.assigned = isAssigned;
+        }
+
+        // locks all tabs except for selected one
+        private void AddObjectBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            disableTabs();
+            (ManageTabControl.TabPages[AddObjectBox.SelectedIndex] as TabPage).Enabled = true;
+        }
+
+        public void disableTabs()
+        {
+            foreach (TabPage tp in ManageTabControl.TabPages)
+            {
+                tp.Enabled = false;
+            }
+
         }
     }
 }
