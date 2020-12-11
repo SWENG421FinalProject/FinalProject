@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace SWENG421GUI.Loadable
+namespace SWENG421GUI.Loadable.Vehicles
 {
     class Drone : AbstractLoadableVehicle
     {

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SWENG421GUI.Loadable
+namespace SWENG421GUI.Loadable.ShippingObjects
 {
     public class Skid : AbstractLoadableShippingObject
     {

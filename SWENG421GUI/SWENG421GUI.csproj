@@ -59,8 +59,8 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Loadable\Drone.cs" />
-    <Compile Include="Loadable\Skid.cs" />
+    <Compile Include="Loadable\Vehicles\Drone.cs" />
+    <Compile Include="Loadable\ShippingObjects\Skid.cs" />
     <Compile Include="Order.cs" />
     <Compile Include="OrderIF.cs" />
     <Compile Include="Pallet.cs" />

@@ -6,6 +6,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -198,7 +199,7 @@ namespace SWENG421GUI
             myCompany.routesToAssign = routesToAssign;
 
             // Loading loadable classes
-            myCompany.addVehicle("SWENG421GUI.Loadable.Drone");
+            myCompany.addVehicle("SWENG421GUI.Loadable.Vehicles.Drone");
             vehicleList = myCompany.vehicles; // update vehicle list
 
             //Might not be needed but these lists are in case the originals get modified
@@ -520,25 +521,36 @@ namespace SWENG421GUI
 
         private void LoadableBox_CheckedChanged(object sender, EventArgs e)
         {
+            AvailableVehicleTypesBox.Items.Clear();
+            AvailableVehicleTypesBox.Text = "";
             if (LoadableBox.Checked) 
             {
                 BuiltInBox.Enabled = false;
-
+                List<Type> loadableTypes = new List<Type>();
+                foreach(Type t in Assembly.GetExecutingAssembly().GetTypes())
+                {
+                    if(t.IsClass && t.Namespace.Equals("SWENG421GUI.Loadable.Vehicles")){
+                        loadableTypes.Add(t);
+                        AvailableVehicleTypesBox.Items.Add(t.Name);
+                    }
+                }
+                AvailableVehicleTypesBox.SelectedIndex = 0;
             }
             else 
             {
                 BuiltInBox.Enabled = true;
-                AvailableVehicleTypesBox.Items.Clear();
-                AvailableVehicleTypesBox.Text = "";
             }
 
         }
 
         private void BuiltInBox_CheckedChanged(object sender, EventArgs e)
         {
+            AvailableVehicleTypesBox.Items.Clear();
+            AvailableVehicleTypesBox.Text = "";
             if (BuiltInBox.Checked)
             {
                 LoadableBox.Enabled = false;
+                vehicleTypes.Clear();
                 vehicleTypes.Add(typeof(RoadVehicle));
                 vehicleTypes.Add(typeof(Train));
                 vehicleTypes.Add(typeof(Ship));
@@ -546,14 +558,12 @@ namespace SWENG421GUI
                 foreach (Type t in vehicleTypes)
                 {
                     AvailableVehicleTypesBox.Items.Add(t.Name);
-                    AvailableVehicleTypesBox.SelectedIndex = 0;
                 }
+                AvailableVehicleTypesBox.SelectedIndex = 0;
             }
             else
             {
                 LoadableBox.Enabled = true;
-                AvailableVehicleTypesBox.Items.Clear();
-                AvailableVehicleTypesBox.Text = "";
             }
         }
     }
