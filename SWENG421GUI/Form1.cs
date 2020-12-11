@@ -41,26 +41,6 @@ namespace SWENG421GUI
 
         Barrel br1, br2, br3, br4, br5, br6, br7, br8, br9, br10, br11, br12, br13, br14, br15;
 
-        private void LoadableBox_CheckedChanged(object sender, EventArgs e)
-        {
-            AvailableVehicleTypesBox.Items.Clear();
-            
-        }
-
-        private void BuiltInBox_CheckedChanged(object sender, EventArgs e)
-        {
-            AvailableVehicleTypesBox.Items.Clear();
-            vehicleTypes.Add(typeof(RoadVehicle));
-            vehicleTypes.Add(typeof(Train));
-            vehicleTypes.Add(typeof(Ship));
-            vehicleTypes.Add(typeof(Plane));
-            foreach(Type t in vehicleTypes)
-            {
-                AvailableVehicleTypesBox.Items.Add(t.Name);
-                AvailableVehicleTypesBox.SelectedIndex = 0;
-            }
-        }
-
         Box bx1, bx2, bx3, bx4, bx5;
         Pallet p1, p2, p3, p4, p5;
         VehicleFactory vf = new VehicleFactory();
@@ -292,6 +272,17 @@ namespace SWENG421GUI
             ParcelOutput.Text = ordersList[selectedOrder].parcel.name;
             CurrentStateOutput.Text = ordersList[selectedOrder].getState(this).getStateName();
 
+            //Manage Tab
+            types.Add(typeof(Vehicle));
+            types.Add(typeof(Order));
+            types.Add(typeof(Route));
+            List<string> options = new List<string>();
+            foreach (Type t in types)
+            {
+                options.Add(t.Name);
+            }
+            AddObjectBox.DataSource = options;
+
             //Start Threads
             companyThread.Start();
 
@@ -488,7 +479,6 @@ namespace SWENG421GUI
             SenderOutput.Text = ordersList[OrderComboBox.SelectedIndex].senderName;
             ReceiverOutput.Text = ordersList[OrderComboBox.SelectedIndex].receiverName;
             ParcelOutput.Text = ordersList[OrderComboBox.SelectedIndex].parcel.name;
-            //CurrentStateOutput.Text = ordersList[OrderComboBox.SelectedIndex].getState(this).getStateName();
             CurrentStateOutput_TextChanged(sender, e);
 
             selectedOrder = OrderComboBox.SelectedIndex;
@@ -526,6 +516,45 @@ namespace SWENG421GUI
             //Output panel scroll
             OutputTextBox.SelectionStart = OutputTextBox.Text.Length;
             OutputTextBox.ScrollToCaret();
+        }
+
+        private void LoadableBox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (LoadableBox.Checked) 
+            {
+                BuiltInBox.Enabled = false;
+
+            }
+            else 
+            {
+                BuiltInBox.Enabled = true;
+                AvailableVehicleTypesBox.Items.Clear();
+                AvailableVehicleTypesBox.Text = "";
+            }
+
+        }
+
+        private void BuiltInBox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (BuiltInBox.Checked)
+            {
+                LoadableBox.Enabled = false;
+                vehicleTypes.Add(typeof(RoadVehicle));
+                vehicleTypes.Add(typeof(Train));
+                vehicleTypes.Add(typeof(Ship));
+                vehicleTypes.Add(typeof(Plane));
+                foreach (Type t in vehicleTypes)
+                {
+                    AvailableVehicleTypesBox.Items.Add(t.Name);
+                    AvailableVehicleTypesBox.SelectedIndex = 0;
+                }
+            }
+            else
+            {
+                LoadableBox.Enabled = true;
+                AvailableVehicleTypesBox.Items.Clear();
+                AvailableVehicleTypesBox.Text = "";
+            }
         }
     }
 }
