@@ -768,7 +768,11 @@ namespace SWENG421GUI
             string destination = DestinationBox.Text;
             string ordersender = SenderBox.Text;
             string receiver = ReceiverBox.Text;
-            //Order order = new Order(trackingnum, origin, destination, ordersender, receiver, ?, this);
+            Order order = new Order(trackingnum, origin, destination, ordersender, receiver, newPackagesToAssign[SelectParcelBox.SelectedIndex], this);
+            newOrdersToAssign.Add(order);
+            SelectOrderBox.DataSource = null;
+            SelectOrderBox.DataSource = newOrdersToAssign;
+            SelectOrderBox.DisplayMember = "trackingNumber";
         }
 
         // creates route with user-defined input

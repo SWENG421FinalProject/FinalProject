@@ -126,6 +126,8 @@
             this.AddObjectBox = new System.Windows.Forms.ComboBox();
             this.AddObjectLabel = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.orderSelecLabel = new System.Windows.Forms.Label();
+            this.SelectOrderBox = new System.Windows.Forms.ListBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -922,6 +924,8 @@
             // 
             // AddRouteTab
             // 
+            this.AddRouteTab.Controls.Add(this.SelectOrderBox);
+            this.AddRouteTab.Controls.Add(this.orderSelecLabel);
             this.AddRouteTab.Controls.Add(this.addRouteButton);
             this.AddRouteTab.Controls.Add(this.assignedBox);
             this.AddRouteTab.Controls.Add(this.routeAssignedLabel);
@@ -1165,6 +1169,24 @@
             this.timer1.Interval = 1000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // orderSelecLabel
+            // 
+            this.orderSelecLabel.AutoSize = true;
+            this.orderSelecLabel.Location = new System.Drawing.Point(92, 176);
+            this.orderSelecLabel.Name = "orderSelecLabel";
+            this.orderSelecLabel.Size = new System.Drawing.Size(53, 20);
+            this.orderSelecLabel.TabIndex = 5;
+            this.orderSelecLabel.Text = "Order:";
+            // 
+            // SelectOrderBox
+            // 
+            this.SelectOrderBox.FormattingEnabled = true;
+            this.SelectOrderBox.ItemHeight = 20;
+            this.SelectOrderBox.Location = new System.Drawing.Point(169, 176);
+            this.SelectOrderBox.Name = "SelectOrderBox";
+            this.SelectOrderBox.Size = new System.Drawing.Size(241, 164);
+            this.SelectOrderBox.TabIndex = 6;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1304,6 +1326,8 @@
         private System.Windows.Forms.Label routeNameLabel;
         private System.Windows.Forms.Label selectparcellabel;
         private System.Windows.Forms.ListBox SelectParcelBox;
+        private System.Windows.Forms.ListBox SelectOrderBox;
+        private System.Windows.Forms.Label orderSelecLabel;
     }
 }
 
