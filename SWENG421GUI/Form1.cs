@@ -53,6 +53,12 @@ namespace SWENG421GUI
         BindingSource companyBinding;
         BindingSource vehicleBinding;
         BindingSource routeBinding;
+
+        private void ManageTabControl_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            AddObjectBox.SelectedIndex = ManageTabControl.SelectedIndex;
+        }
+
         BindingSource orderBinding;
         int selectedVehicle = 0;
         int selectedRoute = 0;

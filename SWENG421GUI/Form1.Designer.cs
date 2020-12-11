@@ -331,7 +331,7 @@
             // 
             this.attributesbox.Enabled = false;
             this.attributesbox.Location = new System.Drawing.Point(173, 146);
-            this.attributesbox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.attributesbox.Margin = new System.Windows.Forms.Padding(4);
             this.attributesbox.Name = "attributesbox";
             this.attributesbox.Size = new System.Drawing.Size(473, 30);
             this.attributesbox.TabIndex = 10;
@@ -642,6 +642,7 @@
             this.ManageTabControl.SelectedIndex = 0;
             this.ManageTabControl.Size = new System.Drawing.Size(671, 598);
             this.ManageTabControl.TabIndex = 2;
+            this.ManageTabControl.SelectedIndexChanged += new System.EventHandler(this.ManageTabControl_SelectedIndexChanged);
             // 
             // AddParcelTab
             // 
@@ -658,7 +659,7 @@
             this.AddParcelTab.Controls.Add(this.builtinSObox);
             this.AddParcelTab.Controls.Add(this.label10);
             this.AddParcelTab.Location = new System.Drawing.Point(4, 34);
-            this.AddParcelTab.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.AddParcelTab.Margin = new System.Windows.Forms.Padding(4);
             this.AddParcelTab.Name = "AddParcelTab";
             this.AddParcelTab.Size = new System.Drawing.Size(663, 560);
             this.AddParcelTab.TabIndex = 3;
@@ -668,7 +669,7 @@
             // addShippingObjectbutton
             // 
             this.addShippingObjectbutton.Location = new System.Drawing.Point(203, 420);
-            this.addShippingObjectbutton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.addShippingObjectbutton.Margin = new System.Windows.Forms.Padding(4);
             this.addShippingObjectbutton.Name = "addShippingObjectbutton";
             this.addShippingObjectbutton.Size = new System.Drawing.Size(263, 53);
             this.addShippingObjectbutton.TabIndex = 12;
@@ -681,7 +682,7 @@
             this.selectPalletablebox.Enabled = false;
             this.selectPalletablebox.FormattingEnabled = true;
             this.selectPalletablebox.Location = new System.Drawing.Point(203, 262);
-            this.selectPalletablebox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.selectPalletablebox.Margin = new System.Windows.Forms.Padding(4);
             this.selectPalletablebox.Name = "selectPalletablebox";
             this.selectPalletablebox.Size = new System.Drawing.Size(261, 33);
             this.selectPalletablebox.TabIndex = 11;
@@ -690,7 +691,7 @@
             // 
             this.palletableNameBox.Enabled = false;
             this.palletableNameBox.Location = new System.Drawing.Point(203, 341);
-            this.palletableNameBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.palletableNameBox.Margin = new System.Windows.Forms.Padding(4);
             this.palletableNameBox.Name = "palletableNameBox";
             this.palletableNameBox.Size = new System.Drawing.Size(261, 30);
             this.palletableNameBox.TabIndex = 10;
@@ -720,7 +721,7 @@
             this.addShippingObjectStatusBox.Enabled = false;
             this.addShippingObjectStatusBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.addShippingObjectStatusBox.Location = new System.Drawing.Point(4, 522);
-            this.addShippingObjectStatusBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.addShippingObjectStatusBox.Margin = new System.Windows.Forms.Padding(4);
             this.addShippingObjectStatusBox.Name = "addShippingObjectStatusBox";
             this.addShippingObjectStatusBox.Size = new System.Drawing.Size(651, 26);
             this.addShippingObjectStatusBox.TabIndex = 6;
@@ -738,7 +739,7 @@
             // soNameBox
             // 
             this.soNameBox.Location = new System.Drawing.Point(203, 180);
-            this.soNameBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.soNameBox.Margin = new System.Windows.Forms.Padding(4);
             this.soNameBox.Name = "soNameBox";
             this.soNameBox.Size = new System.Drawing.Size(261, 30);
             this.soNameBox.TabIndex = 4;
@@ -747,7 +748,7 @@
             // 
             this.SObox.FormattingEnabled = true;
             this.SObox.Location = new System.Drawing.Point(203, 92);
-            this.SObox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.SObox.Margin = new System.Windows.Forms.Padding(4);
             this.SObox.Name = "SObox";
             this.SObox.Size = new System.Drawing.Size(261, 33);
             this.SObox.TabIndex = 3;
@@ -757,7 +758,7 @@
             // 
             this.loadableSObox.AutoSize = true;
             this.loadableSObox.Location = new System.Drawing.Point(325, 55);
-            this.loadableSObox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.loadableSObox.Margin = new System.Windows.Forms.Padding(4);
             this.loadableSObox.Name = "loadableSObox";
             this.loadableSObox.Size = new System.Drawing.Size(115, 29);
             this.loadableSObox.TabIndex = 2;
@@ -769,7 +770,7 @@
             // 
             this.builtinSObox.AutoSize = true;
             this.builtinSObox.Location = new System.Drawing.Point(216, 55);
-            this.builtinSObox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.builtinSObox.Margin = new System.Windows.Forms.Padding(4);
             this.builtinSObox.Name = "builtinSObox";
             this.builtinSObox.Size = new System.Drawing.Size(93, 29);
             this.builtinSObox.TabIndex = 1;
@@ -826,7 +827,7 @@
             this.SelectParcelBox.FormattingEnabled = true;
             this.SelectParcelBox.ItemHeight = 25;
             this.SelectParcelBox.Location = new System.Drawing.Point(207, 346);
-            this.SelectParcelBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.SelectParcelBox.Margin = new System.Windows.Forms.Padding(4);
             this.SelectParcelBox.Name = "SelectParcelBox";
             this.SelectParcelBox.Size = new System.Drawing.Size(312, 104);
             this.SelectParcelBox.TabIndex = 11;
@@ -834,7 +835,7 @@
             // AddOrderButton
             // 
             this.AddOrderButton.Location = new System.Drawing.Point(231, 498);
-            this.AddOrderButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.AddOrderButton.Margin = new System.Windows.Forms.Padding(4);
             this.AddOrderButton.Name = "AddOrderButton";
             this.AddOrderButton.Size = new System.Drawing.Size(191, 49);
             this.AddOrderButton.TabIndex = 10;
@@ -845,7 +846,7 @@
             // ReceiverBox
             // 
             this.ReceiverBox.Location = new System.Drawing.Point(152, 292);
-            this.ReceiverBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.ReceiverBox.Margin = new System.Windows.Forms.Padding(4);
             this.ReceiverBox.Name = "ReceiverBox";
             this.ReceiverBox.Size = new System.Drawing.Size(435, 30);
             this.ReceiverBox.TabIndex = 9;
@@ -853,7 +854,7 @@
             // SenderBox
             // 
             this.SenderBox.Location = new System.Drawing.Point(140, 220);
-            this.SenderBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.SenderBox.Margin = new System.Windows.Forms.Padding(4);
             this.SenderBox.Name = "SenderBox";
             this.SenderBox.Size = new System.Drawing.Size(447, 30);
             this.SenderBox.TabIndex = 8;
@@ -861,7 +862,7 @@
             // DestinationBox
             // 
             this.DestinationBox.Location = new System.Drawing.Point(175, 153);
-            this.DestinationBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.DestinationBox.Margin = new System.Windows.Forms.Padding(4);
             this.DestinationBox.Name = "DestinationBox";
             this.DestinationBox.Size = new System.Drawing.Size(412, 30);
             this.DestinationBox.TabIndex = 7;
@@ -869,7 +870,7 @@
             // OriginBox
             // 
             this.OriginBox.Location = new System.Drawing.Point(125, 89);
-            this.OriginBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.OriginBox.Margin = new System.Windows.Forms.Padding(4);
             this.OriginBox.Name = "OriginBox";
             this.OriginBox.Size = new System.Drawing.Size(461, 30);
             this.OriginBox.TabIndex = 6;
@@ -877,7 +878,7 @@
             // trackingNumBox
             // 
             this.trackingNumBox.Location = new System.Drawing.Point(231, 28);
-            this.trackingNumBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.trackingNumBox.Margin = new System.Windows.Forms.Padding(4);
             this.trackingNumBox.Name = "trackingNumBox";
             this.trackingNumBox.Size = new System.Drawing.Size(356, 30);
             this.trackingNumBox.TabIndex = 5;
@@ -953,7 +954,7 @@
             this.SelectOrderBox.FormattingEnabled = true;
             this.SelectOrderBox.ItemHeight = 25;
             this.SelectOrderBox.Location = new System.Drawing.Point(224, 123);
-            this.SelectOrderBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.SelectOrderBox.Margin = new System.Windows.Forms.Padding(4);
             this.SelectOrderBox.Name = "SelectOrderBox";
             this.SelectOrderBox.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
             this.SelectOrderBox.Size = new System.Drawing.Size(320, 304);
@@ -972,7 +973,7 @@
             // addRouteButton
             // 
             this.addRouteButton.Location = new System.Drawing.Point(245, 478);
-            this.addRouteButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.addRouteButton.Margin = new System.Windows.Forms.Padding(4);
             this.addRouteButton.Name = "addRouteButton";
             this.addRouteButton.Size = new System.Drawing.Size(167, 53);
             this.addRouteButton.TabIndex = 4;
@@ -983,7 +984,7 @@
             // routeNameBox
             // 
             this.routeNameBox.Location = new System.Drawing.Point(224, 50);
-            this.routeNameBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.routeNameBox.Margin = new System.Windows.Forms.Padding(4);
             this.routeNameBox.Name = "routeNameBox";
             this.routeNameBox.Size = new System.Drawing.Size(321, 30);
             this.routeNameBox.TabIndex = 1;
@@ -1031,7 +1032,7 @@
             this.SelectRouteBox.FormattingEnabled = true;
             this.SelectRouteBox.ItemHeight = 25;
             this.SelectRouteBox.Location = new System.Drawing.Point(189, 347);
-            this.SelectRouteBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.SelectRouteBox.Margin = new System.Windows.Forms.Padding(4);
             this.SelectRouteBox.Name = "SelectRouteBox";
             this.SelectRouteBox.Size = new System.Drawing.Size(343, 79);
             this.SelectRouteBox.TabIndex = 16;
@@ -1049,7 +1050,7 @@
             // IdentifierBox
             // 
             this.IdentifierBox.Location = new System.Drawing.Point(261, 112);
-            this.IdentifierBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.IdentifierBox.Margin = new System.Windows.Forms.Padding(4);
             this.IdentifierBox.Name = "IdentifierBox";
             this.IdentifierBox.Size = new System.Drawing.Size(212, 30);
             this.IdentifierBox.TabIndex = 14;
@@ -1057,7 +1058,7 @@
             // loadCountBox
             // 
             this.loadCountBox.Location = new System.Drawing.Point(261, 174);
-            this.loadCountBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.loadCountBox.Margin = new System.Windows.Forms.Padding(4);
             this.loadCountBox.Name = "loadCountBox";
             this.loadCountBox.Size = new System.Drawing.Size(212, 30);
             this.loadCountBox.TabIndex = 13;
@@ -1065,7 +1066,7 @@
             // mpgBox
             // 
             this.mpgBox.Location = new System.Drawing.Point(261, 229);
-            this.mpgBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.mpgBox.Margin = new System.Windows.Forms.Padding(4);
             this.mpgBox.Name = "mpgBox";
             this.mpgBox.Size = new System.Drawing.Size(212, 30);
             this.mpgBox.TabIndex = 12;
@@ -1073,7 +1074,7 @@
             // attributeBox
             // 
             this.attributeBox.Location = new System.Drawing.Point(260, 284);
-            this.attributeBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.attributeBox.Margin = new System.Windows.Forms.Padding(4);
             this.attributeBox.Name = "attributeBox";
             this.attributeBox.Size = new System.Drawing.Size(212, 30);
             this.attributeBox.TabIndex = 11;
@@ -1081,7 +1082,7 @@
             // confirmAddVehicleButton
             // 
             this.confirmAddVehicleButton.Location = new System.Drawing.Point(220, 463);
-            this.confirmAddVehicleButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.confirmAddVehicleButton.Margin = new System.Windows.Forms.Padding(4);
             this.confirmAddVehicleButton.Name = "confirmAddVehicleButton";
             this.confirmAddVehicleButton.Size = new System.Drawing.Size(205, 55);
             this.confirmAddVehicleButton.TabIndex = 10;
@@ -1093,7 +1094,7 @@
             // 
             this.VehicleAddStatusBox.Enabled = false;
             this.VehicleAddStatusBox.Location = new System.Drawing.Point(3, 526);
-            this.VehicleAddStatusBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.VehicleAddStatusBox.Margin = new System.Windows.Forms.Padding(4);
             this.VehicleAddStatusBox.Name = "VehicleAddStatusBox";
             this.VehicleAddStatusBox.Size = new System.Drawing.Size(656, 30);
             this.VehicleAddStatusBox.TabIndex = 9;
