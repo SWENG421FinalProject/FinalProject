@@ -43,7 +43,10 @@ namespace SWENG421GUI
         Barrel br1, br2, br3, br4, br5, br6, br7, br8, br9, br10, br11, br12, br13, br14, br15;
 
         Box bx1, bx2, bx3, bx4, bx5;
+
         Pallet p1, p2, p3, p4, p5;
+
+
         VehicleFactory vf = new VehicleFactory();
         Company myCompany;
         RoadVehicle Truck1, Truck2;
@@ -200,8 +203,15 @@ namespace SWENG421GUI
             myCompany.routesToAssign = routesToAssign;
 
             // Loading loadable classes
-            myCompany.addVehicle("SWENG421GUI.Loadable.Vehicles.Drone");
-            vehicleList = myCompany.vehicles; // update vehicle list
+            Vehicle loadedVehicle = myCompany.addVehicle("SWENG421GUI.Loadable.Vehicles.Drone");
+            loadedVehicle.identifier = loadedVehicle.GetType().Name + " 1";
+            loadedVehicle.loadCount = 5;
+            loadedVehicle.mpg = 10;
+            loadedVehicle.todo = null;
+            loadedVehicle.setAttribute("15");
+            vehicleList.Add(loadedVehicle);
+            myCompany.vehicles = vehicleList;
+
 
             //Might not be needed but these lists are in case the originals get modified
             //They show all entries even if some get deleted
@@ -275,9 +285,10 @@ namespace SWENG421GUI
             CurrentStateOutput.Text = ordersList[selectedOrder].getState(this).getStateName();
 
             //Manage Tab
-            types.Add(typeof(Vehicle));
+            types.Add(typeof(ShippingObjectIF));
             types.Add(typeof(Order));
             types.Add(typeof(Route));
+            types.Add(typeof(Vehicle));
             List<string> options = new List<string>();
             foreach (Type t in types)
             {
@@ -584,15 +595,15 @@ namespace SWENG421GUI
 
         private void confirmAddVehicleButton_Click(object sender, EventArgs e)
         {
-            string id = IdentifierBox.Text;
-            int loadcount = int.Parse(loadCountBox.Text);
-            double mpg = double.Parse(mpgBox.Text);
-            string attribute = attributeBox.Text;
             Type t = getSelectedTypeOfVehicle();
             Vehicle v = myCompany.addVehicle(t.FullName);
             VehicleAddStatusBox.Text = v.OnCreate();
-            //update GUI vehicles list 
-            //vehicleList = myCompany.vehicles;
+            v.identifier = IdentifierBox.Text; 
+            v.loadCount = int.Parse(loadCountBox.Text);
+            v.mpg = double.Parse(mpgBox.Text);
+            v.setAttribute(attributeBox.Text);
+            // update gui vehicle list 
+            // vehicleList.Add(v);
         }
 
         public Type getSelectedTypeOfVehicle()
@@ -607,6 +618,87 @@ namespace SWENG421GUI
                 t = vehicleTypes[AvailableVehicleTypesBox.SelectedIndex];
             }
             return t;
+        }
+
+        public Type getSelectedTypeOfShippingObject()
+        {
+            Type t;
+            if (loadableSObox.Checked)
+            {
+                t = loadableSObjects[SObox.SelectedIndex];
+            }
+            else
+            {
+                t = soTypes[SObox.SelectedIndex];
+            }
+            return t;
+        }
+
+        private void SObox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(getSelectedTypeOfShippingObject().Name.Equals("Pallet"))
+            {
+                palletableNameBox.Enabled = true;
+                selectPalletablebox.Enabled = true;
+            }
+            else
+            {
+                palletableNameBox.Enabled = false;
+                selectPalletablebox.Enabled = false;
+            }
+
+        }
+        List<Type> loadableSObjects = new List<Type>();
+        private void loadableSObox_CheckedChanged(object sender, EventArgs e)
+        {
+            SObox.Items.Clear();
+            SObox.Text = "";
+            if (loadableSObox.Checked)
+            {
+                builtinSObox.Enabled = false;
+                foreach (Type t in Assembly.GetExecutingAssembly().GetTypes())
+                {
+                    if (t.IsClass && t.Namespace.Equals("SWENG421GUI.Loadable.ShippingObjects"))
+                    {
+                        loadableSObjects.Clear();
+                        loadableSObjects.Add(t);
+                        SObox.Items.Add(t.Name);
+                    }
+                }
+                SObox.SelectedIndex = 0;
+            }
+            else
+            {
+                builtinSObox.Enabled = true;
+            }
+
+
+        }
+        List<Type> soTypes = new List<Type>();
+        private void builtinSObox_CheckedChanged(object sender, EventArgs e)
+        {
+            SObox.Items.Clear();
+            SObox.Text = "";
+            if (builtinSObox.Checked)
+            {
+                loadableSObox.Enabled = false;
+                soTypes.Clear();
+                soTypes.Add(typeof(Crate));
+                soTypes.Add(typeof(Pallet));
+                foreach (Type t in soTypes)
+                {
+                    SObox.Items.Add(t.Name);
+                }
+                SObox.SelectedIndex = 0;
+            }
+            else
+            {
+                loadableSObox.Enabled = true;
+            }
+        }
+        private void addShippingObjectbutton_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

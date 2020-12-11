@@ -41,19 +41,10 @@ namespace SWENG421GUI
                 AbstractLoadableVehicle loadableVehicle;
                 loadableVehicle = (AbstractLoadableVehicle)Activator.CreateInstance(t);
                 loadableVehicle.setEnviroment(this);
-                //Console.WriteLine("Loading in: " + loadableVehicle.getName());
-                // for testing purposes - eventually user will fill out these values
-                loadableVehicle.identifier = loadableVehicle.getName() + " 1";
-                loadableVehicle.loadCount = 5;
-                loadableVehicle.mpg = 10;
-                loadableVehicle.setAttribute("15");
-                //loadableVehicle.printInfo();
                 v = loadableVehicle;
-                vehicles.Add(v);
             }
             else { 
                 v = factory.createVehicle(type);
-                vehicles.Add(v);
             }
             return v;
         }
