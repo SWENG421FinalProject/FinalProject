@@ -601,6 +601,7 @@ namespace SWENG421GUI
             v.identifier = IdentifierBox.Text; 
             v.loadCount = int.Parse(loadCountBox.Text);
             v.mpg = double.Parse(mpgBox.Text);
+            v.todo = null;
             v.setAttribute(attributeBox.Text);
             // update gui vehicle list 
             // vehicleList.Add(v);
@@ -633,13 +634,22 @@ namespace SWENG421GUI
             }
             return t;
         }
-
+        List<Type> palletableTypes = new List<Type>();
+ 
         private void SObox_SelectedIndexChanged(object sender, EventArgs e)
         {
             if(getSelectedTypeOfShippingObject().Name.Equals("Pallet"))
             {
+                palletableTypes.Clear();
                 palletableNameBox.Enabled = true;
                 selectPalletablebox.Enabled = true;
+                palletableTypes.Add(typeof(Barrel));
+                palletableTypes.Add(typeof(Box));
+                foreach(Type t in palletableTypes)
+                {
+                    selectPalletablebox.Items.Add(t.Name);
+                }
+                selectPalletablebox.SelectedIndex = 0;
             }
             else
             {
@@ -698,7 +708,30 @@ namespace SWENG421GUI
         }
         private void addShippingObjectbutton_Click(object sender, EventArgs e)
         {
-
+            Type t = getSelectedTypeOfShippingObject();
+            ShippingObjectIF shippingObject;
+            if (t.IsSubclassOf(typeof(AbstractLoadableShippingObject)))
+            {
+                shippingObject = myCompany.prepareLoadableParcel(t.FullName);
+            }
+            else if (t.Name.Equals("Pallet"))
+            {
+                Type palletType = getSelectedTypeOfPalletable();
+                PalletableIF palletable = (PalletableIF)Activator.CreateInstance(palletType, palletableNameBox.Text);
+                shippingObject = new Pallet(soNameBox.Text, palletable);
+            }
+            else
+            {
+                shippingObject = (ShippingObjectIF)Activator.CreateInstance(t, t.Name);
+            }
+            shippingObject.name = soNameBox.Text;
+            addShippingObjectStatusBox.Text = shippingObject.OnCreate();
+            // update packagestoassign
+            packagesToAssign.Add(shippingObject);
+        }
+        public Type getSelectedTypeOfPalletable()
+        {
+            return palletableTypes[selectPalletablebox.SelectedIndex];
         }
     }
 }

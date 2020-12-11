@@ -49,13 +49,15 @@ namespace SWENG421GUI
             return v;
         }
 
-        public void loadShippingObject(string type)
+        public ShippingObjectIF prepareLoadableParcel(string type)
         {
+            ShippingObjectIF shippingObject;
             Type t = Type.GetType(type);
             AbstractLoadableShippingObject loadableShippingObject;
             loadableShippingObject = (AbstractLoadableShippingObject)Activator.CreateInstance(t, t.ToString());
             loadableShippingObject.setEnviroment(this);
-            loadableShippingObject.OnCreate();
+            shippingObject = loadableShippingObject;
+            return shippingObject;
         }
 
         //Uses a RichTextBox to write output to

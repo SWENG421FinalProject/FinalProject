@@ -22,6 +22,6 @@ namespace SWENG421GUI
 
         public abstract string name { get; set; }
 
-        public abstract void OnCreate();
+        public abstract string OnCreate();
     }
 }

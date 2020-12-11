@@ -74,6 +74,21 @@
             this.OrderComboBox = new System.Windows.Forms.ComboBox();
             this.ManageTab = new System.Windows.Forms.TabPage();
             this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.AddParcelTab = new System.Windows.Forms.TabPage();
+            this.addShippingObjectbutton = new System.Windows.Forms.Button();
+            this.selectPalletablebox = new System.Windows.Forms.ComboBox();
+            this.palletableNameBox = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.PalletableLabel = new System.Windows.Forms.Label();
+            this.addShippingObjectStatusBox = new System.Windows.Forms.TextBox();
+            this.soNameLabel = new System.Windows.Forms.Label();
+            this.soNameBox = new System.Windows.Forms.TextBox();
+            this.SObox = new System.Windows.Forms.ComboBox();
+            this.loadableSObox = new System.Windows.Forms.CheckBox();
+            this.builtinSObox = new System.Windows.Forms.CheckBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.AddOrderTab = new System.Windows.Forms.TabPage();
+            this.AddRouteTab = new System.Windows.Forms.TabPage();
             this.AddVehicleTab = new System.Windows.Forms.TabPage();
             this.IdentifierBox = new System.Windows.Forms.TextBox();
             this.loadCountBox = new System.Windows.Forms.TextBox();
@@ -90,24 +105,9 @@
             this.LoadableBox = new System.Windows.Forms.CheckBox();
             this.BuiltInBox = new System.Windows.Forms.CheckBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.AddOrderTab = new System.Windows.Forms.TabPage();
-            this.AddRouteTab = new System.Windows.Forms.TabPage();
             this.AddObjectBox = new System.Windows.Forms.ComboBox();
             this.AddObjectLabel = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.AddParcelTab = new System.Windows.Forms.TabPage();
-            this.label10 = new System.Windows.Forms.Label();
-            this.builtinSObox = new System.Windows.Forms.CheckBox();
-            this.loadableSObox = new System.Windows.Forms.CheckBox();
-            this.SObox = new System.Windows.Forms.ComboBox();
-            this.soNameBox = new System.Windows.Forms.TextBox();
-            this.soNameLabel = new System.Windows.Forms.Label();
-            this.addShippingObjectStatusBox = new System.Windows.Forms.TextBox();
-            this.PalletableLabel = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.palletableNameBox = new System.Windows.Forms.TextBox();
-            this.selectPalletablebox = new System.Windows.Forms.ComboBox();
-            this.addShippingObjectbutton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -120,8 +120,8 @@
             this.OrderTab.SuspendLayout();
             this.ManageTab.SuspendLayout();
             this.tabControl1.SuspendLayout();
-            this.AddVehicleTab.SuspendLayout();
             this.AddParcelTab.SuspendLayout();
+            this.AddVehicleTab.SuspendLayout();
             this.SuspendLayout();
             // 
             // OriginOutput
@@ -637,6 +637,159 @@
             this.tabControl1.Size = new System.Drawing.Size(503, 486);
             this.tabControl1.TabIndex = 2;
             // 
+            // AddParcelTab
+            // 
+            this.AddParcelTab.Controls.Add(this.addShippingObjectbutton);
+            this.AddParcelTab.Controls.Add(this.selectPalletablebox);
+            this.AddParcelTab.Controls.Add(this.palletableNameBox);
+            this.AddParcelTab.Controls.Add(this.label11);
+            this.AddParcelTab.Controls.Add(this.PalletableLabel);
+            this.AddParcelTab.Controls.Add(this.addShippingObjectStatusBox);
+            this.AddParcelTab.Controls.Add(this.soNameLabel);
+            this.AddParcelTab.Controls.Add(this.soNameBox);
+            this.AddParcelTab.Controls.Add(this.SObox);
+            this.AddParcelTab.Controls.Add(this.loadableSObox);
+            this.AddParcelTab.Controls.Add(this.builtinSObox);
+            this.AddParcelTab.Controls.Add(this.label10);
+            this.AddParcelTab.Location = new System.Drawing.Point(4, 29);
+            this.AddParcelTab.Name = "AddParcelTab";
+            this.AddParcelTab.Size = new System.Drawing.Size(495, 453);
+            this.AddParcelTab.TabIndex = 3;
+            this.AddParcelTab.Text = "New Parcel";
+            this.AddParcelTab.UseVisualStyleBackColor = true;
+            // 
+            // addShippingObjectbutton
+            // 
+            this.addShippingObjectbutton.Location = new System.Drawing.Point(152, 341);
+            this.addShippingObjectbutton.Name = "addShippingObjectbutton";
+            this.addShippingObjectbutton.Size = new System.Drawing.Size(197, 43);
+            this.addShippingObjectbutton.TabIndex = 12;
+            this.addShippingObjectbutton.Text = "Add Shipping Object";
+            this.addShippingObjectbutton.UseVisualStyleBackColor = true;
+            this.addShippingObjectbutton.Click += new System.EventHandler(this.addShippingObjectbutton_Click);
+            // 
+            // selectPalletablebox
+            // 
+            this.selectPalletablebox.Enabled = false;
+            this.selectPalletablebox.FormattingEnabled = true;
+            this.selectPalletablebox.Location = new System.Drawing.Point(152, 213);
+            this.selectPalletablebox.Name = "selectPalletablebox";
+            this.selectPalletablebox.Size = new System.Drawing.Size(197, 28);
+            this.selectPalletablebox.TabIndex = 11;
+            // 
+            // palletableNameBox
+            // 
+            this.palletableNameBox.Enabled = false;
+            this.palletableNameBox.Location = new System.Drawing.Point(152, 277);
+            this.palletableNameBox.Name = "palletableNameBox";
+            this.palletableNameBox.Size = new System.Drawing.Size(197, 26);
+            this.palletableNameBox.TabIndex = 10;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(13, 280);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(128, 20);
+            this.label11.TabIndex = 9;
+            this.label11.Text = "Palletable Name:";
+            // 
+            // PalletableLabel
+            // 
+            this.PalletableLabel.AutoSize = true;
+            this.PalletableLabel.Location = new System.Drawing.Point(10, 216);
+            this.PalletableLabel.Name = "PalletableLabel";
+            this.PalletableLabel.Size = new System.Drawing.Size(131, 20);
+            this.PalletableLabel.TabIndex = 7;
+            this.PalletableLabel.Text = "Select Palletable:";
+            // 
+            // addShippingObjectStatusBox
+            // 
+            this.addShippingObjectStatusBox.Enabled = false;
+            this.addShippingObjectStatusBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.addShippingObjectStatusBox.Location = new System.Drawing.Point(3, 424);
+            this.addShippingObjectStatusBox.Name = "addShippingObjectStatusBox";
+            this.addShippingObjectStatusBox.Size = new System.Drawing.Size(489, 23);
+            this.addShippingObjectStatusBox.TabIndex = 6;
+            // 
+            // soNameLabel
+            // 
+            this.soNameLabel.AutoSize = true;
+            this.soNameLabel.Location = new System.Drawing.Point(77, 152);
+            this.soNameLabel.Name = "soNameLabel";
+            this.soNameLabel.Size = new System.Drawing.Size(55, 20);
+            this.soNameLabel.TabIndex = 5;
+            this.soNameLabel.Text = "Name:";
+            // 
+            // soNameBox
+            // 
+            this.soNameBox.Location = new System.Drawing.Point(152, 146);
+            this.soNameBox.Name = "soNameBox";
+            this.soNameBox.Size = new System.Drawing.Size(197, 26);
+            this.soNameBox.TabIndex = 4;
+            // 
+            // SObox
+            // 
+            this.SObox.FormattingEnabled = true;
+            this.SObox.Location = new System.Drawing.Point(152, 75);
+            this.SObox.Name = "SObox";
+            this.SObox.Size = new System.Drawing.Size(197, 28);
+            this.SObox.TabIndex = 3;
+            this.SObox.SelectedIndexChanged += new System.EventHandler(this.SObox_SelectedIndexChanged);
+            // 
+            // loadableSObox
+            // 
+            this.loadableSObox.AutoSize = true;
+            this.loadableSObox.Location = new System.Drawing.Point(244, 45);
+            this.loadableSObox.Name = "loadableSObox";
+            this.loadableSObox.Size = new System.Drawing.Size(94, 24);
+            this.loadableSObox.TabIndex = 2;
+            this.loadableSObox.Text = "Loadable";
+            this.loadableSObox.UseVisualStyleBackColor = true;
+            this.loadableSObox.CheckedChanged += new System.EventHandler(this.loadableSObox_CheckedChanged);
+            // 
+            // builtinSObox
+            // 
+            this.builtinSObox.AutoSize = true;
+            this.builtinSObox.Location = new System.Drawing.Point(162, 45);
+            this.builtinSObox.Name = "builtinSObox";
+            this.builtinSObox.Size = new System.Drawing.Size(76, 24);
+            this.builtinSObox.TabIndex = 1;
+            this.builtinSObox.Text = "Built-in";
+            this.builtinSObox.UseVisualStyleBackColor = true;
+            this.builtinSObox.CheckedChanged += new System.EventHandler(this.builtinSObox_CheckedChanged);
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(36, 78);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(96, 20);
+            this.label10.TabIndex = 0;
+            this.label10.Text = "Select Type:";
+            // 
+            // AddOrderTab
+            // 
+            this.AddOrderTab.Location = new System.Drawing.Point(4, 29);
+            this.AddOrderTab.Margin = new System.Windows.Forms.Padding(2);
+            this.AddOrderTab.Name = "AddOrderTab";
+            this.AddOrderTab.Padding = new System.Windows.Forms.Padding(2);
+            this.AddOrderTab.Size = new System.Drawing.Size(495, 453);
+            this.AddOrderTab.TabIndex = 1;
+            this.AddOrderTab.Text = "New Order";
+            this.AddOrderTab.UseVisualStyleBackColor = true;
+            // 
+            // AddRouteTab
+            // 
+            this.AddRouteTab.Location = new System.Drawing.Point(4, 29);
+            this.AddRouteTab.Margin = new System.Windows.Forms.Padding(2);
+            this.AddRouteTab.Name = "AddRouteTab";
+            this.AddRouteTab.Padding = new System.Windows.Forms.Padding(2);
+            this.AddRouteTab.Size = new System.Drawing.Size(495, 453);
+            this.AddRouteTab.TabIndex = 2;
+            this.AddRouteTab.Text = "New Route";
+            this.AddRouteTab.UseVisualStyleBackColor = true;
+            // 
             // AddVehicleTab
             // 
             this.AddVehicleTab.Controls.Add(this.IdentifierBox);
@@ -797,28 +950,6 @@
             this.label4.Size = new System.Drawing.Size(0, 20);
             this.label4.TabIndex = 0;
             // 
-            // AddOrderTab
-            // 
-            this.AddOrderTab.Location = new System.Drawing.Point(4, 29);
-            this.AddOrderTab.Margin = new System.Windows.Forms.Padding(2);
-            this.AddOrderTab.Name = "AddOrderTab";
-            this.AddOrderTab.Padding = new System.Windows.Forms.Padding(2);
-            this.AddOrderTab.Size = new System.Drawing.Size(495, 453);
-            this.AddOrderTab.TabIndex = 1;
-            this.AddOrderTab.Text = "New Order";
-            this.AddOrderTab.UseVisualStyleBackColor = true;
-            // 
-            // AddRouteTab
-            // 
-            this.AddRouteTab.Location = new System.Drawing.Point(4, 29);
-            this.AddRouteTab.Margin = new System.Windows.Forms.Padding(2);
-            this.AddRouteTab.Name = "AddRouteTab";
-            this.AddRouteTab.Padding = new System.Windows.Forms.Padding(2);
-            this.AddRouteTab.Size = new System.Drawing.Size(495, 453);
-            this.AddRouteTab.TabIndex = 2;
-            this.AddRouteTab.Text = "New Route";
-            this.AddRouteTab.UseVisualStyleBackColor = true;
-            // 
             // AddObjectBox
             // 
             this.AddObjectBox.FormattingEnabled = true;
@@ -844,136 +975,6 @@
             this.timer1.Enabled = true;
             this.timer1.Interval = 1000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
-            // 
-            // AddParcelTab
-            // 
-            this.AddParcelTab.Controls.Add(this.addShippingObjectbutton);
-            this.AddParcelTab.Controls.Add(this.selectPalletablebox);
-            this.AddParcelTab.Controls.Add(this.palletableNameBox);
-            this.AddParcelTab.Controls.Add(this.label11);
-            this.AddParcelTab.Controls.Add(this.PalletableLabel);
-            this.AddParcelTab.Controls.Add(this.addShippingObjectStatusBox);
-            this.AddParcelTab.Controls.Add(this.soNameLabel);
-            this.AddParcelTab.Controls.Add(this.soNameBox);
-            this.AddParcelTab.Controls.Add(this.SObox);
-            this.AddParcelTab.Controls.Add(this.loadableSObox);
-            this.AddParcelTab.Controls.Add(this.builtinSObox);
-            this.AddParcelTab.Controls.Add(this.label10);
-            this.AddParcelTab.Location = new System.Drawing.Point(4, 29);
-            this.AddParcelTab.Name = "AddParcelTab";
-            this.AddParcelTab.Size = new System.Drawing.Size(495, 453);
-            this.AddParcelTab.TabIndex = 3;
-            this.AddParcelTab.Text = "New Parcel";
-            this.AddParcelTab.UseVisualStyleBackColor = true;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(36, 78);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(96, 20);
-            this.label10.TabIndex = 0;
-            this.label10.Text = "Select Type:";
-            // 
-            // builtinSObox
-            // 
-            this.builtinSObox.AutoSize = true;
-            this.builtinSObox.Location = new System.Drawing.Point(162, 45);
-            this.builtinSObox.Name = "builtinSObox";
-            this.builtinSObox.Size = new System.Drawing.Size(76, 24);
-            this.builtinSObox.TabIndex = 1;
-            this.builtinSObox.Text = "Built-in";
-            this.builtinSObox.UseVisualStyleBackColor = true;
-            this.builtinSObox.CheckedChanged += new System.EventHandler(this.builtinSObox_CheckedChanged);
-            // 
-            // loadableSObox
-            // 
-            this.loadableSObox.AutoSize = true;
-            this.loadableSObox.Location = new System.Drawing.Point(244, 45);
-            this.loadableSObox.Name = "loadableSObox";
-            this.loadableSObox.Size = new System.Drawing.Size(94, 24);
-            this.loadableSObox.TabIndex = 2;
-            this.loadableSObox.Text = "Loadable";
-            this.loadableSObox.UseVisualStyleBackColor = true;
-            this.loadableSObox.CheckedChanged += new System.EventHandler(this.loadableSObox_CheckedChanged);
-            // 
-            // SObox
-            // 
-            this.SObox.FormattingEnabled = true;
-            this.SObox.Location = new System.Drawing.Point(152, 75);
-            this.SObox.Name = "SObox";
-            this.SObox.Size = new System.Drawing.Size(197, 28);
-            this.SObox.TabIndex = 3;
-            this.SObox.SelectedIndexChanged += new System.EventHandler(this.SObox_SelectedIndexChanged);
-            // 
-            // soNameBox
-            // 
-            this.soNameBox.Location = new System.Drawing.Point(152, 146);
-            this.soNameBox.Name = "soNameBox";
-            this.soNameBox.Size = new System.Drawing.Size(197, 26);
-            this.soNameBox.TabIndex = 4;
-            // 
-            // soNameLabel
-            // 
-            this.soNameLabel.AutoSize = true;
-            this.soNameLabel.Location = new System.Drawing.Point(77, 152);
-            this.soNameLabel.Name = "soNameLabel";
-            this.soNameLabel.Size = new System.Drawing.Size(55, 20);
-            this.soNameLabel.TabIndex = 5;
-            this.soNameLabel.Text = "Name:";
-            // 
-            // addShippingObjectStatusBox
-            // 
-            this.addShippingObjectStatusBox.Enabled = false;
-            this.addShippingObjectStatusBox.Location = new System.Drawing.Point(3, 424);
-            this.addShippingObjectStatusBox.Name = "addShippingObjectStatusBox";
-            this.addShippingObjectStatusBox.Size = new System.Drawing.Size(489, 26);
-            this.addShippingObjectStatusBox.TabIndex = 6;
-            // 
-            // PalletableLabel
-            // 
-            this.PalletableLabel.AutoSize = true;
-            this.PalletableLabel.Location = new System.Drawing.Point(10, 216);
-            this.PalletableLabel.Name = "PalletableLabel";
-            this.PalletableLabel.Size = new System.Drawing.Size(131, 20);
-            this.PalletableLabel.TabIndex = 7;
-            this.PalletableLabel.Text = "Select Palletable:";
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(13, 280);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(128, 20);
-            this.label11.TabIndex = 9;
-            this.label11.Text = "Palletable Name:";
-            // 
-            // palletableNameBox
-            // 
-            this.palletableNameBox.Enabled = false;
-            this.palletableNameBox.Location = new System.Drawing.Point(152, 277);
-            this.palletableNameBox.Name = "palletableNameBox";
-            this.palletableNameBox.Size = new System.Drawing.Size(197, 26);
-            this.palletableNameBox.TabIndex = 10;
-            // 
-            // selectPalletablebox
-            // 
-            this.selectPalletablebox.Enabled = false;
-            this.selectPalletablebox.FormattingEnabled = true;
-            this.selectPalletablebox.Location = new System.Drawing.Point(152, 213);
-            this.selectPalletablebox.Name = "selectPalletablebox";
-            this.selectPalletablebox.Size = new System.Drawing.Size(197, 28);
-            this.selectPalletablebox.TabIndex = 11;
-            // 
-            // addShippingObjectbutton
-            // 
-            this.addShippingObjectbutton.Location = new System.Drawing.Point(152, 341);
-            this.addShippingObjectbutton.Name = "addShippingObjectbutton";
-            this.addShippingObjectbutton.Size = new System.Drawing.Size(197, 43);
-            this.addShippingObjectbutton.TabIndex = 12;
-            this.addShippingObjectbutton.Text = "Add Shipping Object";
-            this.addShippingObjectbutton.UseVisualStyleBackColor = true;
-            this.addShippingObjectbutton.Click += new System.EventHandler(this.addShippingObjectbutton_Click);
             // 
             // Form1
             // 
@@ -1003,10 +1004,10 @@
             this.ManageTab.ResumeLayout(false);
             this.ManageTab.PerformLayout();
             this.tabControl1.ResumeLayout(false);
-            this.AddVehicleTab.ResumeLayout(false);
-            this.AddVehicleTab.PerformLayout();
             this.AddParcelTab.ResumeLayout(false);
             this.AddParcelTab.PerformLayout();
+            this.AddVehicleTab.ResumeLayout(false);
+            this.AddVehicleTab.PerformLayout();
             this.ResumeLayout(false);
 
         }

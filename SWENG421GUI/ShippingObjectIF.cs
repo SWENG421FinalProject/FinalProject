@@ -9,6 +9,6 @@ namespace SWENG421GUI
         //Name variable added so that the GUI can get the package's name
         string name { get; set; }
 
-        void OnCreate();
+        string OnCreate();
     }
 }

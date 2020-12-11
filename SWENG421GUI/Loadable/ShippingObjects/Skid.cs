@@ -22,9 +22,9 @@ namespace SWENG421GUI.Loadable.ShippingObjects
             set { this.Name = value; }
         }
 
-        public override void OnCreate()
+        public override string OnCreate()
         {
-            Console.WriteLine("Company: " + getEnviroment().companyName + " loaded and added Shipping Object of type: " + this.GetType().Name);
+            return("Company: " + getEnviroment().companyName + " loaded and added Shipping Object of type: " + this.GetType().Name);
         }
     }
 }
