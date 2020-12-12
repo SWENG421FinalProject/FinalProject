@@ -13,6 +13,7 @@ namespace SWENG421GUI
         public List<Vehicle> vehicles;
         public List<Route> routesToAssign;
         public string companyName;
+        public bool running = false;
         public Company(string name) {
             this.companyName = name;
             this.vehicles = new List<Vehicle>();
@@ -63,6 +64,7 @@ namespace SWENG421GUI
         //Uses a RichTextBox to write output to
         public void CompanyThread(Form1 f1, List<State> stateList)
         {
+            running = true;
             string toAdd = "";
             //Use variable rather than removing routes from list
             int routesLeft = routesToAssign.Count;
@@ -123,7 +125,7 @@ namespace SWENG421GUI
                     toAdd = "Company " + this.companyName + " has " + this.routesToAssign.Count + " Routes(s) to assign\n";
                     f1.updateOutputPanel(toAdd);
 
-                    Thread.Sleep(5000);
+                    Thread.Sleep(8000);
                 }
             }
 
@@ -158,13 +160,14 @@ namespace SWENG421GUI
                     }
                 }
 
-                Thread.Sleep(5000);
+                Thread.Sleep(9000);
             }
 
 
             //Console.WriteLine("Company {0} ending operations", this.companyName);
             toAdd = "Company " + this.companyName + " ending operations\n";
             f1.updateOutputPanel(toAdd);
+            running = false;
         }
     }
 }

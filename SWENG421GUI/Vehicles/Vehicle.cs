@@ -71,7 +71,7 @@ namespace SWENG421GUI.Vehicles
                     Random r = new Random();
 
                     //Wait a random amount of time between 1 and 5 seconds to travel to the 1st stop
-                    int waitTime = r.Next(1000, 5000);
+                    int waitTime = r.Next(5000, 9000);
                     for (int i = 0; i < todo.toSend.Count; i++)
                     {
                         //Deliver package and wait 1-5 seconds and keep going
@@ -81,7 +81,7 @@ namespace SWENG421GUI.Vehicles
                         f1.updateOutputPanel(toAdd);
 
                         Thread.Sleep(waitTime);
-                        waitTime = r.Next(1000, 5000);
+                        waitTime = r.Next(5000, 9000);
                         //Console.WriteLine("{0}: Package {1} Delivered, setting its state to delivered", this.identifier, todo.toSend[i].trackingNumber);
                         toAdd = this.identifier + ": Package " + todo.toSend[i].trackingNumber + " Delivered, setting its state to delivered\n";
                         f1.updateOutputPanel(toAdd);
@@ -95,12 +95,12 @@ namespace SWENG421GUI.Vehicles
                     f1.updateOutputPanel(toAdd);
 
                     this.todo = null;
-                    waitTime = r.Next(1000, 5000);
+                    waitTime = r.Next(5000, 9000);
                     Thread.Sleep(waitTime);
                 }
                 else {
                     waits++;
-                    Thread.Sleep(5000);
+                    Thread.Sleep(9000);
                 }
             }
         }

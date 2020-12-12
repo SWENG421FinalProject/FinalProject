@@ -634,6 +634,18 @@ namespace SWENG421GUI
             vehicleBinding.ResetBindings(true);
             routeBinding.ResetBindings(true);
             orderBinding.ResetBindings(true);
+
+            List<Route> newRoutes = new List<Route>();
+            if (myCompany.running == false) {
+                for (int i = myCompany.routesToAssign.Count-1; i >= 0 ; i--) {
+                    if (myCompany.routesToAssign[i].toSend[0].getState(this) == stateList[2]) {
+                        newRoutes.Add(myCompany.routesToAssign[i]);
+                    }
+                }
+                myCompany.routesToAssign = newRoutes;
+                Thread newCompanyThread = new Thread(() => myCompany.CompanyThread(this, stateList));
+                newCompanyThread.Start();
+            }
         }
 
         // gets the type of vehicle selected at any given point
