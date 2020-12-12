@@ -151,8 +151,7 @@ namespace SWENG421GUI
                 }
             }
 
-            //Create Vehicles
-
+            //Create Example Vehicles
             Truck1 = (RoadVehicle)vf.createVehicle("Truck");
             Truck2 = (RoadVehicle)vf.createVehicle("Truck");
             Train1 = (Train)vf.createVehicle("Train");
@@ -197,18 +196,20 @@ namespace SWENG421GUI
 
             //Create Company
             myCompany = new Company("Shipping Co");
-            myCompany.vehicles = vehicleList;
-            myCompany.routesToAssign = routesToAssign;
+            myCompany.setVehicles(vehicleList);
+            myCompany.setRoutesToAssign(routesToAssign);
+            myCompany.setOrdersToAssign(ordersToAssign);
+            myCompany.setParcelsToAssign(packagesToAssign);
 
-            // Loading loadable classes
+            // Instantiating loadable class as a pre-existing example
             Vehicle loadedVehicle = myCompany.addVehicle("SWENG421GUI.Loadable.Vehicles.Drone");
             loadedVehicle.identifier = loadedVehicle.GetType().Name + " 1";
             loadedVehicle.loadCount = 5;
             loadedVehicle.mpg = 10;
             loadedVehicle.todo = null;
             loadedVehicle.setAttribute("15");
-            vehicleList.Add(loadedVehicle);
-            myCompany.vehicles = vehicleList;
+            // updating gui
+            myCompany.setVehicles(vehicleList);
 
 
             //Might not be needed but these lists are in case the originals get modified
@@ -254,7 +255,7 @@ namespace SWENG421GUI
 
 
             //Company Tab
-            CompanyNameOutput.Text = myCompany.companyName;
+            CompanyNameOutput.Text = myCompany.getCompanyName();
             CompanyVehicles.DataSource = companyBinding;
             VehicleComboBox.DisplayMember = "identifier";
 
@@ -539,8 +540,7 @@ namespace SWENG421GUI
         List<Type> palletableTypes = new List<Type>();
         List<Type> loadableSObjects = new List<Type>();
         List<Type> soTypes = new List<Type>();
-
-        // new way of letting user choose assignments? each list as combobox on tab page for next biggest element in hierarchy
+        // GUI lists for displaying temporary objects on next tabpage
         List<ShippingObjectIF> newPackagesToAssign = new List<ShippingObjectIF>();
         List<Order> newOrdersToAssign = new List<Order>();
         List<Route> newRoutesToAssign = new List<Route>();
@@ -612,14 +612,15 @@ namespace SWENG421GUI
             Type t = getSelectedTypeOfVehicle();
             Vehicle v = myCompany.addVehicle(t.FullName);
             VehicleAddStatusBox.Text = v.OnCreate();
+
             v.identifier = IdentifierBox.Text; 
             v.loadCount = int.Parse(loadCountBox.Text);
             v.mpg = double.Parse(mpgBox.Text);
             v.todo = newRoutesToAssign[SelectRouteBox.SelectedIndex];
             v.todo.assigned = true;
             v.setAttribute(attributeBox.Text);
+            // for gui - adds to temporary list on next tab
             newVehicleList.Add(v);
-            myCompany.vehicles.Add(v);
             // creates and starts vehicle thread
             Thread vThread = new Thread(() => v.VehicleThread(this, stateList));
             vThread.Start();
@@ -636,13 +637,13 @@ namespace SWENG421GUI
             orderBinding.ResetBindings(true);
 
             List<Route> newRoutes = new List<Route>();
-            if (myCompany.running == false) {
-                for (int i = myCompany.routesToAssign.Count-1; i >= 0 ; i--) {
-                    if (myCompany.routesToAssign[i].toSend[0].getState(this) == stateList[2]) {
-                        newRoutes.Add(myCompany.routesToAssign[i]);
+            if (myCompany.getRunning() == false) {
+                for (int i = myCompany.getRoutesToAssign().Count-1; i >= 0 ; i--) {
+                    if (myCompany.getRoutesToAssign()[i].toSend[0].getState(this) == stateList[2]) {
+                        newRoutes.Add(myCompany.getRoutesToAssign()[i]);
                     }
                 }
-                myCompany.routesToAssign = newRoutes;
+                myCompany.setRoutesToAssign(newRoutes);
                 Thread newCompanyThread = new Thread(() => myCompany.CompanyThread(this, stateList));
                 newCompanyThread.Start();
             }
@@ -759,24 +760,17 @@ namespace SWENG421GUI
         {
             Type t = getSelectedTypeOfShippingObject();
             ShippingObjectIF shippingObject;
-            if (t.IsSubclassOf(typeof(AbstractLoadableShippingObject)))
-            {
-                shippingObject = myCompany.prepareLoadableParcel(t.FullName);
-            }
-            else if (t.Name.Equals("Pallet"))
+            if (t.Name.Equals("Pallet"))
             {
                 Type palletType = getSelectedTypeOfPalletable();
-                PalletableIF palletable = (PalletableIF)Activator.CreateInstance(palletType, palletableNameBox.Text);
-                shippingObject = new Pallet(soNameBox.Text, palletable);
+                shippingObject = myCompany.addPallet(palletType.FullName, palletableNameBox.Text, soNameBox.Text);
             }
             else
             {
-                shippingObject = (ShippingObjectIF)Activator.CreateInstance(t, t.Name);
+                shippingObject = myCompany.addParcel(t.FullName);
             }
             shippingObject.name = soNameBox.Text;
             addShippingObjectStatusBox.Text = shippingObject.OnCreate();
-            // update packagestoassign
-            // packagesToAssign.Add(shippingObject);
             newPackagesToAssign.Add(shippingObject);
             SelectParcelBox.DataSource = null;
             SelectParcelBox.DataSource = newPackagesToAssign;

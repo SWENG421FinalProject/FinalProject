@@ -10,10 +10,13 @@ namespace SWENG421GUI
 {
     public class Company
     {
-        public List<Vehicle> vehicles;
-        public List<Route> routesToAssign;
-        public string companyName;
-        public bool running = false;
+        private List<Vehicle> vehicles;
+        private List<Route> routesToAssign;
+        private List<Order> ordersToAssign;
+        private List<ShippingObjectIF> parcelsToAssign;
+        private string companyName;
+        private bool running = false;
+
         public Company(string name) {
             this.companyName = name;
             this.vehicles = new List<Vehicle>();
@@ -29,6 +32,46 @@ namespace SWENG421GUI
         }
         public void setVehicles(List<Vehicle> vs) {
             this.vehicles = vs;
+        }
+        public void setRoutesToAssign(List<Route> routesToAssign)
+        {
+            this.routesToAssign = routesToAssign;
+        }
+        public List<Route> getRoutesToAssign()
+        {
+            return this.routesToAssign;
+        }
+        public List<Order> getOrdersToAssign()
+        {
+            return this.ordersToAssign;
+        }
+        public void setOrdersToAssign(List<Order> orders)
+        {
+            this.ordersToAssign = orders;
+        }
+        public void setParcelsToAssign(List<ShippingObjectIF> parcels)
+        {
+            this.parcelsToAssign = parcels;
+        }
+        public List<ShippingObjectIF> getParcelsToAssign()
+        {
+            return this.parcelsToAssign;
+        }
+        public void setCompanyName(string cn)
+        {
+            this.companyName = cn;
+        }
+        public string getCompanyName()
+        {
+            return this.companyName;
+        }
+        public void setRunning(bool running)
+        {
+            this.running = running;
+        }
+        public bool getRunning()
+        {
+            return this.running;
         }
 
         // company tells factory to make and return a vehicle
@@ -47,10 +90,36 @@ namespace SWENG421GUI
             else { 
                 v = factory.createVehicle(type);
             }
+            vehicles.Add(v);
             return v;
         }
 
-        public ShippingObjectIF prepareLoadableParcel(string type)
+        public ShippingObjectIF addParcel(string type)
+        {
+            Type t = Type.GetType(type);
+            ShippingObjectIF obj;
+            if (t.IsSubclassOf(typeof(AbstractLoadableShippingObject)))
+            {
+                obj = addLoadableParcel(t.FullName);
+                parcelsToAssign.Add(obj);
+            }
+            else
+            {
+                obj = (ShippingObjectIF)Activator.CreateInstance(t, t.Name);
+                parcelsToAssign.Add(obj);
+            }
+            return obj;
+        }
+        public ShippingObjectIF addPallet(string type, string palletableName, string palletName)
+        {
+            ShippingObjectIF obj;
+            Type t = Type.GetType(type);
+            PalletableIF palletable = (PalletableIF)Activator.CreateInstance(t, palletableName);
+            obj = new Pallet(palletName, palletable);
+            parcelsToAssign.Add(obj);
+            return obj;
+        }
+        public ShippingObjectIF addLoadableParcel(string type)
         {
             ShippingObjectIF shippingObject;
             Type t = Type.GetType(type);
@@ -58,6 +127,7 @@ namespace SWENG421GUI
             loadableShippingObject = (AbstractLoadableShippingObject)Activator.CreateInstance(t, t.ToString());
             loadableShippingObject.setEnviroment(this);
             shippingObject = loadableShippingObject;
+            parcelsToAssign.Add(shippingObject);
             return shippingObject;
         }
 

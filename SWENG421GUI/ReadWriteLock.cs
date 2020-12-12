@@ -36,7 +36,7 @@ namespace SWENG421GUI
                     string userName;
                     if (user.GetType().ToString() == "SWENG421GUI.Company")
                     {
-                        userName = ((Company)user).companyName;
+                        userName = ((Company)user).getCompanyName();
                     }
                     else if (user.GetType().ToString().Contains("SWENG421GUI.Vehicles")) {
                         userName = ((Vehicle)user).identifier;

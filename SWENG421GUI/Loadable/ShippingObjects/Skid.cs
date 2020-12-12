@@ -24,7 +24,7 @@ namespace SWENG421GUI.Loadable.ShippingObjects
 
         public override string OnCreate()
         {
-            return("Company: " + getEnviroment().companyName + " loaded and added Shipping Object of type: " + this.GetType().Name);
+            return("Company: " + getEnviroment().getCompanyName()+ " loaded and added Shipping Object of type: " + this.GetType().Name);
         }
     }
 }

@@ -21,7 +21,7 @@ namespace SWENG421GUI.Loadable.Vehicles
 
         public override string OnCreate()
         {
-            return("Company: " + getEnviroment().companyName + " loaded and added Vehicle of type: " + this.getName());
+            return("Company: " + getEnviroment().getCompanyName() + " loaded and added Vehicle of type: " + this.getName());
         }
 
         public override void setAttribute(string value)
